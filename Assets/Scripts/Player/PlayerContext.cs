@@ -22,11 +22,15 @@ public class PlayerContext : MonoBehaviour
     #endregion
 
     public Movement movementComp;
+    public Animator myAnimator;
+
     // Start is called before the first frame update
     void Awake()
     {
         
         movementComp = GetComponent<Movement>();
+
+        myAnimator = GetComponent<Animator>();
         SetState(IdleState);
     }
 
@@ -39,11 +43,17 @@ public class PlayerContext : MonoBehaviour
         currentState.EnterState(this);
     }
 
-    public void SetState(PlayerBaseState newState, bool isMovingHorizontal)
+    public void SetState(PlayerBaseState newState, bool? isMovingHorizontal)
     {
         currentState = newState;
+        if (isMovingHorizontal == null)
+        {
+            currentState.EnterState(this);
+            return;
+        }
         currentState.EnterState(this, isMovingHorizontal);
     }
+
     //Actions
     public void Move(InputAction.CallbackContext inputContext) => currentState.Move(inputContext, this);
     public void Jump(InputAction.CallbackContext inputContext) => currentState.Jump(inputContext, this);

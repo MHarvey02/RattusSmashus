@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +9,7 @@ public class PlayerOnWallState : PlayerBaseState
 
     public override void EnterState(PlayerContext player)
     {
-        Debug.Log(this);
+        player.myAnimator.SetBool("isWallSliding", true);
         player.movementComp.HitWall();
     }
 
@@ -18,10 +19,20 @@ public class PlayerOnWallState : PlayerBaseState
         {
             return;
         }
-        player.SetState(player.WallJumpState);
+        if (inputContext.started)
+        {
+            ExitState(player, player.WallJumpState, null);    
+        }
+        
     }
 
 
+
+    public override void ExitState(PlayerContext player, PlayerBaseState nextState, bool? isMovingHorizontal)
+    {
+        player.myAnimator.SetBool("isWallSliding", false);
+        player.SetState(nextState, isMovingHorizontal);
+    }
     //Updates
     public override void FixedUpdate(PlayerContext player)
     {
@@ -31,13 +42,12 @@ public class PlayerOnWallState : PlayerBaseState
         player.movementComp.HorizontalMove();
         if (player.movementComp.GroundCollisionCheck())
         {
-            
-            player.SetState(player.IdleState);
+            ExitState(player, player.IdleState, null);
         }
 
         if (!player.movementComp.WallCollisionCheck())
-        {
-            player.SetState(player.InAirState,true);
+        {   
+            ExitState(player, player.InAirState, true);
         }
     }
 }

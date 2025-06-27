@@ -6,22 +6,22 @@ using UnityEngine.InputSystem;
 public class PlayerInAirState : PlayerBaseState
 {
     public PlayerBaseState nextState;
-    bool isMovingHorizontal = false;
+    bool? isMovingHorizontal = false;
 
     public override void EnterState(PlayerContext player)
     {
-        Debug.Log(this);
-
+        player.myAnimator.SetBool("isFalling", true);
+        
         isMovingHorizontal = false;
         nextState = player.IdleState;
     }
 
-    public override void EnterState(PlayerContext player, bool _isMovingHorizontal)
+    public override void EnterState(PlayerContext player, bool? _isMovingHorizontal)
     {
-        Debug.Log(this);
+        player.myAnimator.SetBool("isFalling", true);
 
         isMovingHorizontal = _isMovingHorizontal;
-        if (isMovingHorizontal)
+        if (isMovingHorizontal == true)
         {
             nextState = player.MoveState;
         }
@@ -52,24 +52,30 @@ public class PlayerInAirState : PlayerBaseState
         return;
     }
 
+    public override void ExitState(PlayerContext player, PlayerBaseState nextState, bool? isMovingHorizontal)
+    {
+        player.myAnimator.SetBool("isFalling", false);
+        player.SetState(nextState, isMovingHorizontal);
+    }
+
     //Updates
     public override void FixedUpdate(PlayerContext player)
     {
-        if (isMovingHorizontal)
+        if (isMovingHorizontal == true)
         {
-           player.movementComp.HorizontalMove(); 
+            player.movementComp.HorizontalMove();
         }
-        
+
         if (player.movementComp.GroundCollisionCheck())
         {
-            
-            player.SetState(nextState);
+
+            ExitState(player, nextState, null);
         }
 
         if (player.movementComp.WallCollisionCheck())
         {
 
-            player.SetState(player.OnWallState);
+            ExitState(player, player.OnWallState, null);
         }
     }
 }

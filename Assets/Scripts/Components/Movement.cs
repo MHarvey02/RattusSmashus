@@ -86,6 +86,7 @@ public class Movement : MonoBehaviour
 
     public void WallJump()
     {
+
         SetDirection();
         rb.AddForce(new Vector2(direction * wallJumpSpeed, jumpHeight * 2));
         
@@ -106,6 +107,7 @@ public class Movement : MonoBehaviour
     {
         if (rb.linearVelocity.y > 0)
         {
+
             rb.AddForce(new Vector2(0, rb.linearVelocity.x * wallSpeedBoost));
         }
     }
@@ -121,7 +123,7 @@ public class Movement : MonoBehaviour
         if (rb.linearVelocity.x > currentMoveSpeedCap || rb.linearVelocity.x < -currentMoveSpeedCap )
         {
             rb.linearVelocity = new Vector2(currentMoveSpeedCap * direction, rb.linearVelocity.y);
-            Debug.Log("yippe");
+
         }
        // if (rb.velocity.magnitude > currentMoveSpeedCap)
        //{

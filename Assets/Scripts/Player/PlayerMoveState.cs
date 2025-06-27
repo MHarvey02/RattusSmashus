@@ -5,20 +5,23 @@ using UnityEngine.InputSystem;
 
 public class PlayerMoveState : PlayerBaseState
 {
-
+    public override void EnterState(PlayerContext player)
+    {
+        player.myAnimator.SetBool("isRunning", true);
+    }
 
     //Actions
     public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         if (inputContext.canceled)
         {
-            player.SetState(player.IdleState);
+            ExitState(player, player.IdleState, null);
         }
     }
     
     public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        player.SetState(player.JumpState,true);
+        ExitState(player,player.JumpState,true);
     }
 
     public override void Slide(InputAction.CallbackContext inputContext, PlayerContext player)
@@ -30,13 +33,19 @@ public class PlayerMoveState : PlayerBaseState
         
     }
 
+    public override void ExitState(PlayerContext player, PlayerBaseState nextState, bool? isMovingHorizontal)
+    {
+        player.myAnimator.SetBool("isRunning",false);
+        player.SetState(nextState,isMovingHorizontal);
+    }
+
     //Update
     public override void FixedUpdate(PlayerContext player)
     {
         player.movementComp.HorizontalMove();
         if (!player.movementComp.GroundCollisionCheck())
         {
-            player.SetState(player.InAirState, true);
+            ExitState(player, player.InAirState, true);
         }
 
         if (player.movementComp.WallCollisionCheck())

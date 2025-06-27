@@ -7,22 +7,27 @@ public class PlayerIdleState : PlayerBaseState
 {
     public override void EnterState(PlayerContext player)
     {
-        Debug.Log(this);
-
+    
         player.movementComp.resetMaxMoveSpeed();
     }
+
     public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         if (inputContext.started)
         {
-            player.SetState(player.MoveState);    
+            ExitState(player, player.MoveState, null);
         }
-        
+
     }
 
     public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        player.SetState(player.JumpState);
+        ExitState(player, player.JumpState, null);
+    }
+
+    public override void ExitState(PlayerContext player, PlayerBaseState nextState, bool? isMovingHorizontal)
+    {
+        player.SetState(nextState,isMovingHorizontal);
     }
 
     public override void FixedUpdate(PlayerContext player)
@@ -30,7 +35,7 @@ public class PlayerIdleState : PlayerBaseState
         if (!player.movementComp.GroundCollisionCheck())
         {
             player.SetState(player.InAirState);
-        } 
+        }
 
     }
 }
