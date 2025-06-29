@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: d36a82086f6d0934f955e7f2c8cb0c8c
+guid: f3f5efd341d49d14bbae18e781919a40
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1857866068863661571
-    second: RunningRedo_0
+      213: 5546671543968653177
+    second: SpriteSheet_0
   - first:
-      213: 1587564574275853977
-    second: RunningRedo_1
+      213: 8755591262435691780
+    second: SpriteSheet_1
   - first:
-      213: -8996858489502811179
-    second: RunningRedo_2
+      213: -3459558614108198297
+    second: SpriteSheet_2
   - first:
-      213: -3763989411296813738
-    second: RunningRedo_3
+      213: 659797372610145418
+    second: SpriteSheet_3
+  - first:
+      213: -689520407193891599
+    second: SpriteSheet_4
+  - first:
+      213: 160890277334083914
+    second: SpriteSheet_5
+  - first:
+      213: 1026407549584056185
+    second: SpriteSheet_6
+  - first:
+      213: -3086720242725003937
+    second: SpriteSheet_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,89 +134,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RunningRedo_0
+      name: Streets Sheet_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 37
-        height: 42
+        x: 2
+        y: 476
+        width: 50
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 8, y: 0, z: 6, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 306bed2a85778c910800000000000000
-      internalID: 1857866068863661571
+      spriteID: a5785f63690816846ae5244bf3c6e700
+      internalID: -1805768619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningRedo_1
+      name: Streets Sheet_1
       rect:
         serializedVersion: 2
-        x: 50
-        y: 0
-        width: 37
-        height: 42
+        x: 65
+        y: 470
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 9, y: 0, z: 5, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 99ed4bba199280610800000000000000
-      internalID: 1587564574275853977
+      spriteID: bb52916958490534fad888fde285d54e
+      internalID: 569510231
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningRedo_2
+      name: Streets Sheet_2
       rect:
         serializedVersion: 2
-        x: 100
-        y: 0
-        width: 39
-        height: 42
+        x: 8
+        y: 403
+        width: 26
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 9, y: 0, z: 7, w: 0}
+      border: {x: 1, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5db3ab60fdcb42380800000000000000
-      internalID: -8996858489502811179
+      spriteID: 7971250c18a909c418484a41cda5ecb4
+      internalID: -935332197
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RunningRedo_3
+      name: Streets Sheet_3
       rect:
         serializedVersion: 2
-        x: 150
-        y: 0
-        width: 37
+        x: 72
+        y: 407
+        width: 41
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 9, y: 0, z: 5, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 65d5259a29f93cbc0800000000000000
-      internalID: -3763989411296813738
+      spriteID: 5f40d7efc89377d48a1da17b7acd2456
+      internalID: 768620954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Streets Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 346
+        width: 24
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 16, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7220983813db4f4d9525b8cd32ef071
+      internalID: 122684077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Streets Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 289
+        width: 24
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 16, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7322dd86fec67549b9c83ca28861e83
+      internalID: -138958869
       vertices: []
       indices: 
       edges: []
@@ -213,7 +269,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 9ecfb09909c6a374f8d5dfe194a22931
+    spriteID: 0e7304849e530f1478d5166becf5dba9
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +279,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      RunningRedo_0: 1857866068863661571
-      RunningRedo_1: 1587564574275853977
-      RunningRedo_2: -8996858489502811179
-      RunningRedo_3: -3763989411296813738
+      Streets Sheet_0: -1805768619
+      Streets Sheet_1: 569510231
+      Streets Sheet_2: -935332197
+      Streets Sheet_3: 768620954
+      Streets Sheet_4: -1336854809
+      Streets Sheet_5: -1657668154
+      Streets Sheet_6: 122684077
+      Streets Sheet_7: -138958869
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -127,8 +127,8 @@ TextureImporter:
         width: 31
         height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -144,12 +144,12 @@ TextureImporter:
       name: WallJump_1
       rect:
         serializedVersion: 2
-        x: 50
+        x: 59
         y: 0
-        width: 32
+        width: 23
         height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -171,8 +171,8 @@ TextureImporter:
         width: 38
         height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 9, y: 0, z: 6, w: 0}
       customData: 
       outline: []
       physicsShape: []

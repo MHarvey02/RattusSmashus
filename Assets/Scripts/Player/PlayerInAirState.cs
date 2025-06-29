@@ -49,11 +49,25 @@ public class PlayerInAirState : PlayerBaseState
 
     public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        return;
+        if (inputContext.started)
+        {
+            if (player.movementComp.canDoubleJump)
+            {
+                player.movementComp.Jump();
+                player.movementComp.canDoubleJump = false;
+            } 
+        }
     }
+
+    public override void Shoot(InputAction.CallbackContext inputContext, PlayerContext player)
+    {
+        player.SetState(player.knockbackState, null);
+    }
+
 
     public override void ExitState(PlayerContext player, PlayerBaseState nextState, bool? isMovingHorizontal)
     {
+        player.movementComp.canDoubleJump = player.movementComp.hasDoubleJumpAbility;
         player.myAnimator.SetBool("isFalling", false);
         player.SetState(nextState, isMovingHorizontal);
     }
@@ -74,7 +88,6 @@ public class PlayerInAirState : PlayerBaseState
 
         if (player.movementComp.WallCollisionCheck())
         {
-
             ExitState(player, player.OnWallState, null);
         }
     }

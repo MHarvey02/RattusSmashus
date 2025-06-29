@@ -25,9 +25,14 @@ public class PlayerIdleState : PlayerBaseState
         ExitState(player, player.JumpState, null);
     }
 
+    public override void Shoot(InputAction.CallbackContext inputContext, PlayerContext player)
+    {
+        player.SetState(player.knockbackState, null);
+    }
+
     public override void ExitState(PlayerContext player, PlayerBaseState nextState, bool? isMovingHorizontal)
     {
-        player.SetState(nextState,isMovingHorizontal);
+        player.SetState(nextState, isMovingHorizontal);
     }
 
     public override void FixedUpdate(PlayerContext player)

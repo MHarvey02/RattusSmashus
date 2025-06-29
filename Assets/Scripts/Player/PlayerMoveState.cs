@@ -39,10 +39,16 @@ public class PlayerMoveState : PlayerBaseState
         player.SetState(nextState,isMovingHorizontal);
     }
 
+        public override void Shoot(InputAction.CallbackContext inputContext, PlayerContext player)
+    {
+        player.SetState(player.knockbackState, true);
+    }
+
+
     //Update
     public override void FixedUpdate(PlayerContext player)
     {
-        player.movementComp.HorizontalMove();
+        
         if (!player.movementComp.GroundCollisionCheck())
         {
             ExitState(player, player.InAirState, true);
@@ -52,6 +58,7 @@ public class PlayerMoveState : PlayerBaseState
         {
             player.movementComp.resetMaxMoveSpeed();
         }
+        player.movementComp.HorizontalMove();
     }
 
 }

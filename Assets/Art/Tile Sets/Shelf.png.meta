@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: d36a82086f6d0934f955e7f2c8cb0c8c
+guid: c4c90f6b86d69ff40b432b6e0bedd5e4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1857866068863661571
-    second: RunningRedo_0
-  - first:
-      213: 1587564574275853977
-    second: RunningRedo_1
-  - first:
-      213: -8996858489502811179
-    second: RunningRedo_2
-  - first:
-      213: -3763989411296813738
-    second: RunningRedo_3
+      213: -8847511328382704733
+    second: Shelf_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,89 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RunningRedo_0
+      name: Shelf_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 37
-        height: 42
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 8, y: 0, z: 6, w: 0}
+      border: {x: 0, y: 40, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 306bed2a85778c910800000000000000
-      internalID: 1857866068863661571
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RunningRedo_1
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 0
-        width: 37
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 9, y: 0, z: 5, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 99ed4bba199280610800000000000000
-      internalID: 1587564574275853977
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RunningRedo_2
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 0
-        width: 39
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 9, y: 0, z: 7, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5db3ab60fdcb42380800000000000000
-      internalID: -8996858489502811179
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RunningRedo_3
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 0
-        width: 37
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 9, y: 0, z: 5, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 65d5259a29f93cbc0800000000000000
-      internalID: -3763989411296813738
+      spriteID: 3a3218da253573580800000000000000
+      internalID: -8847511328382704733
       vertices: []
       indices: 
       edges: []
@@ -213,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 9ecfb09909c6a374f8d5dfe194a22931
+    spriteID: 86e58d97369395f4ba14f94f16f97b7d
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      RunningRedo_0: 1857866068863661571
-      RunningRedo_1: 1587564574275853977
-      RunningRedo_2: -8996858489502811179
-      RunningRedo_3: -3763989411296813738
+      Shelf_0: -8847511328382704733
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

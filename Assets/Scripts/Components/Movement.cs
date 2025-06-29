@@ -26,6 +26,10 @@ public class Movement : MonoBehaviour
     public float wallJumpSpeed = 100;
     [SerializeField]
     public float wallSpeedBoost = 100;
+
+    [SerializeField]
+    public bool canDoubleJump = false;
+    public bool hasDoubleJumpAbility = false;
     #endregion
 
     #region Raycast 
@@ -81,6 +85,7 @@ public class Movement : MonoBehaviour
 
     public void Jump()
     {
+        rb.linearVelocityY = 0;
         rb.AddForce(new Vector2(0, jumpHeight));
     }
 
@@ -102,6 +107,7 @@ public class Movement : MonoBehaviour
     {
         currentMoveSpeedCap = defaultcurrentMoveSpeedCap;
     }
+
 
     public void HitWall()
     {
@@ -125,10 +131,7 @@ public class Movement : MonoBehaviour
             rb.linearVelocity = new Vector2(currentMoveSpeedCap * direction, rb.linearVelocity.y);
 
         }
-       // if (rb.velocity.magnitude > currentMoveSpeedCap)
-       //{
-       //  rb.velocity = rb.velocity.normalized * currentMoveSpeedCap;
-       //}
+
     }
 
     public bool WallCollisionCheck()

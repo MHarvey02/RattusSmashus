@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4705087796841311914}
   - component: {fileID: 4892831681220094603}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerThreeUpgrades
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,6 +143,8 @@ MonoBehaviour:
   jumpHeight: 800
   wallJumpSpeed: 200
   wallSpeedBoost: 100
+  canDoubleJump: 1
+  hasDoubleJumpAbility: 1
   rayCastDistanceFloor: 1
   rayCastDistanceWall: 0.5
   wallCollisionLM:
@@ -165,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementComp: {fileID: 6002195844426747894}
   myAnimator: {fileID: 0}
+  myShotgun: {fileID: 0}
 --- !u!114 &5932102265048949847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,6 +293,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1acff0d2-4f23-4017-99b3-302ed0731d47
     m_ActionName: 'Player/Slide[/Keyboard/c]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e55c7a73-e03d-401d-b721-53210d4001ca
+    m_ActionName: 'Player/Aim[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f2d1ddbe-9e19-484d-96ab-5f0f863a5552
+    m_ActionName: 'Player/Shoot[/Keyboard/j]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -331,7 +342,7 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0.03405857, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.25, y: 0, z: 0.1875, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.15625, y: 1.28125}
     newSize: {x: 1.15625, y: 1.28125}
