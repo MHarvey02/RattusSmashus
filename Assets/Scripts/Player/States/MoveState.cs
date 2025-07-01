@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMoveState : PlayerBaseState
+public class MoveState : BaseState
 {
     public override void EnterState(PlayerContext player)
     {
@@ -28,15 +28,21 @@ public class PlayerMoveState : PlayerBaseState
     {
         if (inputContext.started)
         {
-           player.SetState(player.SlideState); 
+           ExitState(player, player.SlideState, null); 
         }
         
     }
 
-    public override void ExitState(PlayerContext player, PlayerBaseState nextState, bool? isMovingHorizontal)
+    public override void Grapple(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        player.myAnimator.SetBool("isRunning",false);
-        player.SetState(nextState,isMovingHorizontal);
+        return;
+    }
+
+    public override void ExitState(PlayerContext player, BaseState nextState, bool? isMovingHorizontal)
+    {
+        player.myAnimator.SetBool("isRunning", false);
+        player.SetState(nextState, isMovingHorizontal);
+
     }
 
         public override void Shoot(InputAction.CallbackContext inputContext, PlayerContext player)

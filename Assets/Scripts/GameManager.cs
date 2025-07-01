@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         currentLevelIndex++;
 
         //Making sure a next level exists
-        if (currentLevelIndex >= SceneManager.sceneCount)
+        if (currentLevelIndex > SceneManager.sceneCount)
         {
             currentLevelIndex = 0;
         }

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerDeadState : PlayerBaseState
+public class DeadState : BaseState
 {
     public override void EnterState(PlayerContext player)
     {
         //play death animation
-        Debug.Log("feaf");
+        //This alos needs to be moved to an input
         player.deathEvent.Invoke();
     }
 }

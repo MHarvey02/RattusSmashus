@@ -3,23 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
-public class KnockbackState : PlayerBaseState
+public class KnockbackState : BaseState
 {
 
     IEnumerator coroutine;
 
-    PlayerBaseState nextState;
+    BaseState nextState;
     public override void EnterState(PlayerContext player)
     {
         nextState = player.IdleState;
         coroutine = TimeBeforeStateChange(player);
-        player.useCoroutine(ref coroutine);
+        player.StartCoroutine(coroutine);
     }
     public override void EnterState(PlayerContext player, bool? isMovingHorizontal = false)
     {
         nextState = player.MoveState;
         coroutine = TimeBeforeStateChange(player);
-        player.useCoroutine(ref coroutine);
+        player.StartCoroutine(coroutine);
     }
 
     public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)

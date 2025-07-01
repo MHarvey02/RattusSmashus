@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerJumpState : PlayerBaseState
+public class JumpState : BaseState
 {
     bool? isMovingHorizontal = false;
 
     public override void EnterState(PlayerContext player)
     {
-        Debug.Log(this);
-
         player.myAnimator.SetTrigger("isJumping");
         isMovingHorizontal = false;
         player.movementComp.Jump();
@@ -20,7 +18,6 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void EnterState(PlayerContext player, bool? _isMovingHorizontal)
     {
-        Debug.Log(this);
         player.myAnimator.SetTrigger("isJumping");
         isMovingHorizontal = false;
         player.movementComp.Jump();
@@ -34,9 +31,9 @@ public class PlayerJumpState : PlayerBaseState
         return;
     }
 
-    public override void ExitState(PlayerContext player, PlayerBaseState nextState, bool? isMovingHorizontal)
+    public override void ExitState(PlayerContext player, BaseState nextState, bool? isMovingHorizontal)
     {
-        
+
         player.SetState(nextState, isMovingHorizontal);
     }
 

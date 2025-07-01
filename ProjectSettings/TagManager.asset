@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Trap
   - Exit
+  - GrapplePoint
   layers:
   - Default
   - TransparentFX

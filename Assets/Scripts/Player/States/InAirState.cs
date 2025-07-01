@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInAirState : PlayerBaseState
+public class InAirState : BaseState
 {
-    public PlayerBaseState nextState;
+    public BaseState nextState;
     bool? isMovingHorizontal = false;
 
     public override void EnterState(PlayerContext player)
@@ -65,7 +65,7 @@ public class PlayerInAirState : PlayerBaseState
     }
 
 
-    public override void ExitState(PlayerContext player, PlayerBaseState nextState, bool? isMovingHorizontal)
+    public override void ExitState(PlayerContext player, BaseState nextState, bool? isMovingHorizontal)
     {
         player.movementComp.canDoubleJump = player.movementComp.hasDoubleJumpAbility;
         player.myAnimator.SetBool("isFalling", false);

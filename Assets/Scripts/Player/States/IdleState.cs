@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerIdleState : PlayerBaseState
+public class IdleState : BaseState
 {
     public override void EnterState(PlayerContext player)
     {
-    
         player.movementComp.resetMaxMoveSpeed();
     }
 
@@ -30,7 +29,12 @@ public class PlayerIdleState : PlayerBaseState
         player.SetState(player.knockbackState, null);
     }
 
-    public override void ExitState(PlayerContext player, PlayerBaseState nextState, bool? isMovingHorizontal)
+    public override void Grapple(InputAction.CallbackContext inputContext, PlayerContext player)
+    {
+        return;
+    }
+
+    public override void ExitState(PlayerContext player, BaseState nextState, bool? isMovingHorizontal)
     {
         player.SetState(nextState, isMovingHorizontal);
     }

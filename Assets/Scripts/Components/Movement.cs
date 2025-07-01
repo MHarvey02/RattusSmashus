@@ -58,6 +58,7 @@ public class Movement : MonoBehaviour
     {
         if (inputContext.canceled)
         {
+
             return;
         }
         direction = inputContext.ReadValue<Vector2>().x;
@@ -91,9 +92,9 @@ public class Movement : MonoBehaviour
 
     public void WallJump()
     {
-
+        rb.linearVelocityY = 0;
         SetDirection();
-        rb.AddForce(new Vector2(direction * wallJumpSpeed, jumpHeight * 2));
+        rb.AddForce(new Vector2(direction * wallJumpSpeed, jumpHeight*1.5f));
         
     }
 

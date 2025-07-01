@@ -4,20 +4,34 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
-public class PlayerSlideState : PlayerBaseState
+public class SlideState : BaseState
 {
     private float slideTime = 1.0f;
     private IEnumerator SlideTimeCoroutine;
 
+    BaseState nextState;
+
     public override void EnterState(PlayerContext player)
     {
+        nextState = player.MoveState;
         SlideTimeCoroutine = SlideTime(player);
         player.myAnimator.SetTrigger("isSliding");
         player.movementComp.Slide();
-        player.useCoroutine(ref SlideTimeCoroutine);
+        player.StartCoroutine(SlideTimeCoroutine);
     }
+
+    public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
+    {
+        if (inputContext.canceled)
+        {
+            nextState = player.IdleState;
+        }
+        nextState = player.MoveState;
+    }
+
     public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)
     {
+        player.StopCoroutine(SlideTimeCoroutine);
         ExitState(player, player.JumpState, null);
 
     }
@@ -30,13 +44,14 @@ public class PlayerSlideState : PlayerBaseState
     public IEnumerator SlideTime(PlayerContext player)
     {
         yield return new WaitForSecondsRealtime(slideTime);
-        ExitState(player, player.MoveState, null);
+        player.myAnimator.SetTrigger("StandFromSlide");
+        ExitState(player, nextState, null);
     }
 
-    public override void ExitState(PlayerContext player, PlayerBaseState nextState, bool? isMovingHorizontal)
+    public override void ExitState(PlayerContext player, BaseState _nextState, bool? isMovingHorizontal)
     {
-        player.myAnimator.SetTrigger("StandFromSlide");
-        player.SetState(nextState, isMovingHorizontal);
+        
+        player.SetState(_nextState, isMovingHorizontal);
     }
     public override void FixedUpdate(PlayerContext player)
     {

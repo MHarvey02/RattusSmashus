@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerOnWallState : PlayerBaseState
+public class OnWallState : BaseState
 {
 
     public override void EnterState(PlayerContext player)
@@ -28,16 +28,17 @@ public class PlayerOnWallState : PlayerBaseState
 
 
 
-    public override void ExitState(PlayerContext player, PlayerBaseState nextState, bool? isMovingHorizontal)
+    public override void ExitState(PlayerContext player, BaseState nextState, bool? isMovingHorizontal)
     {
         player.myAnimator.SetBool("isWallSliding", false);
         player.SetState(nextState, isMovingHorizontal);
     }
+    
     //Updates
     public override void FixedUpdate(PlayerContext player)
     {
         //Change to variable
-        player.movementComp.currentMoveSpeedCap += 3 * Time.deltaTime;
+        player.movementComp.currentMoveSpeedCap += 0.5f * Time.deltaTime;
 
         player.movementComp.HorizontalMove();
         if (player.movementComp.GroundCollisionCheck())
@@ -46,7 +47,7 @@ public class PlayerOnWallState : PlayerBaseState
         }
 
         if (!player.movementComp.WallCollisionCheck())
-        {   
+        {
             ExitState(player, player.InAirState, true);
         }
     }

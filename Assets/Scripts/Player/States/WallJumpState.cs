@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWallJumpState : PlayerBaseState
+public class WallJumpState : BaseState
 {
     public override void EnterState(PlayerContext player)
     {
@@ -11,7 +11,7 @@ public class PlayerWallJumpState : PlayerBaseState
         ExitState(player, player.InAirState, null);
     }
 
-    public override void ExitState(PlayerContext player, PlayerBaseState nextState, bool? isMovingHorizontal)
+    public override void ExitState(PlayerContext player, BaseState nextState, bool? isMovingHorizontal)
     {
         player.myAnimator.SetTrigger("isWallJumping");
         player.SetState(player.InAirState,null);
