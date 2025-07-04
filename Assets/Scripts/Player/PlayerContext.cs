@@ -1,11 +1,13 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
+
 using Unity.Properties;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+
+
 
 public class PlayerContext : MonoBehaviour
 {
@@ -38,6 +40,7 @@ public class PlayerContext : MonoBehaviour
 
     #region Events
     public UnityEvent deathEvent;
+    public UnityEvent respawnEvent;
     public UnityEvent completeLevelEvent;
     #endregion
 
@@ -50,8 +53,9 @@ public class PlayerContext : MonoBehaviour
         myShotgun = GetComponent<Shotgun>();
         myGrapple = GetComponent<Grapple>();
 
+        deathEvent.AddListener(GameManager.DrawDeadText);
 
-        deathEvent.AddListener(GameManager.ResetLevel);
+        respawnEvent.AddListener(GameManager.ResetLevel);
         completeLevelEvent.AddListener(GameManager.LoadNextLevel);
         SetState(IdleState);
     }
@@ -63,12 +67,14 @@ public class PlayerContext : MonoBehaviour
 
     public void SetState(BaseState newState)
     {
+
         currentState = newState;
         currentState.EnterState(this);
     }
 
     public void SetState(BaseState newState, bool? isMovingHorizontal)
     {
+
         currentState = newState;
         if (isMovingHorizontal == null)
         {
@@ -94,6 +100,7 @@ public class PlayerContext : MonoBehaviour
         if (collision.gameObject.tag == "Trap")
         {
             SetState(DeadState, null);
+            deathEvent.Invoke();
         }
     }
 
@@ -106,7 +113,10 @@ public class PlayerContext : MonoBehaviour
         }
     }
 
-
     //Updates
-    public void FixedUpdate() => currentState.FixedUpdate(this); 
+    public void FixedUpdate() => currentState.FixedUpdate(this);
 }
+
+
+
+

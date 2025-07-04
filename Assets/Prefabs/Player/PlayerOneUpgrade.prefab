@@ -110,7 +110,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0
   m_GravityScale: 2
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d90628ab61c6fce419f2bed241fdba92, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -168,6 +168,13 @@ MonoBehaviour:
   movementComp: {fileID: 6002195844426747894}
   myAnimator: {fileID: 0}
   myShotgun: {fileID: 0}
+  myGrapple: {fileID: 0}
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  completeLevelEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5932102265048949847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +308,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: f2d1ddbe-9e19-484d-96ab-5f0f863a5552
     m_ActionName: 'Player/Shoot[/Keyboard/j]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8bc7f1b2-c082-4909-9d1b-c6a59296827f
+    m_ActionName: 'Player/Grapple[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 77dc85b4-b3db-4249-afbe-bc779a24573b
+    m_ActionName: 'Player/Pull[/Keyboard/q]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

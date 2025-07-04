@@ -2787,14 +2787,6 @@ PrefabInstance:
       value: LevelExit
       objectReference: {fileID: 0}
     - target: {fileID: 7493916456639974022, guid: 5e3ff4acbea87c544a2b0675ddb4e84d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7493916456639974022, guid: 5e3ff4acbea87c544a2b0675ddb4e84d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7493916456639974022, guid: 5e3ff4acbea87c544a2b0675ddb4e84d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.89
       objectReference: {fileID: 0}
@@ -2832,10 +2824,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7493916456639974022, guid: 5e3ff4acbea87c544a2b0675ddb4e84d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7533518011767109594, guid: 5e3ff4acbea87c544a2b0675ddb4e84d, type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -32,8 +32,7 @@ public class GrapplePoint : MonoBehaviour
         myJoint.connectedBody = null;     
     } 
     // Update is called once per frame
-    void Update()
+    void FixedUpdateUpdate()
     {
-        
     }
 }

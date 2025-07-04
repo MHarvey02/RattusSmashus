@@ -25,6 +25,7 @@ public class SlideState : BaseState
         if (inputContext.canceled)
         {
             nextState = player.IdleState;
+            return;
         }
         nextState = player.MoveState;
     }
@@ -32,7 +33,7 @@ public class SlideState : BaseState
     public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         player.StopCoroutine(SlideTimeCoroutine);
-        ExitState(player, player.JumpState, null);
+        ExitState(player, player.JumpState, true);
 
     }
 
@@ -48,10 +49,10 @@ public class SlideState : BaseState
         ExitState(player, nextState, null);
     }
 
-    public override void ExitState(PlayerContext player, BaseState _nextState, bool? isMovingHorizontal)
+    public override void ExitState(PlayerContext player, BaseState nextState, bool? isMovingHorizontal)
     {
         
-        player.SetState(_nextState, isMovingHorizontal);
+        player.SetState(nextState, isMovingHorizontal);
     }
     public override void FixedUpdate(PlayerContext player)
     {

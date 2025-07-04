@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour
     {
         if (inputContext.canceled)
         {
-
+            
             return;
         }
         direction = inputContext.ReadValue<Vector2>().x;
@@ -134,6 +134,7 @@ public class Movement : MonoBehaviour
         }
 
     }
+
 
     public bool WallCollisionCheck()
     {

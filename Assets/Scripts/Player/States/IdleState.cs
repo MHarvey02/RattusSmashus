@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,8 @@ public class IdleState : BaseState
     public override void EnterState(PlayerContext player)
     {
         player.movementComp.resetMaxMoveSpeed();
+        player.myAnimator.Play("Idle");
+        
     }
 
     public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
@@ -18,7 +21,6 @@ public class IdleState : BaseState
         }
 
     }
-
     public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         ExitState(player, player.JumpState, null);
@@ -26,7 +28,7 @@ public class IdleState : BaseState
 
     public override void Shoot(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        player.SetState(player.knockbackState, null);
+        ExitState(player, player.knockbackState, null);
     }
 
     public override void Grapple(InputAction.CallbackContext inputContext, PlayerContext player)
@@ -43,7 +45,7 @@ public class IdleState : BaseState
     {
         if (!player.movementComp.GroundCollisionCheck())
         {
-            player.SetState(player.InAirState);
+            ExitState(player, player.InAirState, null);
         }
 
     }

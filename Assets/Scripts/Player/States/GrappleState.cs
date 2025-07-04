@@ -9,18 +9,31 @@ public class GrappleState : BaseState
     //This is currently a quick fix until I can work out why ontriggerExit is called when the player is still in the trigger during the state change, 
     // deleting the reference inside of player.myGrapple
     GrapplePoint grapplePoint;
+
+    bool isMovingHorizontal = false;
     public override void EnterState(PlayerContext player)
     {
         grapplePoint = player.myGrapple.currentGrapplePoint;
+    }
+
+    public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
+    {
+        player.movementComp.HorizontalMove();
+        if (inputContext.canceled)
+        {
+            isMovingHorizontal = false;
+            return;
+        }
+        isMovingHorizontal = true;
     }
 
     public override void Grapple(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         if (inputContext.started)
         {
-            grapplePoint.detatch();
+
             //need to calc next state
-            ExitState(player, player.InAirState, null);
+            ExitState(player, player.InAirState, isMovingHorizontal);
         }
 
     }
@@ -28,32 +41,35 @@ public class GrappleState : BaseState
     public override void GrapplePull(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         player.myGrapple.pull(grapplePoint);
-        grapplePoint.detatch();
-        ExitState(player, player.InAirState, null);
+        
+        ExitState(player, player.InAirState, isMovingHorizontal);
     }
 
 
     public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        grapplePoint.detatch();
-        ExitState(player, player.JumpState, null);
+
+        ExitState(player, player.JumpState, isMovingHorizontal);
     }
 
-    public override void ExitState(PlayerContext player, BaseState nextState, bool? isMovingHorizontal)
+    public override void ExitState(PlayerContext player, BaseState nextState, bool? _isMovingHorizontal)
     {
-        player.SetState(nextState, null);
+        grapplePoint.detatch();
+        player.SetState(nextState, _isMovingHorizontal);
+        isMovingHorizontal = false;
     }
 
     //Updates
     public override void FixedUpdate(PlayerContext player)
     {
 
-        player.movementComp.HorizontalMove();
-        
-
         if (player.movementComp.GroundCollisionCheck())
         {
-            grapplePoint.detatch();
+            if (isMovingHorizontal)
+            {
+                ExitState(player, player.MoveState, null);
+                return;
+            }
             ExitState(player, player.IdleState, null);
         }
     }

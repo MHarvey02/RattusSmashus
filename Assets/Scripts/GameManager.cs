@@ -2,10 +2,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
 
+    Canvas mainCanvas;
+    [SerializeField]
+    public TMP_Text respawnText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -18,6 +23,7 @@ public class GameManager : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
         }
+        respawnText.enabled = false;
     }
 
     static public void ResetLevel()
@@ -38,6 +44,11 @@ public class GameManager : MonoBehaviour
             currentLevelIndex = 0;
         }
         SceneManager.LoadScene(currentLevelIndex);
+    }
+
+    static public void DrawDeadText()
+    {
+        FindAnyObjectByType<GameManager>().respawnText.enabled = true;
     }
 
 }

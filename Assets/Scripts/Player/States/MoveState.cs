@@ -15,6 +15,8 @@ public class MoveState : BaseState
     {
         if (inputContext.canceled)
         {
+            //this should change
+            player.movementComp.rb.linearVelocityX = 5 * player.movementComp.direction;
             ExitState(player, player.IdleState, null);
         }
     }
@@ -47,7 +49,7 @@ public class MoveState : BaseState
 
         public override void Shoot(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        player.SetState(player.knockbackState, true);
+        ExitState(player, player.knockbackState, true);
     }
 
 

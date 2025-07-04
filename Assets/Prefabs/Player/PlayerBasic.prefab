@@ -109,7 +109,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0
   m_GravityScale: 2
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d90628ab61c6fce419f2bed241fdba92, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -167,6 +167,7 @@ MonoBehaviour:
   movementComp: {fileID: 6002195844426747894}
   myAnimator: {fileID: 0}
   myShotgun: {fileID: 0}
+  myGrapple: {fileID: 0}
   deathEvent:
     m_PersistentCalls:
       m_Calls:
