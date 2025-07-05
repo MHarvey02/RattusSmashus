@@ -11,6 +11,7 @@ public class OnWallState : BaseState
     public override void EnterState(PlayerContext player)
     {
         player.myAnimator.SetBool("isWallSliding", true);
+        player.myAnimator.Play("WallSlide");
         player.movementComp.HitWall();
     }
 
@@ -27,8 +28,6 @@ public class OnWallState : BaseState
         }
 
     }
-
-
 
     public override void ExitState(PlayerContext player, BaseState nextState, bool? isMovingHorizontal)
     {

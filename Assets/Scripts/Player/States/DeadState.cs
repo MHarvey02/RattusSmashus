@@ -11,9 +11,11 @@ public class DeadState : BaseState
 {
     public override void EnterState(PlayerContext player)
     {
+        player.myAnimator.Play("Dying");
+        player.StopAllCoroutines();
         //play death animation
         // I want to invoke a function here to draw text to screen on how to respawn
-        
+
     }
 
     public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)

@@ -9,6 +9,7 @@ public class IdleState : BaseState
     public override void EnterState(PlayerContext player)
     {
         player.movementComp.resetMaxMoveSpeed();
+        player.movementComp.rb.linearVelocity = new Vector2(0,0);
         player.myAnimator.Play("Idle");
         
     }

@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 185774148}
   - component: {fileID: 185774149}
   - component: {fileID: 185774150}
+  - component: {fileID: 185774151}
   m_Layer: 0
   m_Name: MeleeEnemy
   m_TagString: Untagged
@@ -312,6 +313,38 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.1875, y: 1.25}
   m_EdgeRadius: 0
+--- !u!114 &185774151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185774144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdd6d8667820c504685adc061905ec66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 185774149}
+  currentMoveSpeedCap: 10
+  defaultcurrentMoveSpeedCap: 10
+  moveSpeed: 30
+  direction: 0
+  speedIncrease: 2
+  maxMoveSpeedCap: 30
+  jumpHeight: 400
+  wallJumpSpeed: 100
+  wallSpeedBoost: 100
+  canDoubleJump: 0
+  hasDoubleJumpAbility: 0
+  rayCastDistanceFloor: 1
+  rayCastDistanceWall: 0.5
+  wallCollisionLM:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCollisionLM:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &221416153 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8692707120606687839, guid: bd7bb53f17de41f45b26043f74d3a793, type: 3}
