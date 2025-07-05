@@ -10,7 +10,7 @@ public class InAirState : BaseState
 
     public override void EnterState(PlayerContext player)
     {
-        player.myAnimator.SetBool("isFalling", true);
+        player.myAnimator.Play("Falling");
         
         isMovingHorizontal = false;
         nextState = player.IdleState;
@@ -18,7 +18,7 @@ public class InAirState : BaseState
 
     public override void EnterState(PlayerContext player, bool? _isMovingHorizontal)
     {
-        player.myAnimator.SetBool("isFalling", true);
+        player.myAnimator.Play("Falling");
 
         isMovingHorizontal = _isMovingHorizontal;
         if (isMovingHorizontal == true)

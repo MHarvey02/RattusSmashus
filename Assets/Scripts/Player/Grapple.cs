@@ -11,6 +11,9 @@ public class Grapple : MonoBehaviour
     [SerializeField]
     private Rigidbody2D myRigidBody;
 
+    [SerializeField]
+    public bool hasGrapple = false;
+
     private float pullBoostAmount = 2000;
 
     private LineRenderer grappleLine;

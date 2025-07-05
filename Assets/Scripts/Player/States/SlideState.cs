@@ -14,9 +14,11 @@ public class SlideState : BaseState
     public override void EnterState(PlayerContext player)
     {
         nextState = player.MoveState;
-        SlideTimeCoroutine = SlideTime(player);
-        player.myAnimator.SetTrigger("isSliding");
+        
+        player.myAnimator.Play("StartSlide");
         player.movementComp.Slide();
+        
+        SlideTimeCoroutine = SlideTime(player);
         player.StartCoroutine(SlideTimeCoroutine);
     }
 
@@ -45,7 +47,7 @@ public class SlideState : BaseState
     public IEnumerator SlideTime(PlayerContext player)
     {
         yield return new WaitForSecondsRealtime(slideTime);
-        player.myAnimator.SetTrigger("StandFromSlide");
+        player.myAnimator.Play("EndSlide");
         ExitState(player, nextState, null);
     }
 

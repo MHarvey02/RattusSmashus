@@ -20,6 +20,12 @@ public class Shotgun : MonoBehaviour
 
     [SerializeField]
     float ReloadTime = 3;
+
+    [SerializeField]
+    bool hasShotgun = false;
+
+    [SerializeField]
+    SpriteRenderer myRenderer;
     
     private IEnumerator coroutine;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,13 +40,14 @@ public class Shotgun : MonoBehaviour
         {
             return;
         }
-        aimDirection = (inputContext.ReadValue<Vector2>());
+        aimDirection = inputContext.ReadValue<Vector2>();
     }
 
     public void Shoot()
     {
-        if (canShoot)
+        if (canShoot && hasShotgun)
         {
+            myRenderer.enabled = true;
             coroutine = Reload();
             //create bullets
             canShoot = false;

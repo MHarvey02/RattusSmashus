@@ -7,7 +7,7 @@ public class MoveState : BaseState
 {
     public override void EnterState(PlayerContext player)
     {
-        player.myAnimator.SetBool("isRunning", true);
+        player.myAnimator.Play("Running");
     }
 
     //Actions
