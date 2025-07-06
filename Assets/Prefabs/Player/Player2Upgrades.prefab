@@ -16,8 +16,10 @@ GameObject:
   - component: {fileID: 5932102265048949847}
   - component: {fileID: 4705087796841311914}
   - component: {fileID: 4892831681220094603}
+  - component: {fileID: 4118507644583117773}
+  - component: {fileID: 1891738986325900689}
   m_Layer: 0
-  m_Name: PlayerThreeUpgrades
+  m_Name: Player2Upgrades
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,6 +174,9 @@ MonoBehaviour:
   deathEvent:
     m_PersistentCalls:
       m_Calls: []
+  respawnEvent:
+    m_PersistentCalls:
+      m_Calls: []
   completeLevelEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -301,21 +306,81 @@ MonoBehaviour:
     m_ActionId: 1acff0d2-4f23-4017-99b3-302ed0731d47
     m_ActionName: 'Player/Slide[/Keyboard/c]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4118507644583117773}
+        m_TargetAssemblyTypeName: Shotgun, Assembly-CSharp
+        m_MethodName: SetAimDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e55c7a73-e03d-401d-b721-53210d4001ca
-    m_ActionName: 'Player/Aim[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+    m_ActionName: Player/Aim
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4118507644583117773}
+        m_TargetAssemblyTypeName: Shotgun, Assembly-CSharp
+        m_MethodName: Shoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 877036579791992936}
+        m_TargetAssemblyTypeName: PlayerContext, Assembly-CSharp
+        m_MethodName: Shoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f2d1ddbe-9e19-484d-96ab-5f0f863a5552
     m_ActionName: 'Player/Shoot[/Keyboard/j]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 877036579791992936}
+        m_TargetAssemblyTypeName: PlayerContext, Assembly-CSharp
+        m_MethodName: Grapple
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 8bc7f1b2-c082-4909-9d1b-c6a59296827f
     m_ActionName: 'Player/Grapple[/Keyboard/e]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 877036579791992936}
+        m_TargetAssemblyTypeName: PlayerContext, Assembly-CSharp
+        m_MethodName: GrapplePull
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 77dc85b4-b3db-4249-afbe-bc779a24573b
-    m_ActionName: 'Player/Pull[/Keyboard/q]'
+    m_ActionName: Player/Pull
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -389,6 +454,39 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4118507644583117773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3031335858483533583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2e3e0c6f9dc114b8ebe19e74404c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimDirection: {x: 0, y: 0}
+  myRigidBody: {fileID: 5742396849858858247}
+  kickbackMultiplier: 1000
+  canShoot: 1
+  ReloadTime: 3
+  hasShotgun: 0
+--- !u!114 &1891738986325900689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3031335858483533583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cdf5063556f4a248a556b69b55c7297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGrapplePoint: {fileID: 0}
+  myRigidBody: {fileID: 5742396849858858247}
+  hasGrapple: 1
 --- !u!1 &8326212575461699500
 GameObject:
   m_ObjectHideFlags: 0

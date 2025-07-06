@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4705087796841311914}
   - component: {fileID: 4892831681220094603}
   m_Layer: 0
-  m_Name: PlayerOneUpgrade
+  m_Name: Player1Upgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,6 +170,9 @@ MonoBehaviour:
   myShotgun: {fileID: 0}
   myGrapple: {fileID: 0}
   deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  respawnEvent:
     m_PersistentCalls:
       m_Calls: []
   completeLevelEvent:

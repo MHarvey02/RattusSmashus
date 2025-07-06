@@ -9,7 +9,7 @@ public class JumpState : BaseState
 
     public override void EnterState(PlayerContext player)
     {
-        player.myAnimator.SetTrigger("isJumping");
+        player.myAnimator.Play("Jumping");
         isMovingHorizontal = false;
         player.movementComp.Jump();
         
@@ -18,7 +18,6 @@ public class JumpState : BaseState
 
     public override void EnterState(PlayerContext player, bool? _isMovingHorizontal)
     {
-        player.myAnimator.SetTrigger("isJumping");
         isMovingHorizontal = false;
         player.movementComp.Jump();
         isMovingHorizontal = _isMovingHorizontal;

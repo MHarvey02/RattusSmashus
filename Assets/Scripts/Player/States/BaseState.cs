@@ -23,7 +23,7 @@ public abstract class BaseState
 
     public virtual void Grapple(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        if (inputContext.started && player.myGrapple.currentGrapplePoint != null)
+        if (inputContext.started && player.myGrapple.currentGrapplePoint != null && player.myGrapple.hasGrapple)
         {
             player.myGrapple.currentGrapplePoint.attatch(player.movementComp.rb);
             player.SetState(player.GrappleState, null);  
@@ -33,7 +33,7 @@ public abstract class BaseState
 
     public virtual void GrapplePull(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        if (inputContext.started && player.myGrapple.currentGrapplePoint != null)
+        if (inputContext.started && player.myGrapple.currentGrapplePoint != null && player.myGrapple.hasGrapple)
         {
             player.myGrapple.pull();
         }
