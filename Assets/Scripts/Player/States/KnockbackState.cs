@@ -17,7 +17,7 @@ public class KnockbackState : BaseState
     }
     public override void EnterState(PlayerContext player, bool? isMovingHorizontal = false)
     {
-        nextState = player.MoveState;
+        nextState = player.IdleState;
         coroutine = TimeBeforeStateChange(player);
         player.StartCoroutine(coroutine);
     }
