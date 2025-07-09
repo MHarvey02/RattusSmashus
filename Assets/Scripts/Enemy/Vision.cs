@@ -7,18 +7,44 @@ public class Vision : MonoBehaviour
     private float _rayCastDistanceFloor;
 
     [SerializeField]
+    private float _boxCastDistance;
+
+    [SerializeField]
+    public float direction;
+
+    [SerializeField]
     private LayerMask _playerLayer;
+
+    [SerializeField]
+    private float _defaultBoxCastDistance;
+    
+    [SerializeField]
+    private float _chaseBoxCastDistance;
     // draw box 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _boxCastDistance = _defaultBoxCastDistance;
     }
     //This will be used for the bosses
-    public RaycastHit2D? DrawBoxCast()
+    public GameObject? DrawBoxCast()
     {
-        RaycastHit2D bocCast = Physics2D.BoxCast(transform.localPosition, new Vector2(10, 10), 0, new Vector2(1, 0));
+        RaycastHit2D boxCast = Physics2D.BoxCast(transform.localPosition + new Vector3(_boxCastDistance * direction,0,0),
+         new Vector2(5 , 10),
+         0,
+         new Vector2(direction, 0),
+         _boxCastDistance,
+         _playerLayer);
 
+
+        DebugBoxCast.SimpleDrawBoxCast(transform.localPosition + new Vector3(_boxCastDistance,0,0), new Vector2(5, 10),new Quaternion(0,0,0,0), new Vector2(direction, 0),_boxCastDistance, Color.red);
+
+        if (boxCast)
+        {
+            _boxCastDistance = _chaseBoxCastDistance;
+            return boxCast.collider.gameObject;
+        }
+        _boxCastDistance = _defaultBoxCastDistance;
         return null;
     }
 

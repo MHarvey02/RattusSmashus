@@ -44,6 +44,9 @@ public class PlayerContext : MonoBehaviour
     public UnityEvent completeLevelEvent;
     #endregion
 
+    [SerializeField]
+    public ParticleSystem myParticleSystem;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -52,17 +55,26 @@ public class PlayerContext : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myShotgun = GetComponent<Shotgun>();
         myGrapple = GetComponent<Grapple>();
+        //myParticleSystem = GetComponent<ParticleSystem>();
 
         deathEvent.AddListener(GameManager.DrawDeadText);
 
         respawnEvent.AddListener(GameManager.ResetLevel);
         completeLevelEvent.AddListener(GameManager.LoadNextLevel);
+
+        myParticleSystem.Stop();
         SetState(IdleState);
     }
 
     void Start()
     {
 
+    }
+
+    public void GiveDoubleJump()
+    {
+        movementComp.canDoubleJump = true;
+        movementComp.hasDoubleJumpAbility = true;
     }
 
     public void SetState(BaseState newState)
@@ -97,7 +109,7 @@ public class PlayerContext : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Trap")
+        if (collision.gameObject.tag == "Trap" || collision.gameObject.tag == "Boss")
         {
             SetState(DeadState, null);
             deathEvent.Invoke();

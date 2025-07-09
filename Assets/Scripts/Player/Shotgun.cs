@@ -43,7 +43,6 @@ public class Shotgun : MonoBehaviour
 
         aimDirection = inputContext.ReadValue<Vector2>();
 
-        Debug.Log(aimDirection.normalized);
 
 
     }

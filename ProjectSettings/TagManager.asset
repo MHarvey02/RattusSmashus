@@ -7,16 +7,18 @@ TagManager:
   - Trap
   - Exit
   - GrapplePoint
+  - Boss
+  - BossKill
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - Ground
   - Walls
-  - 
+  - Player
   - 
   - 
   - 

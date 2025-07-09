@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1d364f1848642cd48b0a3bd644146b44
+guid: e3326d88ccb85044fb3ea53c2686069b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2018322332224182081
-    second: DeathVisualPlaceholder_0
+      213: -6921711624809307234
+    second: ToyOne 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DeathVisualPlaceholder_0
+      name: ToyOne 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 147d576b775820c10800000000000000
-      internalID: 2018322332224182081
+      spriteID: e93ac8533f321ff90800000000000000
+      internalID: -6921711624809307234
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      DeathVisualPlaceholder_0: 2018322332224182081
+      ToyOne 1_0: -6921711624809307234
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

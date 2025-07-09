@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 87bd5d97796c26b41aae813e78785c8b
+guid: c867edc8e59eb4c4fa81ca28942c0735
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5980348064080722788
-    second: ToyOne_0
+      213: 2085350277912117608
+    second: ToyTwo 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ToyOne_0
+      name: ToyTwo 1_0
       rect:
         serializedVersion: 2
-        x: 7
+        x: 0
         y: 0
-        width: 37
+        width: 50
         height: 50
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 1, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c940647fe19810da0800000000000000
-      internalID: -5980348064080722788
+      spriteID: 861c6337707a0fc10800000000000000
+      internalID: 2085350277912117608
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2ee6743f9516e1b4b8c83bbff4e07cf6
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ToyOne_0: -5980348064080722788
+      ToyTwo 1_0: 2085350277912117608
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

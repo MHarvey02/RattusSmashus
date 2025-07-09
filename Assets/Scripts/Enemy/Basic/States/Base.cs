@@ -1,5 +1,4 @@
 using System;
-using Enemy.Melee;
 using UnityEngine;
 
 namespace Enemy.Melee.States

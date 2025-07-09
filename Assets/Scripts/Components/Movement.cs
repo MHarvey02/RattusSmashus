@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     [SerializeField]
     public float currentMoveSpeedCap = 10;
     public float defaultcurrentMoveSpeedCap = 10;
-    public float moveSpeed = 30;
+    public float moveSpeed = 5;
     public float direction;
 
     [SerializeField]

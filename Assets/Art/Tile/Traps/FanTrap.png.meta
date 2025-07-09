@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ea18c99685fc43b4391fcd7f2d42ad25
+guid: f8519716717362b49bcb0608c3c49230
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3023987015861784455
-    second: ToyTwo_0
+      213: -5385603803779715902
+    second: FanTrap_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ToyTwo_0
+      name: FanTrap_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 0
+        x: 6
+        y: 7
         width: 36
-        height: 50
+        height: 37
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9703a22b4d3a806d0800000000000000
-      internalID: -3023987015861784455
+      spriteID: 2cca7b6efdd7245b0800000000000000
+      internalID: -5385603803779715902
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: af278f669719ec7419771adae2085b65
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ToyTwo_0: -3023987015861784455
+      FanTrap_0: -5385603803779715902
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

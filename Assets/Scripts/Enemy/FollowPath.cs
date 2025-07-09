@@ -48,14 +48,10 @@ public class FollowPath : MonoBehaviour
     // Update is called once per frame
     public void Move()
     {
-
-
-
         transform.position = Vector2.MoveTowards(transform.position, NextLoc, MoveSpeed * Time.deltaTime);
 
         if (Mathf.Approximately(transform.position.x,NextLoc.x) && Mathf.Approximately(transform.position.y, NextLoc.y))
         {
-
             GetNextLocation();
         }
     }
