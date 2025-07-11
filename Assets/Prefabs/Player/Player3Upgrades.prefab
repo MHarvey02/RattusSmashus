@@ -105,6 +105,7 @@ MonoBehaviour:
   kickbackMultiplier: 1000
   canShoot: 1
   ReloadTime: 3
+  _shotAmount: 5
   hasShotgun: 1
   myRenderer: {fileID: 4749046331597267863}
 --- !u!1 &3031335858483533583
@@ -245,8 +246,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5742396849858858247}
   currentMoveSpeedCap: 15
-  defaultcurrentMoveSpeedCap: 15
-  moveSpeed: 30
+  defaultMoveSpeedCap: 15
+  moveSpeed: 25
   direction: 0
   speedIncrease: 2
   maxMoveSpeedCap: 30
@@ -490,6 +491,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 77dc85b4-b3db-4249-afbe-bc779a24573b
     m_ActionName: Player/Pull
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0171d18f-6ce0-4d8d-ad7b-9de42754812e
+    m_ActionName: 'Player/Brake[/Keyboard/shift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -578,6 +583,7 @@ MonoBehaviour:
   currentGrapplePoint: {fileID: 0}
   myRigidBody: {fileID: 5742396849858858247}
   hasGrapple: 1
+  pullBoostAmount: 50
 --- !u!1 &8326212575461699500
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5906631941513271346}
   - component: {fileID: 5941395793031345043}
+  - component: {fileID: 6216680573650084508}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -604,7 +611,7 @@ Transform:
   m_GameObject: {fileID: 8326212575461699500}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -626,7 +633,7 @@ MonoBehaviour:
     Enabled: 0
     m_Value: 0
   OutputChannel: 1
-  StandbyUpdate: 2
+  StandbyUpdate: 1
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
@@ -635,9 +642,9 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 34
-    OrthographicSize: 10
-    NearClipPlane: 0.3
-    FarClipPlane: 906.7
+    OrthographicSize: 7
+    NearClipPlane: 2
+    FarClipPlane: 830
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -653,6 +660,25 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &6216680573650084508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8326212575461699500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b617507da6d07e749b7efdb34e1173e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrackerSettings:
+    BindingMode: 4
+    PositionDamping: {x: 1, y: 1, z: 1}
+    AngularDampingMode: 0
+    RotationDamping: {x: 1, y: 1, z: 1}
+    QuaternionDamping: 1
+  FollowOffset: {x: 0, y: 0, z: -10}
 --- !u!1001 &46172210134590142
 PrefabInstance:
   m_ObjectHideFlags: 0

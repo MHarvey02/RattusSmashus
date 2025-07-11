@@ -40,6 +40,27 @@ public abstract class BaseState
     }
 
 
+    public virtual void OnTriggerEnter2D(Collider2D collision, PlayerContext player)
+    {
+        if (collision.gameObject.tag == "Exit")
+        {
+            player.completeLevelEvent.Invoke();
+
+        }
+    }
+
+    public virtual void OnCollisionEnter2D(Collision2D collision, PlayerContext player)
+    {
+
+        if (collision.gameObject.tag == "Trap" || collision.gameObject.tag == "Boss")
+        {
+
+            player.SetState(player.DeadState, null);
+            player.deathEvent.Invoke();
+            
+        }
+    }
+
     //Updates
     public virtual void FixedUpdate(PlayerContext player) { }
 }

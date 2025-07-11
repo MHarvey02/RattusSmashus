@@ -13,17 +13,20 @@ namespace Enemy.Boss.States
 
         private float _exitChaseTime = 3;
 
+        private  Vector3 _distanceAbovePlayer;
+
         public IEnumerator coroutine;
 
         public override void EnterState(BossContext boss)
         {
+            _distanceAbovePlayer = new(0, 5, 0);
             coroutine = ExitChase(boss);
             boss.StartCoroutine(coroutine);
         }
 
         public override void Update(BossContext boss)
         {
-            Vector2 location = boss.myPlayer.transform.position + new Vector3(0, 5, 0);
+            Vector2 location = boss.myPlayer.transform.position + _distanceAbovePlayer;
             boss.transform.position = Vector2.MoveTowards(boss.transform.position, location, _moveSpeed * Time.deltaTime);
            
         }
@@ -41,6 +44,11 @@ namespace Enemy.Boss.States
                 _moveSpeed += 1;
                 coroutine = ExitChase(boss);
                 boss.StartCoroutine(coroutine);
+                _distanceAbovePlayer.y -= 1.5f;
+                if (_distanceAbovePlayer.y < 0)
+                {
+                    _distanceAbovePlayer.y = 0;
+                }
 
             }
         }

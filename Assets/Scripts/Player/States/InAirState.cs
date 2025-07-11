@@ -75,6 +75,7 @@ public class InAirState : BaseState
     //Updates
     public override void FixedUpdate(PlayerContext player)
     {
+        player.movementComp.CheckMoveSpeed();
         if (isMovingHorizontal == true)
         {
             player.movementComp.HorizontalMove();

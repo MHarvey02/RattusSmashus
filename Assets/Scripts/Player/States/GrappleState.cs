@@ -40,9 +40,7 @@ public class GrappleState : BaseState
 
     public override void GrapplePull(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        player.myGrapple.pull(grapplePoint);
-        
-        ExitState(player, player.InAirState, isMovingHorizontal);
+        return;
     }
 
 
@@ -52,9 +50,15 @@ public class GrappleState : BaseState
         ExitState(player, player.JumpState, isMovingHorizontal);
     }
 
+    public override void Shoot(InputAction.CallbackContext inputContext, PlayerContext player)
+    {
+        return;
+    }
+
     public override void ExitState(PlayerContext player, BaseState nextState, bool? _isMovingHorizontal)
     {
         grapplePoint.detatch();
+        player.myGrapple.RemoveGrappleLine();
         player.SetState(nextState, _isMovingHorizontal);
         isMovingHorizontal = false;
     }
@@ -63,6 +67,7 @@ public class GrappleState : BaseState
     public override void FixedUpdate(PlayerContext player)
     {
 
+        player.myGrapple.DrawGrappleLine();
         if (player.movementComp.GroundCollisionCheck())
         {
             if (isMovingHorizontal)
@@ -71,6 +76,11 @@ public class GrappleState : BaseState
                 return;
             }
             ExitState(player, player.IdleState, null);
+        }
+
+        if (player.movementComp.WallCollisionCheck())
+        {
+            ExitState(player, player.OnWallState, null);
         }
     }
 }

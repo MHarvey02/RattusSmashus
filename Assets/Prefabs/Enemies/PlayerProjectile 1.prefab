@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2019657474216556100}
   - component: {fileID: 3312129541360965345}
   m_Layer: 0
-  m_Name: BossProjectile
+  m_Name: PlayerProjectile 1
   m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0096438d4f6236c4db288a032fffe551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 0.5
   _myRB: {fileID: 2019657474216556100}
 --- !u!50 &2019657474216556100
 Rigidbody2D:
@@ -126,7 +126,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 256
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

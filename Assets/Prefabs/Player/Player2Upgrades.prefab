@@ -137,8 +137,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5742396849858858247}
   currentMoveSpeedCap: 15
-  defaultcurrentMoveSpeedCap: 15
-  moveSpeed: 30
+  defaultMoveSpeedCap: 15
+  moveSpeed: 25
   direction: 0
   speedIncrease: 2
   maxMoveSpeedCap: 30
@@ -382,6 +382,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 77dc85b4-b3db-4249-afbe-bc779a24573b
     m_ActionName: Player/Pull
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0171d18f-6ce0-4d8d-ad7b-9de42754812e
+    m_ActionName: 'Player/Brake[/Keyboard/shift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -470,6 +474,7 @@ MonoBehaviour:
   currentGrapplePoint: {fileID: 0}
   myRigidBody: {fileID: 5742396849858858247}
   hasGrapple: 1
+  pullBoostAmount: 2000
 --- !u!1 &8326212575461699500
 GameObject:
   m_ObjectHideFlags: 0

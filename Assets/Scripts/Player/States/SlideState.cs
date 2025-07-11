@@ -58,6 +58,7 @@ public class SlideState : BaseState
     }
     public override void FixedUpdate(PlayerContext player)
     {
+        player.movementComp.CheckMoveSpeed();
         player.movementComp.HorizontalMove();
     }
 }

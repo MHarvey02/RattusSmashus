@@ -39,6 +39,7 @@ public class OnWallState : BaseState
     //Updates
     public override void FixedUpdate(PlayerContext player)
     {
+        player.movementComp.CheckMoveSpeed();
         //Change to variable
         player.movementComp.currentMoveSpeedCap += 0.5f * Time.deltaTime;
 

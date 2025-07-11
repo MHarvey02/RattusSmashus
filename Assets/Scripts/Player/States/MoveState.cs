@@ -56,7 +56,7 @@ public class MoveState : BaseState
     //Update
     public override void FixedUpdate(PlayerContext player)
     {
-        
+
         if (!player.movementComp.GroundCollisionCheck())
         {
             ExitState(player, player.InAirState, true);
@@ -67,6 +67,7 @@ public class MoveState : BaseState
             player.movementComp.resetMaxMoveSpeed();
         }
         player.movementComp.HorizontalMove();
+        player.movementComp.CheckMoveSpeed();
     }
 
 }

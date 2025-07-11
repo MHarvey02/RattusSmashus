@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,11 +12,11 @@ public class DeadState : BaseState
 {
     public override void EnterState(PlayerContext player)
     {
+
         player.myAnimator.Play("Dying");
-        
+
         player.myParticleSystem.Play();
         player.StopAllCoroutines();
-        //play death animation
         // I want to invoke a function here to draw text to screen on how to respawn
 
     }
@@ -43,7 +44,17 @@ public class DeadState : BaseState
         {
             player.respawnEvent.Invoke();
         }
-        
+
+    }
+
+    public override void OnTriggerEnter2D(Collider2D collision, PlayerContext player)
+    {
+        return;
+    }
+
+    public override void OnCollisionEnter2D(Collision2D collision, PlayerContext player)
+    {
+        return;
     }
     }
 //}

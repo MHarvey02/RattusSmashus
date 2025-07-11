@@ -9,8 +9,8 @@ public class Movement : MonoBehaviour
 
     #region Horizontal movement 
     [SerializeField]
-    public float currentMoveSpeedCap = 10;
-    public float defaultcurrentMoveSpeedCap = 10;
+    public float currentMoveSpeedCap = 15;
+    public float defaultMoveSpeedCap = 15;
     public float moveSpeed = 5;
     public float direction;
 
@@ -106,18 +106,30 @@ public class Movement : MonoBehaviour
 
     public void resetMaxMoveSpeed()
     {
-        currentMoveSpeedCap = defaultcurrentMoveSpeedCap;
+        currentMoveSpeedCap = defaultMoveSpeedCap;
     }
 
 
     public void HitWall()
     {
+   
         if (rb.linearVelocity.y > 0)
         {
 
-            rb.AddForce(new Vector2(0, rb.linearVelocity.x * wallSpeedBoost));
+            rb.AddForce(new Vector2(0, rb.linearVelocity.x * direction * wallSpeedBoost));
         }
     }
+
+    public void CheckMoveSpeed()
+    {
+        if (rb.linearVelocity.x > currentMoveSpeedCap || rb.linearVelocity.x < -currentMoveSpeedCap)
+        {
+            rb.linearVelocity = new Vector2(currentMoveSpeedCap * direction, rb.linearVelocity.y);
+
+        }
+    }
+
+
 
     public void FixedUpdate()
     {
@@ -125,14 +137,6 @@ public class Movement : MonoBehaviour
         {
             currentMoveSpeedCap = maxMoveSpeedCap;
         }
-
-
-        if (rb.linearVelocity.x > currentMoveSpeedCap || rb.linearVelocity.x < -currentMoveSpeedCap )
-        {
-            rb.linearVelocity = new Vector2(currentMoveSpeedCap * direction, rb.linearVelocity.y);
-
-        }
-
     }
 
 

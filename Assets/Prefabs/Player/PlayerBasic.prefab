@@ -136,8 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5742396849858858247}
   currentMoveSpeedCap: 15
-  defaultcurrentMoveSpeedCap: 15
-  moveSpeed: 30
+  defaultMoveSpeedCap: 15
+  moveSpeed: 25
   direction: 0
   speedIncrease: 2
   maxMoveSpeedCap: 30
@@ -175,7 +175,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ResetLevel
+        m_MethodName: DrawDeadText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -187,7 +187,19 @@ MonoBehaviour:
         m_CallState: 2
   respawnEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ResetLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   completeLevelEvent:
     m_PersistentCalls:
       m_Calls:
@@ -345,6 +357,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 77dc85b4-b3db-4249-afbe-bc779a24573b
     m_ActionName: 'Player/Pull[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0171d18f-6ce0-4d8d-ad7b-9de42754812e
+    m_ActionName: 'Player/Brake[/Keyboard/shift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -412,7 +428,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
+  m_AnimatePhysics: 1
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -428,7 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4194723484649039152}
   - component: {fileID: 2497336401995677979}
-  - component: {fileID: 7680110190537364673}
+  - component: {fileID: 3293877447666055225}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -467,7 +483,7 @@ MonoBehaviour:
     Enabled: 0
     m_Value: 0
   OutputChannel: 1
-  StandbyUpdate: 2
+  StandbyUpdate: 1
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
@@ -476,9 +492,9 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 34
-    OrthographicSize: 10
-    NearClipPlane: 0.01
-    FarClipPlane: 906.7
+    OrthographicSize: 7
+    NearClipPlane: 2
+    FarClipPlane: 830
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -494,7 +510,7 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
---- !u!114 &7680110190537364673
+--- !u!114 &3293877447666055225
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

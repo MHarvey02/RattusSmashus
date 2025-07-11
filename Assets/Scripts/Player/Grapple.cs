@@ -13,7 +13,7 @@ public class Grapple : MonoBehaviour
 
     [SerializeField]
     public bool hasGrapple = false;
-
+    [SerializeField]
     private float pullBoostAmount = 2000;
 
     private LineRenderer grappleLine;
@@ -46,21 +46,22 @@ public class Grapple : MonoBehaviour
     {
         //calculate direction of grapple point
         //apply force in that direction to player RB
-        Vector2 grapplePointLoc = currentGrapplePoint.gameObject.transform.localPosition;
-        Vector2 playerLoc = myRigidBody.transform.localPosition;
+        Vector2 grapplePointLoc = currentGrapplePoint.gameObject.transform.position;
+        Vector2 playerLoc = myRigidBody.transform.position;
         Vector2 directionToMove = grapplePointLoc - playerLoc;
-        myRigidBody.AddForce(directionToMove.normalized * pullBoostAmount);
+
+        myRigidBody.AddForce(directionToMove.normalized * pullBoostAmount, ForceMode2D.Impulse);
     }
 
     //THis is here until the bug with onTriggerExit is fixed
     public void pull(GrapplePoint grapplePoint)
     {
-        //calculate direction of grapple point
-        //apply force in that direction to player RB
-        Vector2 grapplePointLoc = grapplePoint.gameObject.transform.localPosition;
-        Vector2 playerLoc = myRigidBody.transform.localPosition;
+
+        Vector2 grapplePointLoc = grapplePoint.gameObject.transform.position;
+        Vector2 playerLoc = myRigidBody.transform.position;
         Vector2 directionToMove = grapplePointLoc - playerLoc;
-        myRigidBody.AddForce(directionToMove.normalized * pullBoostAmount);
+        
+        myRigidBody.AddForce(directionToMove.normalized * pullBoostAmount, ForceMode2D.Impulse);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -68,7 +69,7 @@ public class Grapple : MonoBehaviour
         if (collision.gameObject.tag == "GrapplePoint")
         {
             currentGrapplePoint = collision.GetComponent<GrapplePoint>();
-            lineStartLoc = currentGrapplePoint.transform.localPosition;
+            lineStartLoc = currentGrapplePoint.transform.position;
         }
     }
 
@@ -80,18 +81,22 @@ public class Grapple : MonoBehaviour
             currentGrapplePoint = null;
         }
     }
+
+
+    public void DrawGrappleLine()
+    {
+        grappleLine.SetPosition(0, lineStartLoc);
+        grappleLine.SetPosition(1, myRigidBody.transform.position); 
+    }
+
+    public void RemoveGrappleLine()
+    {
+        grappleLine.SetPosition(0, lineStartLoc);
+        grappleLine.SetPosition(1, lineStartLoc);
+    }
     // Update is called once per frame
     void Update()
     {
-        /*
-        this code will allow for the drawing of the grapple point 
-        due to other issues with onTriggerExit it doesn't draw when on the grapple but does when you are below it
-        if (lineStartLoc != null)
-        {
-            grappleLine.SetPosition(0, lineStartLoc);
-            grappleLine.SetPosition(1, myRigidBody.transform.localPosition); 
-        }
-        */
 
     }
 }

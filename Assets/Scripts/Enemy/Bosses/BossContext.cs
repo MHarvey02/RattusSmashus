@@ -50,9 +50,10 @@ namespace Enemy.Boss
         {
             Projectile bullet = ObjectPool.SharedInstance.GetPooledObject(); 
             if (bullet != null) {
+                
                 bullet.transform.position = transform.position;
                 bullet.transform.rotation = transform.rotation;
-                bullet.SetLocation(myPlayer.transform);
+                bullet.SetLocation(myPlayer.transform.position);
                 bullet.gameObject.SetActive(true);
             }
         }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -27,7 +28,7 @@ public class PlayerContext : MonoBehaviour
 
     public KnockbackState knockbackState = new KnockbackState();
 
-    private DeadState DeadState = new DeadState();
+    public DeadState DeadState = new DeadState();
 
     public GrappleState GrappleState = new GrappleState();
 
@@ -48,6 +49,7 @@ public class PlayerContext : MonoBehaviour
     public ParticleSystem myParticleSystem;
 
 
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -57,10 +59,18 @@ public class PlayerContext : MonoBehaviour
         myGrapple = GetComponent<Grapple>();
         //myParticleSystem = GetComponent<ParticleSystem>();
 
+
         deathEvent.AddListener(GameManager.DrawDeadText);
+        deathEvent.AddListener(TestTools.CountDeath);
+
+
+
 
         respawnEvent.AddListener(GameManager.ResetLevel);
         completeLevelEvent.AddListener(GameManager.LoadNextLevel);
+
+        
+        completeLevelEvent.AddListener(TestTools.OnLevelEnd);
 
         myParticleSystem.Stop();
         SetState(IdleState);
@@ -107,23 +117,9 @@ public class PlayerContext : MonoBehaviour
     public void GrapplePull(InputAction.CallbackContext inputContext) => currentState.GrapplePull(inputContext, this);
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Trap" || collision.gameObject.tag == "Boss")
-        {
-            SetState(DeadState, null);
-            deathEvent.Invoke();
-        }
-    }
+    public void OnCollisionEnter2D(Collision2D collision) => currentState.OnCollisionEnter2D(collision, this);
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Exit")
-        {
-            completeLevelEvent.Invoke();
-
-        }
-    }
+    public void OnTriggerEnter2D(Collider2D collision) => currentState.OnTriggerEnter2D(collision, this);
 
     //Updates
     public void FixedUpdate() => currentState.FixedUpdate(this);

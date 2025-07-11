@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
+using NUnit.Framework.Internal;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+
         int numGameSessions = FindObjectsByType<GameManager>(FindObjectsSortMode.None).Length;
         if (numGameSessions > 1)
         {
@@ -27,6 +30,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
+
     }
 
     static public void LoadNextLevel()
@@ -35,8 +39,9 @@ public class GameManager : MonoBehaviour
 
         currentLevelIndex++;
 
+
         //Making sure a next level exists
-        if (currentLevelIndex > SceneManager.sceneCount)
+        if (currentLevelIndex > SceneManager.sceneCountInBuildSettings)
         {
             currentLevelIndex = 0;
         }
