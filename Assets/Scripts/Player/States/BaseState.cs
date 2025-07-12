@@ -61,6 +61,13 @@ public abstract class BaseState
         }
     }
 
+
+    // This is here for testing purposes
+    public virtual void SkipLevel(InputAction.CallbackContext inputContext, PlayerContext player)
+    {
+        return;
+    }
+
     //Updates
     public virtual void FixedUpdate(PlayerContext player) { }
 }

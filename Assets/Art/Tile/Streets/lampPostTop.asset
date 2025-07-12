@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: LampMid
+  m_Name: lampPostTop
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 122684077, guid: f3f5efd341d49d14bbae18e781919a40, type: 3}
+  m_Sprite: {fileID: -8662870505844012778, guid: 175ad9e4d944cae468c0f3d4ed137a7f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

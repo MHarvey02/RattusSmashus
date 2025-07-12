@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: BrickWall
+  m_Name: lampPostBottom
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 1856567207279646495, guid: 42631487ab7047a4eb0a38b593b181a5, type: 3}
+  m_Sprite: {fileID: 1400924667378934861, guid: 37e740967a9a90344873a6556009a1d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

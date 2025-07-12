@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using TMPro;
 using Unity.Properties;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -48,6 +48,10 @@ public class PlayerContext : MonoBehaviour
     [SerializeField]
     public ParticleSystem myParticleSystem;
 
+    //This needs to be changed and is only here for testing
+    [SerializeField]
+    public TMP_Text deadText;
+
 
 
     // Start is called before the first frame update
@@ -67,9 +71,9 @@ public class PlayerContext : MonoBehaviour
 
 
         respawnEvent.AddListener(GameManager.ResetLevel);
-        completeLevelEvent.AddListener(GameManager.LoadNextLevel);
 
         
+        completeLevelEvent.AddListener(GameManager.LoadNextLevel);        
         completeLevelEvent.AddListener(TestTools.OnLevelEnd);
 
         myParticleSystem.Stop();
@@ -115,6 +119,10 @@ public class PlayerContext : MonoBehaviour
 
     public void Grapple(InputAction.CallbackContext inputContext) => currentState.Grapple(inputContext, this);
     public void GrapplePull(InputAction.CallbackContext inputContext) => currentState.GrapplePull(inputContext, this);
+
+
+
+    public void SkipLevel(InputAction.CallbackContext inputContext) => currentState.SkipLevel(inputContext, this);
 
 
     public void OnCollisionEnter2D(Collision2D collision) => currentState.OnCollisionEnter2D(collision, this);

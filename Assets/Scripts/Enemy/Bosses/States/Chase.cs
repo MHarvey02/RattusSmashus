@@ -9,9 +9,9 @@ namespace Enemy.Boss.States
     public class Chase : Base
     {
 
-        private float _moveSpeed = 5;
+        private float _moveSpeed = 10f;
 
-        private float _exitChaseTime = 3;
+        private float _exitChaseTime = 2;
 
         private  Vector3 _distanceAbovePlayer;
 
@@ -19,7 +19,7 @@ namespace Enemy.Boss.States
 
         public override void EnterState(BossContext boss)
         {
-            _distanceAbovePlayer = new(0, 5, 0);
+            _distanceAbovePlayer = new(0, 3, 0);
             coroutine = ExitChase(boss);
             boss.StartCoroutine(coroutine);
         }
@@ -45,10 +45,12 @@ namespace Enemy.Boss.States
                 coroutine = ExitChase(boss);
                 boss.StartCoroutine(coroutine);
                 _distanceAbovePlayer.y -= 1.5f;
+                
                 if (_distanceAbovePlayer.y < 0)
                 {
                     _distanceAbovePlayer.y = 0;
                 }
+                
 
             }
         }

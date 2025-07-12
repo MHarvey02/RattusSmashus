@@ -14,7 +14,7 @@ public class DeadState : BaseState
     {
 
         player.myAnimator.Play("Dying");
-
+        player.deadText.enabled = true;
         player.myParticleSystem.Play();
         player.StopAllCoroutines();
         // I want to invoke a function here to draw text to screen on how to respawn
@@ -55,6 +55,16 @@ public class DeadState : BaseState
     public override void OnCollisionEnter2D(Collision2D collision, PlayerContext player)
     {
         return;
+    }
+
+    public override void SkipLevel(InputAction.CallbackContext inputContext, PlayerContext player)
+    {
+        if (inputContext.started)
+        {
+            player.completeLevelEvent.Invoke();
+            return;
+        }
+        
     }
     }
 //}
