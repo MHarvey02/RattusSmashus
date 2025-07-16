@@ -16,6 +16,7 @@ public class SpawnItem : MonoBehaviour
     {
         gameObject.SetActive(true);
     }
+    
 
     public void OnCollisionEnter2D(Collision2D collision)
     {

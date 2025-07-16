@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class Shotgun : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Shotgun : MonoBehaviour
     private Rigidbody2D myRigidBody;
 
     [SerializeField]
-    private float kickbackMultiplier = 1000000;
+    private float kickbackMultiplier = 1000;
 
     [SerializeField]
     bool canShoot = true;
@@ -25,10 +26,18 @@ public class Shotgun : MonoBehaviour
     private int _shotAmount = 5;
 
     [SerializeField]
-    bool hasShotgun = false;
+    public bool hasShotgun = false;
 
     [SerializeField]
     SpriteRenderer myRenderer;
+
+    [SerializeField]
+    UnityEvent shotFiredEvent;
+
+    [SerializeField]
+    private HUD _myHud;
+    [SerializeField]
+    private Projectile _projectile;
     
     private IEnumerator coroutine;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,6 +45,8 @@ public class Shotgun : MonoBehaviour
     {
         myRenderer.enabled = false;
         aimDirection = new Vector2(0, 0);
+
+        shotFiredEvent.AddListener(_myHud.LowerShotgunAlpha);
     }
 
     public void SetAimDirection(InputAction.CallbackContext inputContext)
@@ -43,33 +54,39 @@ public class Shotgun : MonoBehaviour
         aimDirection = inputContext.ReadValue<Vector2>();
     }
 
-    public void Shoot()
+    public void Shoot(InputAction.CallbackContext inputContext)
     {
 
-        
-        if (canShoot && hasShotgun && aimDirection != new Vector2(0,0))
+        if (inputContext.started)
         {
-            myRenderer.enabled = true;
-            coroutine = Reload();
-            for (int i = 0; i < _shotAmount; i++)
+            if (canShoot && hasShotgun && aimDirection != new Vector2(0, 0))
             {
-                Projectile bullet = ObjectPool.SharedInstance.GetPooledObject();
-                if (bullet != null)
+                myRenderer.enabled = true;
+                coroutine = Reload();
+                for (int i = 0; i < _shotAmount; i++)
                 {
-                    bullet.SetLocation(aimDirection * 10);
-                    bullet.transform.position = transform.position;
-                    //bullet.transform.rotation = transform.rotation;
-                    bullet.gameObject.SetActive(true);
+                    Projectile bullet = ObjectPool.SharedInstance.GetPooledObject();
+                    if (bullet != null)
+                    {
+                        bullet.gameObject.SetActive(true);
+                        bullet.SetLocation(aimDirection);
+                        bullet.transform.position = transform.position + new Vector3(aimDirection.x * 3,aimDirection.y * 3,0);
+                        
+                        //bullet.transform.rotation = transform.rotation;
+
+                    }
                 }
+
+
+
+                canShoot = false;
+                KickBack();
+                shotFiredEvent.Invoke();
+                StartCoroutine(coroutine);
             }
-
-
-
-            canShoot = false;
-            KickBack();
-            StartCoroutine(coroutine);
-        }
         return;
+        }
+        
     }
         
 
@@ -77,7 +94,7 @@ public class Shotgun : MonoBehaviour
     {
         myRigidBody.linearVelocity = new Vector2(0, 0);
         Vector2 kickbackDirection = -aimDirection * kickbackMultiplier;
-        
+        Debug.Log(kickbackDirection);
         myRigidBody.AddForce(kickbackDirection);
     }
 
@@ -86,7 +103,6 @@ public class Shotgun : MonoBehaviour
         yield return new WaitForSecondsRealtime(ReloadTime);
         canShoot = true;
         myRenderer.enabled = false;
-        Debug.Log("can fire");
 
     }
 

@@ -53,13 +53,15 @@ public class PlayerContext : MonoBehaviour
     public TMP_Text deadText;
 
 
+    
+
 
     // Start is called before the first frame update
     void Awake()
     {
         movementComp = GetComponent<Movement>();
         myAnimator = GetComponent<Animator>();
-        myShotgun = GetComponent<Shotgun>();
+        //myShotgun = GetComponent<Shotgun>();
         myGrapple = GetComponent<Grapple>();
         //myParticleSystem = GetComponent<ParticleSystem>();
 
@@ -89,6 +91,10 @@ public class PlayerContext : MonoBehaviour
     {
         movementComp.canDoubleJump = true;
         movementComp.hasDoubleJumpAbility = true;
+    }
+    public void GiveShotgun()
+    {
+        myShotgun.hasShotgun = true;
     }
 
     public void SetState(BaseState newState)

@@ -6,8 +6,11 @@ public class GrapplePoint : MonoBehaviour
 
     [SerializeField]
     private DistanceJoint2D myJoint;
-    
 
+    public void SetAwake()
+    {
+        gameObject.SetActive(true);
+    }
 
     public void Awake()
     {

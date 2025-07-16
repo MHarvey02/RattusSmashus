@@ -27,6 +27,7 @@ public class KnockbackState : BaseState
         if (inputContext.canceled)
         {
             nextState = player.IdleState;
+            return;
         }
         nextState = player.MoveState;
     }

@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 1891738986325900689}
   m_Layer: 8
   m_Name: Player2Upgrades
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,8 +147,8 @@ MonoBehaviour:
   wallSpeedBoost: 100
   canDoubleJump: 1
   hasDoubleJumpAbility: 1
-  rayCastDistanceFloor: 1
-  rayCastDistanceWall: 0.5
+  rayCastDistanceFloor: 0.7
+  rayCastDistanceWall: 1
   wallCollisionLM:
     serializedVersion: 2
     m_Bits: 128
@@ -181,6 +181,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   myParticleSystem: {fileID: 2221597659502798303}
+  deadText: {fileID: 0}
 --- !u!114 &5932102265048949847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +387,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0171d18f-6ce0-4d8d-ad7b-9de42754812e
     m_ActionName: 'Player/Brake[/Keyboard/shift]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 038e68a7-4951-4097-939b-3e27c8cb4d72
+    m_ActionName: 'Player/SkipLevel[/Keyboard/enter]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -474,7 +479,7 @@ MonoBehaviour:
   currentGrapplePoint: {fileID: 0}
   myRigidBody: {fileID: 5742396849858858247}
   hasGrapple: 1
-  pullBoostAmount: 2000
+  pullBoostAmount: 50
 --- !u!1 &8326212575461699500
 GameObject:
   m_ObjectHideFlags: 0

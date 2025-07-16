@@ -47,9 +47,12 @@ public class MoveState : BaseState
 
     }
 
-        public override void Shoot(InputAction.CallbackContext inputContext, PlayerContext player)
+    public override void Shoot(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        ExitState(player, player.knockbackState, true);
+          if (inputContext.started)
+        {
+          player.SetState(player.knockbackState, null);  
+        }
     }
 
 

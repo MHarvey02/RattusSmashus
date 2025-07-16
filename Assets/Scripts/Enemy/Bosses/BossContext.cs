@@ -53,8 +53,9 @@ namespace Enemy.Boss
                 
                 bullet.transform.position = transform.position;
                 bullet.transform.rotation = transform.rotation;
-                bullet.SetLocation(myPlayer.transform.position);
                 bullet.gameObject.SetActive(true);
+                bullet.SetLocation(myPlayer.transform.position);
+                
             }
         }
 

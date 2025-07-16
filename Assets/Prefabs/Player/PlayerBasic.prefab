@@ -326,7 +326,7 @@ MonoBehaviour:
   wallSpeedBoost: 100
   canDoubleJump: 0
   hasDoubleJumpAbility: 0
-  rayCastDistanceFloor: 1
+  rayCastDistanceFloor: 0.7
   rayCastDistanceWall: 1
   wallCollisionLM:
     serializedVersion: 2

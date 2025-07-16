@@ -27,10 +27,7 @@ public class IdleState : BaseState
         ExitState(player, player.JumpState, null);
     }
 
-    public override void Shoot(InputAction.CallbackContext inputContext, PlayerContext player)
-    {
-        ExitState(player, player.knockbackState, null);
-    }
+
 
     public override void Grapple(InputAction.CallbackContext inputContext, PlayerContext player)
     {

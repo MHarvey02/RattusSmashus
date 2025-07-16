@@ -9,6 +9,7 @@ TagManager:
   - GrapplePoint
   - Boss
   - BossKill
+  - Nail
   layers:
   - Default
   - TransparentFX

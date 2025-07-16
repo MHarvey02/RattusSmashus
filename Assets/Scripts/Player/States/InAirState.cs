@@ -61,7 +61,11 @@ public class InAirState : BaseState
 
     public override void Shoot(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        player.SetState(player.knockbackState, null);
+        if (inputContext.started)
+        {
+          player.SetState(player.knockbackState, null);  
+        }
+        
     }
 
 
