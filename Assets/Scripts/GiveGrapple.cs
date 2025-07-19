@@ -35,7 +35,7 @@ public class GiveGrapple : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             spawnGrapplePoints.Invoke();
-            gameObject.SetActive(false);
+            
         }
     }
 }

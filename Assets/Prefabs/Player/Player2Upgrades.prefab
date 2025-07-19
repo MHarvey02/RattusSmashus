@@ -143,7 +143,7 @@ MonoBehaviour:
   speedIncrease: 2
   maxMoveSpeedCap: 30
   jumpHeight: 800
-  wallJumpSpeed: 200
+  wallJumpSpeed: 800
   wallSpeedBoost: 100
   canDoubleJump: 1
   hasDoubleJumpAbility: 1

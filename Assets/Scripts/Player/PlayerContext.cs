@@ -69,9 +69,6 @@ public class PlayerContext : MonoBehaviour
         deathEvent.AddListener(GameManager.DrawDeadText);
         deathEvent.AddListener(TestTools.CountDeath);
 
-
-
-
         respawnEvent.AddListener(GameManager.ResetLevel);
 
         

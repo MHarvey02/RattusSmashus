@@ -10,6 +10,9 @@ TagManager:
   - Boss
   - BossKill
   - Nail
+  - Boots
+  - Grapple
+  - Shotgun
   layers:
   - Default
   - TransparentFX

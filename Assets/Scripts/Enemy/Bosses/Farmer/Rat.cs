@@ -14,8 +14,6 @@ public class Rat : MonoBehaviour
     [SerializeField]
     public FarmerOnRat _farmer;
 
-    private UnityEvent _deathEvent;
-
     [SerializeField]
     private GameObject _deathNail;
 

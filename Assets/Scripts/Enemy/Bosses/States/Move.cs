@@ -13,7 +13,7 @@ namespace Enemy.Boss.States
 
             Vector2 playLoc = boss.myPlayer.transform.position;
             playLoc.y += 3;
-            playLoc.x += 5 * boss.myVision.direction;
+            playLoc.x -= 5 * boss.myVision.direction;
             
             
             boss.transform.position = Vector2.MoveTowards(boss.transform.position, playLoc, boss.moveSpeed * Time.deltaTime);

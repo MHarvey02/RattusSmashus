@@ -129,7 +129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2497336401995677979, guid: 7d07d543adeeef5419ef3a8ad36481f3, type: 3}
       propertyPath: Lens.OrthographicSize
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3031335858483533569, guid: 7d07d543adeeef5419ef3a8ad36481f3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3149,7 +3149,7 @@ Camera:
   far clip plane: 830
   field of view: 34
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

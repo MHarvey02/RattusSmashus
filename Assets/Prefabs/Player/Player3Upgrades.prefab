@@ -112,6 +112,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _myHud: {fileID: 0}
+  _projectile: {fileID: 0}
 --- !u!1 &3031335858483533583
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +258,7 @@ MonoBehaviour:
   speedIncrease: 2
   maxMoveSpeedCap: 30
   jumpHeight: 800
-  wallJumpSpeed: 200
+  wallJumpSpeed: 800
   wallSpeedBoost: 100
   canDoubleJump: 1
   hasDoubleJumpAbility: 1
