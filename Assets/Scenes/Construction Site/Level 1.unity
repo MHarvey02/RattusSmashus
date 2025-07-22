@@ -163,6 +163,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 877036579791992936, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
+      propertyPath: mySounds
+      value: 
+      objectReference: {fileID: 197050947}
     - target: {fileID: 3031335858483533569, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.027900696
@@ -207,38 +211,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1Upgrade
       objectReference: {fileID: 0}
-    - target: {fileID: 5932102265048949847, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
-      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5932102265048949847, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
-      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5932102265048949847, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
-      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 197050947}
-    - target: {fileID: 5932102265048949847, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
-      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5932102265048949847, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
-      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SkipLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 5932102265048949847, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
-      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerContext, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5932102265048949847, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
-      propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5941395793031345043, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
-      propertyPath: Lens.OrthographicSize
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -249,13 +221,13 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
 --- !u!114 &197050947 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 877036579791992936, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2716999278644996603, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
   m_PrefabInstance: {fileID: 197050946}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db956792258bb342818fa7d47a2da73, type: 3}
+  m_Script: {fileID: 11500000, guid: e578f68795a6df24eb799f2f42374086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &233914984 stripped
@@ -3321,6 +3293,10 @@ PrefabInstance:
     - target: {fileID: 2710948626177038978, guid: 08b9725a2f79c6844ae29154f0c39ac9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040895020574857025, guid: 08b9725a2f79c6844ae29154f0c39ac9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 240.19998
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

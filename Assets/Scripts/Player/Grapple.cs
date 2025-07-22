@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 
 using UnityEngine;
@@ -18,19 +19,24 @@ public class Grapple : MonoBehaviour
 
     private LineRenderer grappleLine;
 
+    private bool _canPull;
+
+    private IEnumerator _myCoroutine;
+
     private Vector3 lineStartLoc;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        grappleLine = gameObject.AddComponent<LineRenderer>();
+        grappleLine = gameObject.GetComponent<LineRenderer>();
+        _canPull = true;
 
         // Set the material
         //lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
 
         // Set the color
-        grappleLine.startColor = Color.red;
-        grappleLine.endColor = Color.green;
+        grappleLine.startColor = Color.blue;
+        grappleLine.endColor = Color.blue;
 
         // Set the width
         grappleLine.startWidth = 0.2f;
@@ -38,7 +44,16 @@ public class Grapple : MonoBehaviour
 
         // Set the number of vertices
         grappleLine.positionCount = 2;
+
+        _myCoroutine = ResetCanPull();
         
+    }
+
+    IEnumerator ResetCanPull()
+    {
+        yield return new WaitForSecondsRealtime(3);
+        _canPull = true;
+        _myCoroutine = ResetCanPull();
     }
 
 
@@ -46,22 +61,32 @@ public class Grapple : MonoBehaviour
     {
         //calculate direction of grapple point
         //apply force in that direction to player RB
-        Vector2 grapplePointLoc = currentGrapplePoint.gameObject.transform.position;
-        Vector2 playerLoc = myRigidBody.transform.position;
-        Vector2 directionToMove = grapplePointLoc - playerLoc;
+        if (_canPull)
+        {
+            Vector2 grapplePointLoc = currentGrapplePoint.gameObject.transform.position;
+            Vector2 playerLoc = myRigidBody.transform.position;
+            Vector2 directionToMove = grapplePointLoc - playerLoc;
+            _canPull = false;
+            StartCoroutine(_myCoroutine);
+            myRigidBody.AddForce(directionToMove.normalized * pullBoostAmount, ForceMode2D.Impulse);
+        }
 
-        myRigidBody.AddForce(directionToMove.normalized * pullBoostAmount, ForceMode2D.Impulse);
     }
 
     //THis is here until the bug with onTriggerExit is fixed
     public void pull(GrapplePoint grapplePoint)
     {
 
-        Vector2 grapplePointLoc = grapplePoint.gameObject.transform.position;
-        Vector2 playerLoc = myRigidBody.transform.position;
-        Vector2 directionToMove = grapplePointLoc - playerLoc;
-        
-        myRigidBody.AddForce(directionToMove.normalized * pullBoostAmount, ForceMode2D.Impulse);
+        if (_canPull)
+        {
+            Vector2 grapplePointLoc = grapplePoint.gameObject.transform.position;
+            Vector2 playerLoc = myRigidBody.transform.position;
+            Vector2 directionToMove = grapplePointLoc - playerLoc;
+            _canPull = false;
+            StartCoroutine(_myCoroutine);
+            myRigidBody.AddForce(directionToMove.normalized * pullBoostAmount, ForceMode2D.Impulse);
+
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

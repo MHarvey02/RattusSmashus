@@ -13,12 +13,14 @@ public class KnockbackState : BaseState
     {
         nextState = player.IdleState;
         coroutine = TimeBeforeStateChange(player);
+        player.mySounds.Shoot();
         player.StartCoroutine(coroutine);
     }
     public override void EnterState(PlayerContext player, bool? isMovingHorizontal = false)
     {
         nextState = player.IdleState;
         coroutine = TimeBeforeStateChange(player);
+        player.mySounds.Shoot();
         player.StartCoroutine(coroutine);
     }
 

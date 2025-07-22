@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7919826440667169086}
   - component: {fileID: 1525251264124270641}
-  - component: {fileID: 2708027238071206545}
   - component: {fileID: 2019657474216556100}
   - component: {fileID: 3312129541360965345}
+  - component: {fileID: 6225330965265283943}
   m_Layer: 0
   m_Name: PlayerProjectile 1
   m_TagString: Trap
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5916503560728448396, guid: a7152ea4543c72d40b2a8b18ddd2514d, type: 3}
+  m_Sprite: {fileID: -5385603803779715902, guid: f8519716717362b49bcb0608c3c49230, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -90,20 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2708027238071206545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7189732927036482303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0096438d4f6236c4db288a032fffe551, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  _myRB: {fileID: 2019657474216556100}
 --- !u!50 &2019657474216556100
 Rigidbody2D:
   serializedVersion: 5
@@ -167,3 +153,17 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.18
+--- !u!114 &6225330965265283943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7189732927036482303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0096438d4f6236c4db288a032fffe551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  _myRB: {fileID: 2019657474216556100}

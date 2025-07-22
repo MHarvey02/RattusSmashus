@@ -11,18 +11,16 @@ public class JumpState : BaseState
     {
         player.myAnimator.Play("Jumping");
         isMovingHorizontal = false;
+        player.mySounds.Jump();
         player.movementComp.Jump();
-
-        
     }
 
     public override void EnterState(PlayerContext player, bool? _isMovingHorizontal)
     {
         isMovingHorizontal = false;
+        player.mySounds.Jump();
         player.movementComp.Jump();
-        isMovingHorizontal = _isMovingHorizontal;
-    
-        
+        isMovingHorizontal = _isMovingHorizontal;     
     }
 
     public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)

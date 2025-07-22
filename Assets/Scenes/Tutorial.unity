@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 310653544351081442, guid: 08b9725a2f79c6844ae29154f0c39ac9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2909524256381522726, guid: 3cf200affd96e5c4bb20dc80a672fe8b, type: 3}
     - target: {fileID: 2243018984667277087, guid: 08b9725a2f79c6844ae29154f0c39ac9, type: 3}
       propertyPath: m_Camera
       value: 
@@ -648,59 +652,23 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 543359844}
     m_ColliderPaths:
-    - - X: 180000000
-        Y: -7600000
-      - X: 178200000
-        Y: -7000000
-      - X: 170000000
-        Y: -7000000
-      - X: 170000000
-        Y: -7600000
-      - X: 168200000
-        Y: -7000000
-      - X: 160000000
-        Y: -7000000
-      - X: 160000000
-        Y: -7600000
-      - X: 158200000
-        Y: -7000000
-      - X: 150000000
-        Y: -7000000
-      - X: 150000000
-        Y: -7600000
-      - X: 148200000
-        Y: -7000000
-      - X: 140000000
-        Y: -7000000
-      - X: 140000000
-        Y: -7600000
-      - X: 138200000
-        Y: -7000000
-      - X: 130000000
-        Y: -7000000
-      - X: 130000000
+    - - X: 185000000
+        Y: -5200000
+      - X: 181400000
+        Y: -4000000
+      - X: 125000000
+        Y: -4000000
+      - X: 125000000
         Y: -10000000
-      - X: 180000000
+      - X: 185000000
         Y: -10000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 17.999971, y: -1}
-      - {x: 17.99998, y: -0.7599938}
-      - {x: 17.819996, y: -0.7}
-      - {x: 17, y: -0.7000293}
-      - {x: 16.999958, y: -0.7599863}
-      - {x: 16.819996, y: -0.7}
-      - {x: 16, y: -0.7000293}
-      - {x: 15.999959, y: -0.7599863}
-      - {x: 15.819995, y: -0.7}
-      - {x: 15, y: -0.7000293}
-      - {x: 14.999959, y: -0.7599863}
-      - {x: 14.819995, y: -0.7}
-      - {x: 14, y: -0.7000293}
-      - {x: 13.999959, y: -0.7599863}
-      - {x: 13.819995, y: -0.7}
-      - {x: 13, y: -0.7000293}
-      - {x: 13.00003, y: -1}
+    - - {x: 18.499971, y: -1}
+      - {x: 18.49998, y: -0.5199938}
+      - {x: 18.139996, y: -0.4}
+      - {x: 12.5, y: -0.4000293}
+      - {x: 12.50003, y: -1}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
@@ -777,7 +745,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0, y: 0.5, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -1047,7 +1015,7 @@ Transform:
   m_GameObject: {fileID: 753174575}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.68, y: 10.35, z: 0}
+  m_LocalPosition: {x: -27.68, y: 13.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1097,12 +1065,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8912760082684505365, guid: d7349cb7a3bc9e046b7f95292385484a, type: 3}
+  m_Sprite: {fileID: -8912760082684505365, guid: 849b4db4414a9254bb87a011e21d2647, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.5, y: 1}
+  m_Size: {x: 3, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

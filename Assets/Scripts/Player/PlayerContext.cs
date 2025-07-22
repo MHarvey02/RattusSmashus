@@ -8,8 +8,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-
-
 public class PlayerContext : MonoBehaviour
 {
     #region States 
@@ -38,7 +36,8 @@ public class PlayerContext : MonoBehaviour
     public Animator myAnimator;
     public Shotgun myShotgun;
     public Grapple myGrapple;
-
+    [SerializeField]
+    public PlayerSounds mySounds;
     #region Events
     public UnityEvent deathEvent;
     public UnityEvent respawnEvent;
@@ -52,9 +51,7 @@ public class PlayerContext : MonoBehaviour
     [SerializeField]
     public TMP_Text deadText;
 
-
     
-
 
     // Start is called before the first frame update
     void Awake()
@@ -63,8 +60,6 @@ public class PlayerContext : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         //myShotgun = GetComponent<Shotgun>();
         myGrapple = GetComponent<Grapple>();
-        //myParticleSystem = GetComponent<ParticleSystem>();
-
 
         deathEvent.AddListener(GameManager.DrawDeadText);
         deathEvent.AddListener(TestTools.CountDeath);
