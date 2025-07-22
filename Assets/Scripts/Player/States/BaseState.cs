@@ -47,6 +47,15 @@ public abstract class BaseState
             player.completeLevelEvent.Invoke();
 
         }
+
+        if (collision.gameObject.tag == "Boots")
+        {
+            player.GiveDoubleJump();
+        }
+        if (collision.gameObject.tag == "Shotgun")
+        {
+            player.GiveShotgun();
+        }
     }
 
     public virtual void OnCollisionEnter2D(Collision2D collision, PlayerContext player)
@@ -57,7 +66,11 @@ public abstract class BaseState
 
             player.SetState(player.DeadState, null);
             player.deathEvent.Invoke();
-            
+
+        }
+        if (collision.gameObject.tag == "Shotgun")
+        {
+            player.GiveShotgun();
         }
     }
 

@@ -22,9 +22,6 @@ public class KillScript : MonoBehaviour
 
     public UnityEvent spawnItem;
 
-    [SerializeField]
-    private GiveGrapple _myItem;
-
 
     [SerializeField]
     private ParticleSystem _bloodEffect;
@@ -34,7 +31,6 @@ public class KillScript : MonoBehaviour
         _bloodEffect.Stop();
         playerEnterFinalTrigger.AddListener(_myBoss.Death);
 
-        spawnItem.AddListener(_myItem.Spawn);
 
     }
 

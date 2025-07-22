@@ -70,7 +70,7 @@ public class Shotgun : MonoBehaviour
                     {
                         bullet.gameObject.SetActive(true);
                         bullet.SetLocation(aimDirection);
-                        bullet.transform.position = transform.position + new Vector3(aimDirection.x * 3,aimDirection.y * 3,0);
+                        bullet.transform.position = transform.position + new Vector3(aimDirection.x,aimDirection.y,0);
                         
                         //bullet.transform.rotation = transform.rotation;
 

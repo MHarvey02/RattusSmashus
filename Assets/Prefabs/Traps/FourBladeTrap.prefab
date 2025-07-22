@@ -138,6 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationSpeed: 3
   Path: {fileID: 2961659965872874300}
+  _bossLevelMove: 0
+  _nextBossLoc: {fileID: 0}
 --- !u!61 &4520471888213449217
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,7 +174,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0020730495, y: -0.004330687}
+  m_Offset: {x: 0.00018936396, y: -0.004330687}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -182,7 +184,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.6951233, y: 0.11637831}
+  m_Size: {x: 0.600103, y: 0.11637831}
   m_EdgeRadius: 0
 --- !u!61 &4649054586610052119
 BoxCollider2D:
@@ -228,7 +230,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.091861606, y: 0.74}
+  m_Size: {x: 0.091861606, y: 0.63593006}
   m_EdgeRadius: 0
 --- !u!114 &2961659965872874300
 MonoBehaviour:
@@ -244,7 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Waypoints: {fileID: 9052119769383167826}
   locations: []
-  MoveSpeed: 0
+  MoveSpeed: 3
 --- !u!1001 &377499629280482573
 PrefabInstance:
   m_ObjectHideFlags: 0

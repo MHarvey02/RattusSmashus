@@ -8,7 +8,7 @@ using UnityEngine;
 
         private Vector2 _direction;
         [SerializeField]
-        float speed = 10f;
+        float speed = 3f;
 
         [SerializeField]
         private Rigidbody2D _myRB;
@@ -24,6 +24,8 @@ using UnityEngine;
         public void SetLocation(Vector3 endTransform)
         {
             _direction = endTransform - transform.position;
+            //Adding random spread to the shot
+            _direction += new Vector2(0, Random.Range(-3, 3));
             _myRB.linearVelocity = _direction * speed;
         }
 

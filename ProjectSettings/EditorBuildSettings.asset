@@ -21,6 +21,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Streets/Boss.unity
     guid: ed86d1f0aba5e7b4ab764079dd720d8b
   - enabled: 1
+    path: Assets/Scenes/Construction Site/Level 1.unity
+    guid: 2c2d84c354a79b5439c100308c161fd1
+  - enabled: 1
+    path: Assets/Scenes/Construction Site/Level 2.unity
+    guid: 75464a26349f8174eb47e43d4f7204c6
+  - enabled: 1
+    path: Assets/Scenes/Construction Site/Level 3.unity
+    guid: 74202ab83a6cbf94c9c1eaca922a242f
+  - enabled: 1
+    path: Assets/Scenes/Construction Site/Boss.unity
+    guid: 6d49a2a6beb6732459c9be68a25af9bc
+  - enabled: 1
     path: Assets/Scenes/ResultsScreen.unity
     guid: 63f739b403280374585e7c81e22c5d57
   m_configObjects:

@@ -3,27 +3,26 @@ using UnityEngine;
 
 public class SpawnItem : MonoBehaviour
 {
-    public UnityEvent givePlayerAbility;
+
     [SerializeField]
-    private PlayerContext _myPlayer;
+    private SpriteRenderer _mySprite;
     public void Start()
     {
         gameObject.SetActive(false);
-        givePlayerAbility.AddListener(_myPlayer.GiveDoubleJump);
     }
 
     public void Spawn()
     {
         gameObject.SetActive(true);
     }
-    
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            givePlayerAbility.Invoke();
-            gameObject.SetActive(false);
+            _mySprite.enabled = false;
         }
     }
+
+
 }
