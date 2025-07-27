@@ -29,6 +29,7 @@ public class TestTools : MonoBehaviour
         }
         // end of new code
         TestToolStatic.death = 0;
+        _time = 0;
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
@@ -41,12 +42,11 @@ public class TestTools : MonoBehaviour
 
     public static void OnLevelEnd()
     {
+        TestToolStatic.timeList.Add(_time);
         TestToolStatic.deathList.Add(TestToolStatic.death);
         TestToolStatic.death = 0;
-        TestToolStatic.timeList.Add(_time);
         _time = 0;
-
-        
+        TestToolStatic.LevelList.Add(SceneManager.GetActiveScene().name);   
     }
 
     // Update is called once per frame

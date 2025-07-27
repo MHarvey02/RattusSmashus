@@ -29,6 +29,9 @@ public class FarmerOnRat : MonoBehaviour
     [SerializeField]
     private int _bulletsPerShot;
 
+    [SerializeField]
+    private BossSounds _mySounds;
+
     void Start()
     {
         _shootCoroutine = Shoot();
@@ -47,13 +50,14 @@ public class FarmerOnRat : MonoBehaviour
 
     private IEnumerator Shoot()
     {
+        _mySounds.ReadyAttack();
         yield return new WaitForSecondsRealtime(_shotTime);
         //spawn projectile from pool, give random spread, move in direction of player
 
         _shootCoroutine = Shoot();
         StartCoroutine(_shootCoroutine);
         //spawn bullet
-
+        _mySounds.Shoot();
         _playerDirection = _myPlayer.transform.position - transform.position;
         for (int i = 0; i < _bulletsPerShot; i++)
         {
@@ -62,7 +66,7 @@ public class FarmerOnRat : MonoBehaviour
             {
 
                 bullet.transform.position = transform.position;
-                _playerDirection += new Vector2 (0,Random.Range(0,5));
+                _playerDirection += new Vector2(0, Random.Range(0, 5));
 
                 _playerDirection *= _bulletSpeed;
                 _playerDirection = Vector2.ClampMagnitude(_playerDirection, 20);
@@ -70,6 +74,7 @@ public class FarmerOnRat : MonoBehaviour
                 bullet.SetVelocity(_playerDirection);
 
             }
+            _mySounds.Shoot();
         }   
     }
 

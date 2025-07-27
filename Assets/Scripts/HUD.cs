@@ -52,6 +52,11 @@ public class HUD : MonoBehaviour
         _alphaResetCoroutine = RaiseShotgunAlpha();
     }
 
+    public void LevelEnd()
+    {
+        LevelResultsScreen.mostRecentTime = _timerValue;
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -11,10 +11,14 @@ public class DisplayResults : MonoBehaviour
 
     [SerializeField]
     List<TMP_Text> timeTexts;
+    
+    [SerializeField]
+    List<TMP_Text> levelNames;
+
 
     public void Awake()
     {
-        
+
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,6 +35,10 @@ public class DisplayResults : MonoBehaviour
 
             deathTexts[i].text = TestToolStatic.deathList[i].ToString();
             timeTexts[i].text = TestToolStatic.timeList[i].ToString();
+            levelNames[i].text = TestToolStatic.LevelList[i].ToString();
+            deathTexts[i].enabled = true;
+            timeTexts[i].enabled = true;
+            levelNames[i].enabled = true;
         }
     }
 

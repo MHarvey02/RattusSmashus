@@ -33,7 +33,6 @@ public class GunSoldier : MonoBehaviour
             Projectile bullet = ObjectPool.SharedInstance.GetPooledObject();
             if (bullet != null)
             {
-                Debug.Log("fire");
                 
                 bullet.transform.position = transform.position;
                 bullet.gameObject.SetActive(true);

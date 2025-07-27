@@ -17,7 +17,7 @@ public class Shotgun : MonoBehaviour
     private float kickbackMultiplier = 1000;
 
     [SerializeField]
-    bool canShoot = true;
+    public bool canShoot = true;
 
     [SerializeField]
     float ReloadTime = 3;
@@ -38,6 +38,9 @@ public class Shotgun : MonoBehaviour
     private HUD _myHud;
     [SerializeField]
     private Projectile _projectile;
+
+    [SerializeField]
+    private ShotgunSound _mySounds;
     
     private IEnumerator coroutine;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -62,6 +65,7 @@ public class Shotgun : MonoBehaviour
             if (canShoot && hasShotgun && aimDirection != new Vector2(0, 0))
             {
                 myRenderer.enabled = true;
+                _mySounds.Shoot();
                 coroutine = Reload();
                 for (int i = 0; i < _shotAmount; i++)
                 {
@@ -76,9 +80,6 @@ public class Shotgun : MonoBehaviour
 
                     }
                 }
-
-
-
                 canShoot = false;
                 KickBack();
                 shotFiredEvent.Invoke();
@@ -102,6 +103,7 @@ public class Shotgun : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(ReloadTime);
         canShoot = true;
+        _mySounds.Reload();
         myRenderer.enabled = false;
 
     }

@@ -5,54 +5,46 @@ using UnityEngine.InputSystem;
 
 public class InAirState : BaseState
 {
-    public BaseState nextState;
-    bool? isMovingHorizontal = false;
+    private BaseState _nextState;
+    private bool _isMoving;
 
     public override void EnterState(PlayerContext player)
     {
         player.myAnimator.Play("Falling");
-        
-        isMovingHorizontal = false;
-        nextState = player.IdleState;
+
     }
 
-    public override void EnterState(PlayerContext player, bool? _isMovingHorizontal)
+    public InAirState(bool isMoving = false)
     {
-        player.myAnimator.Play("Falling");
-
-        isMovingHorizontal = _isMovingHorizontal;
-        if (isMovingHorizontal == true)
-        {
-            nextState = player.MoveState;
-        }
-        else
-        {
-            nextState = player.IdleState;
-        }
+        _nextState = isMoving == true ? new MoveState() : new IdleState();
+        _isMoving = isMoving;
     }
 
     public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        if (inputContext.canceled)
-        {
-            isMovingHorizontal = false;
-            nextState = player.IdleState;
-            return;
-        }
+
+
         if (inputContext.started)
         {
-            isMovingHorizontal = true;
-            nextState = player.MoveState;
+            _nextState = new MoveState();
+            _isMoving = true;
         }
-            
-    }
 
+        if (inputContext.canceled)
+            {
+                _nextState = new IdleState();
+                _isMoving = false;
+            }
+        player.movementComp.SetDirection(inputContext.ReadValue<Vector2>().x);      
+    }
+    
     public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         if (inputContext.started)
         {
             if (player.movementComp.canDoubleJump)
             {
+                player.mySounds.DoubleJump();
                 player.movementComp.Jump();
                 player.movementComp.canDoubleJump = false;
             } 
@@ -61,39 +53,35 @@ public class InAirState : BaseState
 
     public override void Shoot(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        if (inputContext.started)
+        if (inputContext.started && player.myShotgun.canShoot)
         {
-          player.SetState(player.knockbackState, null);  
+          player.SetState( new KnockbackState(true));  
         }
         
-    }
-
-
-    public override void ExitState(PlayerContext player, BaseState nextState, bool? isMovingHorizontal)
-    {
-        player.movementComp.canDoubleJump = player.movementComp.hasDoubleJumpAbility;
-        player.myAnimator.SetBool("isFalling", false);
-        player.SetState(nextState, isMovingHorizontal);
     }
 
     //Updates
     public override void FixedUpdate(PlayerContext player)
     {
-        player.movementComp.CheckMoveSpeed();
-        if (isMovingHorizontal == true)
+        player.movementComp.HorizontalMoveInAir();
+        player.movementComp.AddtionalGravity();
+        //player.movementComp.CheckMoveSpeed();
+
+
+        if (player.myCollision.IsTouchingGround())
         {
-            player.movementComp.HorizontalMove();
+            player.movementComp.canDoubleJump = player.movementComp.hasDoubleJumpAbility;
+
+
+            player.SetState(_nextState);
         }
 
-        if (player.movementComp.GroundCollisionCheck())
+        if (player.myCollision.IsTouchingWall())
         {
+            player.movementComp.canDoubleJump = player.movementComp.hasDoubleJumpAbility;
 
-            ExitState(player, nextState, null);
-        }
-
-        if (player.movementComp.WallCollisionCheck())
-        {
-            ExitState(player, player.OnWallState, null);
+            player.SetState(new OnWallState(_isMoving));
         }
     }
+    
 }

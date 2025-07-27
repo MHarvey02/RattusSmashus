@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8742451432667268745}
   - component: {fileID: 4749046331597267863}
   - component: {fileID: 1366845479581512381}
+  - component: {fileID: 8917852771398080980}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -106,13 +107,30 @@ MonoBehaviour:
   canShoot: 1
   ReloadTime: 3
   _shotAmount: 5
-  hasShotgun: 1
+  hasShotgun: 0
   myRenderer: {fileID: 4749046331597267863}
   shotFiredEvent:
     m_PersistentCalls:
       m_Calls: []
   _myHud: {fileID: 0}
-  _projectile: {fileID: 0}
+  _projectile: {fileID: 2708027238071206545, guid: fd7cb5655ccf87349b4fec771b484ea7, type: 3}
+  _mySounds: {fileID: 8917852771398080980}
+--- !u!114 &8917852771398080980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287553954973304920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 583fb5849998b29418c7173bfaf39788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shotgunSound:
+  - {fileID: 8300000, guid: 2aa932f328a0f5342884618dadd13b3c, type: 3}
+  - {fileID: 8300000, guid: be331e10c62b56042a0a0b5d2a815c08, type: 3}
+  _myAudioSource: {fileID: 7218904055935393897}
 --- !u!1 &3031335858483533583
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +151,7 @@ GameObject:
   - component: {fileID: 6521986615955919793}
   - component: {fileID: 2372424359816612869}
   - component: {fileID: 7218904055935393897}
+  - component: {fileID: 6185237356080468631}
   m_Layer: 8
   m_Name: Player3Upgrades
   m_TagString: Player
@@ -157,6 +176,7 @@ Transform:
   - {fileID: 8742451432667268745}
   - {fileID: 6547291276240329757}
   - {fileID: 5575033547436072189}
+  - {fileID: 3461108770535885610}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3031335858483533568
@@ -229,7 +249,7 @@ Rigidbody2D:
   m_Mass: 2
   m_LinearDamping: 0
   m_AngularDamping: 0
-  m_GravityScale: 2
+  m_GravityScale: 3
   m_Material: {fileID: 6200000, guid: d90628ab61c6fce419f2bed241fdba92, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -257,22 +277,21 @@ MonoBehaviour:
   currentMoveSpeedCap: 15
   defaultMoveSpeedCap: 15
   moveSpeed: 25
-  direction: 0
+  Direction: 0
+  _moveSpeedAir: 60
+  _WallJumpForce: {x: 1200, y: 1400}
+  _fallSpeedIncrease: -25
+  _wallJumpDirection: 0
   speedIncrease: 2
-  maxMoveSpeedCap: 30
-  jumpHeight: 800
+  maxMoveSpeedCap: 25
+  jumpHeight: 1200
   wallJumpSpeed: 800
-  wallSpeedBoost: 75
+  wallSpeedBoost: 1.5
+  _grappleJumpHeight: {x: 2000, y: 1500}
   canDoubleJump: 1
   hasDoubleJumpAbility: 1
-  rayCastDistanceFloor: 0.7
-  rayCastDistanceWall: 1
-  wallCollisionLM:
-    serializedVersion: 2
-    m_Bits: 192
-  groundCollisionLM:
-    serializedVersion: 2
-    m_Bits: 64
+  _wallBoostAmount: 0
+  _spriteRenderer: {fileID: 3031335858483533568}
 --- !u!114 &877036579791992936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,9 +305,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementComp: {fileID: 6002195844426747894}
-  myAnimator: {fileID: 0}
+  myCollision: {fileID: 6185237356080468631}
+  myAnimator: {fileID: 4892831681220094603}
   myShotgun: {fileID: 1366845479581512381}
-  myGrapple: {fileID: 0}
+  myGrapple: {fileID: 1891738986325900689}
   mySounds: {fileID: 2372424359816612869}
   deathEvent:
     m_PersistentCalls:
@@ -299,7 +319,8 @@ MonoBehaviour:
   completeLevelEvent:
     m_PersistentCalls:
       m_Calls: []
-  myParticleSystem: {fileID: 5077058504079629212}
+  myBloodEffect: {fileID: 5077058504079629212}
+  myRunEffect: {fileID: 5978976946713109002}
   deadText: {fileID: 6194770403814205290}
 --- !u!114 &5932102265048949847
 MonoBehaviour:
@@ -340,8 +361,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6002195844426747894}
-        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+      - m_Target: {fileID: 6185237356080468631}
+        m_TargetAssemblyTypeName: PlayerCollision, Assembly-CSharp
         m_MethodName: SetDirection
         m_Mode: 0
         m_Arguments:
@@ -444,8 +465,8 @@ MonoBehaviour:
     m_ActionName: Player/Aim
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1366845479581512381}
-        m_TargetAssemblyTypeName: Shotgun, Assembly-CSharp
+      - m_Target: {fileID: 877036579791992936}
+        m_TargetAssemblyTypeName: PlayerContext, Assembly-CSharp
         m_MethodName: Shoot
         m_Mode: 0
         m_Arguments:
@@ -456,8 +477,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 877036579791992936}
-        m_TargetAssemblyTypeName: PlayerContext, Assembly-CSharp
+      - m_Target: {fileID: 1366845479581512381}
+        m_TargetAssemblyTypeName: Shotgun, Assembly-CSharp
         m_MethodName: Shoot
         m_Mode: 0
         m_Arguments:
@@ -611,6 +632,11 @@ MonoBehaviour:
   myRigidBody: {fileID: 5742396849858858247}
   hasGrapple: 1
   pullBoostAmount: 50
+  grappleLine: {fileID: 6521986615955919793}
+  _circleCastRadius: 1
+  _grappleLM:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!120 &6521986615955919793
 LineRenderer:
   serializedVersion: 2
@@ -635,7 +661,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 37f55f2a5657a8647b1e0045eeaf4592, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -679,8 +705,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 0.50728756, b: 0, a: 1}
+      key1: {r: 1, g: 0.50728756, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -696,7 +722,7 @@ LineRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65535
+      atime1: 37779
       atime2: 0
       atime3: 0
       atime4: 0
@@ -731,8 +757,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerSound:
-  - {fileID: 8300000, guid: d8dd8f69627ed7b43b2e79bb9f6ed771, type: 3}
-  - {fileID: 8300000, guid: 88f34434facd8a34a88c495d65b5604b, type: 3}
+  - {fileID: 8300000, guid: 01f13522ce2341a498f7e2ff97de74ef, type: 3}
+  - {fileID: 8300000, guid: 5ca2baecd9e11cb43a2420b860f385b4, type: 3}
+  - {fileID: 8300000, guid: 4d7e062c4a3feb444b3a61d19284bba6, type: 3}
+  - {fileID: 8300000, guid: 6cf46bdd08bd36348b02e0c24f98a97d, type: 3}
   _myAudioSource: {fileID: 7218904055935393897}
 --- !u!82 &7218904055935393897
 AudioSource:
@@ -747,7 +775,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.309
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -831,6 +859,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6185237356080468631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3031335858483533583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b323e7ac6b596a41962c39b6f39e073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _direction: 0
+  rayCastDistanceFloor: 0.7
+  rayCastDistanceWall: 0.5
+  wallCollisionLM:
+    serializedVersion: 2
+    m_Bits: 192
+  groundCollisionLM:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &8326212575461699500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,7 +1055,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &6194770403814205290
 MonoBehaviour:
@@ -1015,7 +1064,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8332703893082258179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
@@ -1028,7 +1077,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Press Space to respawn
+
+    (If you cannot beat the level press enter
+    to move to the next level)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1055,14 +1107,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1192,4 +1244,71 @@ ParticleSystem:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6519153817609617059, guid: f3c392b150cdfe94d956fc908f595f54, type: 3}
   m_PrefabInstance: {fileID: 46172210134590142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1996631515996281921
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3031335858483533569}
+    m_Modifications:
+    - target: {fileID: 3151712559355729771, guid: 93d27146403bb1f46b6c4111655af064, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.232
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151712559355729771, guid: 93d27146403bb1f46b6c4111655af064, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.382
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151712559355729771, guid: 93d27146403bb1f46b6c4111655af064, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 678.4466
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151712559355729771, guid: 93d27146403bb1f46b6c4111655af064, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151712559355729771, guid: 93d27146403bb1f46b6c4111655af064, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151712559355729771, guid: 93d27146403bb1f46b6c4111655af064, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151712559355729771, guid: 93d27146403bb1f46b6c4111655af064, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151712559355729771, guid: 93d27146403bb1f46b6c4111655af064, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151712559355729771, guid: 93d27146403bb1f46b6c4111655af064, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151712559355729771, guid: 93d27146403bb1f46b6c4111655af064, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023918066227667114, guid: 93d27146403bb1f46b6c4111655af064, type: 3}
+      propertyPath: m_Name
+      value: RunEffect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 93d27146403bb1f46b6c4111655af064, type: 3}
+--- !u!4 &3461108770535885610 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3151712559355729771, guid: 93d27146403bb1f46b6c4111655af064, type: 3}
+  m_PrefabInstance: {fileID: 1996631515996281921}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5978976946713109002 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5281845038112538187, guid: 93d27146403bb1f46b6c4111655af064, type: 3}
+  m_PrefabInstance: {fileID: 1996631515996281921}
   m_PrefabAsset: {fileID: 0}

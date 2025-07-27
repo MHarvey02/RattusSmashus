@@ -17,7 +17,7 @@ public class Vision : MonoBehaviour
 
     [SerializeField]
     private float _defaultBoxCastDistance;
-    
+
     [SerializeField]
     private float _chaseBoxCastDistance;
     // draw box 
@@ -27,7 +27,7 @@ public class Vision : MonoBehaviour
         _boxCastDistance = _defaultBoxCastDistance;
     }
     //This will be used for the bosses
-
+#nullable enable
     public GameObject? DrawBoxCast()
     {
         RaycastHit2D boxCast = Physics2D.BoxCast(transform.localPosition + new Vector3(_boxCastDistance * direction, 0, 0),
@@ -48,7 +48,7 @@ public class Vision : MonoBehaviour
         _boxCastDistance = _defaultBoxCastDistance;
         return null;
     }
-    
+
 
     //This will be used for the basic melee enemies
     public RaycastHit2D? DrawLineCast()
@@ -61,5 +61,7 @@ public class Vision : MonoBehaviour
         }
         return null;
     }
+    
+#nullable disable
 
 }
