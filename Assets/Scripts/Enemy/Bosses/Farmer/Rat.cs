@@ -18,7 +18,7 @@ public class Rat : MonoBehaviour
     private GameObject _deathNail;
 
     [SerializeField]
-    private GameObject _shotgunItem;
+    private SpawnItem _shotgunItem;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -40,7 +40,7 @@ public class Rat : MonoBehaviour
         }
         if (collision.gameObject.tag == "BossKill")
         {
-            _shotgunItem.SetActive(true);
+            _shotgunItem.Spawn();
             _myRB.linearVelocity = new(0, 0);
             _farmer.FallOffRat();
             _deathNail.SetActive(true);

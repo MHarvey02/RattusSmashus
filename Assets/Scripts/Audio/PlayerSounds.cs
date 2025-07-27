@@ -13,8 +13,20 @@ public class PlayerSounds : MonoBehaviour
     {
         _myAudioSource.PlayOneShot(_playerSound[0]);
     }
-    public void Shoot()
+
+    public void DoubleJump()
     {
         _myAudioSource.PlayOneShot(_playerSound[1]);
     }
+
+    public void Grapple()
+    {
+         _myAudioSource.PlayOneShot(_playerSound[3]);
+    }
+
+    public void Death()
+    {
+        _myAudioSource.PlayOneShot(_playerSound[2]);
+    }
+    
 }

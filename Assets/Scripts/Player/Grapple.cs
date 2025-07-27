@@ -1,10 +1,11 @@
 using System.Collections;
 using Unity.VisualScripting;
-
+using UnityEditor;
 using UnityEngine;
 
 public class Grapple : MonoBehaviour
 {
+
 
     [SerializeField]
     public GrapplePoint currentGrapplePoint;
@@ -16,7 +17,7 @@ public class Grapple : MonoBehaviour
     public bool hasGrapple = false;
     [SerializeField]
     private float pullBoostAmount = 2000;
-
+    [SerializeField]
     private LineRenderer grappleLine;
 
     private bool _canPull;
@@ -25,10 +26,16 @@ public class Grapple : MonoBehaviour
 
     private Vector3 lineStartLoc;
 
+    [SerializeField]
+    private float _circleCastRadius;
+
+    [SerializeField]
+    private LayerMask _grappleLM;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        grappleLine = gameObject.GetComponent<LineRenderer>();
+
         _canPull = true;
 
         // Set the material
@@ -46,82 +53,62 @@ public class Grapple : MonoBehaviour
         grappleLine.positionCount = 2;
 
         _myCoroutine = ResetCanPull();
-        
+
     }
 
     IEnumerator ResetCanPull()
     {
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(1.5f);
         _canPull = true;
         _myCoroutine = ResetCanPull();
     }
 
 
-    public void pull()
+    //Detect if near grapple point and return ref
+    #nullable enable
+    public GrapplePoint? GetHook()
+    {
+        RaycastHit2D hit = Physics2D.CircleCast(transform.position, _circleCastRadius, Vector2.zero, 0, _grappleLM);
+        if (hit)
+        {
+            currentGrapplePoint = hit.collider.gameObject.GetComponent<GrapplePoint>();
+            return currentGrapplePoint;
+        }
+        return null;
+    }
+    #nullable disable
+    
+    public void Pull()
     {
         //calculate direction of grapple point
         //apply force in that direction to player RB
         if (_canPull)
         {
+            DrawGrappleLine();
             Vector2 grapplePointLoc = currentGrapplePoint.gameObject.transform.position;
             Vector2 playerLoc = myRigidBody.transform.position;
             Vector2 directionToMove = grapplePointLoc - playerLoc;
             _canPull = false;
             StartCoroutine(_myCoroutine);
             myRigidBody.AddForce(directionToMove.normalized * pullBoostAmount, ForceMode2D.Impulse);
+            RemoveGrappleLine();
         }
 
     }
-
-    //THis is here until the bug with onTriggerExit is fixed
-    public void pull(GrapplePoint grapplePoint)
-    {
-
-        if (_canPull)
-        {
-            Vector2 grapplePointLoc = grapplePoint.gameObject.transform.position;
-            Vector2 playerLoc = myRigidBody.transform.position;
-            Vector2 directionToMove = grapplePointLoc - playerLoc;
-            _canPull = false;
-            StartCoroutine(_myCoroutine);
-            myRigidBody.AddForce(directionToMove.normalized * pullBoostAmount, ForceMode2D.Impulse);
-
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "GrapplePoint")
-        {
-            currentGrapplePoint = collision.GetComponent<GrapplePoint>();
-            lineStartLoc = currentGrapplePoint.transform.position;
-        }
-    }
-
-    //There is a bug where this runs when getting on to the grapple, despite still being in the trigger, 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-          if (collision.gameObject.tag == "GrapplePoint")
-        {
-            currentGrapplePoint = null;
-        }
-    }
-
 
     public void DrawGrappleLine()
     {
-        grappleLine.SetPosition(0, lineStartLoc);
-        grappleLine.SetPosition(1, myRigidBody.transform.position); 
+        grappleLine.SetPosition(0, currentGrapplePoint.transform.position);
+        grappleLine.SetPosition(1, myRigidBody.transform.position);
     }
 
     public void RemoveGrappleLine()
     {
+        currentGrapplePoint.Detatch();
         grappleLine.SetPosition(0, lineStartLoc);
         grappleLine.SetPosition(1, lineStartLoc);
     }
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
+
+
 }

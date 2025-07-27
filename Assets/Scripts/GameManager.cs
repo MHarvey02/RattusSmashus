@@ -35,17 +35,8 @@ public class GameManager : MonoBehaviour
 
     static public void LoadNextLevel()
     {
-        int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
-
-        currentLevelIndex++;
-
-
-        //Making sure a next level exists
-        if (currentLevelIndex > SceneManager.sceneCountInBuildSettings)
-        {
-            currentLevelIndex = 0;
-        }
-        SceneManager.LoadScene(currentLevelIndex);
+        LevelResultsScreen.nextLevel = SceneManager.GetActiveScene().buildIndex +1;
+        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings-1);
     }
 
     static public void DrawDeadText()

@@ -29,6 +29,10 @@ namespace Enemy.Boss
         [SerializeField]
         public Transform deathPosition;
 
+        [SerializeField]
+        public BossSounds MySounds;
+
+
         public void Awake()
         {
             myVision = GetComponent<Vision>();
@@ -48,14 +52,16 @@ namespace Enemy.Boss
 
         public void Attack()
         {
-            Projectile bullet = ObjectPool.SharedInstance.GetPooledObject(); 
-            if (bullet != null) {
-                
+            Projectile bullet = ObjectPool.SharedInstance.GetPooledObject();
+            MySounds.Shoot();
+            if (bullet != null)
+            {
+
                 bullet.transform.position = transform.position;
                 bullet.transform.rotation = transform.rotation;
                 bullet.gameObject.SetActive(true);
                 bullet.SetLocation(myPlayer.transform.position);
-                
+
             }
         }
 

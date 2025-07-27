@@ -5,42 +5,30 @@ using UnityEngine.InputSystem;
 
 public class JumpState : BaseState
 {
-    bool? isMovingHorizontal = false;
+    private bool _isMoving;
 
     public override void EnterState(PlayerContext player)
     {
         player.myAnimator.Play("Jumping");
-        isMovingHorizontal = false;
-        player.mySounds.Jump();
         player.movementComp.Jump();
     }
 
-    public override void EnterState(PlayerContext player, bool? _isMovingHorizontal)
+    public JumpState(bool isMoving = false)
     {
-        isMovingHorizontal = false;
-        player.mySounds.Jump();
-        player.movementComp.Jump();
-        isMovingHorizontal = _isMovingHorizontal;     
-    }
+        _isMoving = isMoving;
+    } 
 
-    public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)
+    public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        return;
-    }
-
-
-    public override void ExitState(PlayerContext player, BaseState nextState, bool? isMovingHorizontal)
-    {
-
-        player.SetState(nextState, isMovingHorizontal);
+        player.movementComp.SetDirection(inputContext.ReadValue<Vector2>().x);     
     }
 
     public override void FixedUpdate(PlayerContext player)
     {
         player.movementComp.CheckMoveSpeed();
-        if (!player.movementComp.GroundCollisionCheck())
+        if (!player.myCollision.IsTouchingGround())
         {
-            ExitState(player, player.InAirState, isMovingHorizontal);
+            player.SetState(new InAirState(_isMoving));
         }
     }
 }

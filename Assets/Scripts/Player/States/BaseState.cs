@@ -7,38 +7,43 @@ public abstract class BaseState
 {
     public virtual void EnterState(PlayerContext player)
     {
-        Debug.Log(this);
     }
-
-    public virtual void EnterState(PlayerContext player, bool? isMovingHorizontal = false){}
-    
-    public virtual void ExitState(PlayerContext player, BaseState nextState, bool? isMovingHorizontal){}
-
+ 
     //Actions
     public virtual void Move(InputAction.CallbackContext inputContext, PlayerContext player) {}
     public virtual void Jump(InputAction.CallbackContext inputContext, PlayerContext player){}
     public virtual void Slide(InputAction.CallbackContext inputContext, PlayerContext player){}
 
-    public virtual void Shoot(InputAction.CallbackContext inputContext, PlayerContext player){}
-
     public virtual void Grapple(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        if (inputContext.started && player.myGrapple.currentGrapplePoint != null && player.myGrapple.hasGrapple)
+        if (inputContext.started &&  player.myGrapple.hasGrapple)
         {
-            player.myGrapple.currentGrapplePoint.attatch(player.movementComp.rb);
-            player.SetState(player.GrappleState, null);  
+            GrapplePoint grapplePoint = player.myGrapple.GetHook();
+            if (grapplePoint)
+            {
+                player.myGrapple.currentGrapplePoint.Attatch(player.movementComp.rb);
+                player.SetState(new GrappleState()); 
+            }
+                 
         }
         
     }
 
     public virtual void GrapplePull(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        if (inputContext.started && player.myGrapple.currentGrapplePoint != null && player.myGrapple.hasGrapple)
+        if (inputContext.started  && player.myGrapple.hasGrapple)
         {
-            player.myGrapple.pull();
+            GrapplePoint grapplePoint = player.myGrapple.GetHook();
+            if (grapplePoint)
+            {
+                player.myGrapple.Pull();
+            }
         }
     }
 
+    public virtual void Shoot(InputAction.CallbackContext inputContext, PlayerContext player) { }
+
+    public virtual void ExitState(PlayerContext player) { return; }
 
     public virtual void OnTriggerEnter2D(Collider2D collision, PlayerContext player)
     {
@@ -64,7 +69,7 @@ public abstract class BaseState
         if (collision.gameObject.tag == "Trap" || collision.gameObject.tag == "Boss")
         {
 
-            player.SetState(player.DeadState, null);
+            player.SetState(new DeadState());
             player.deathEvent.Invoke();
 
         }

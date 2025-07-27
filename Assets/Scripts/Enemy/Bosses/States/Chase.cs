@@ -11,7 +11,7 @@ namespace Enemy.Boss.States
 
         private float _moveSpeed = 10f;
 
-        private float _exitChaseTime = 2;
+        private float _exitChaseTime = 3.5f;
 
         private  Vector3 _distanceFromPlayer;
 
@@ -33,6 +33,7 @@ namespace Enemy.Boss.States
     
         public IEnumerator ExitChase(BossContext boss)
         {
+            boss.MySounds.ReadyAttack();
             yield return new WaitForSecondsRealtime(_exitChaseTime);
             if (boss.myVision.DrawBoxCast() == null)
             {

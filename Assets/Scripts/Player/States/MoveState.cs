@@ -8,29 +8,33 @@ public class MoveState : BaseState
     public override void EnterState(PlayerContext player)
     {
         player.myAnimator.Play("Running");
+        player.myRunEffect.Play();
     }
 
-    //Actions
+
     public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
     {
+        player.movementComp.SetDirection(inputContext.ReadValue<Vector2>().x);
         if (inputContext.canceled)
         {
-            //this should change
-            player.movementComp.rb.linearVelocityX = 5 * player.movementComp.direction;
-            ExitState(player, player.IdleState, null);
+            player.SetState(new IdleState());
         }
     }
-    
+
     public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        ExitState(player,player.JumpState,true);
+        if (inputContext.started)
+        {
+            player.mySounds.Jump();
+            player.SetState(new JumpState(true)); 
+        }
     }
 
     public override void Slide(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         if (inputContext.started)
         {
-           ExitState(player, player.SlideState, null); 
+           player.SetState(new SlideState()); 
         }
         
     }
@@ -40,19 +44,17 @@ public class MoveState : BaseState
         return;
     }
 
-    public override void ExitState(PlayerContext player, BaseState nextState, bool? isMovingHorizontal)
-    {
-        player.myAnimator.SetBool("isRunning", false);
-        player.SetState(nextState, isMovingHorizontal);
-
-    }
-
     public override void Shoot(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-          if (inputContext.started)
+        if (inputContext.started && player.myShotgun.canShoot)
         {
-          player.SetState(player.knockbackState, null);  
+          player.SetState(new KnockbackState(true));  
         }
+    }
+
+    public override void ExitState(PlayerContext player)
+    {
+        player.myRunEffect.Stop();
     }
 
 
@@ -60,17 +62,17 @@ public class MoveState : BaseState
     public override void FixedUpdate(PlayerContext player)
     {
 
-        if (!player.movementComp.GroundCollisionCheck())
+        if (!player.myCollision.IsTouchingGround())
         {
-            ExitState(player, player.InAirState, true);
+            player.SetState(new InAirState(true));
         }
 
-        if (player.movementComp.WallCollisionCheck())
+        if (player.myCollision.IsTouchingWall())
         {
             player.movementComp.resetMaxMoveSpeed();
         }
         player.movementComp.HorizontalMove();
-        player.movementComp.CheckMoveSpeed();
+        //player.movementComp.CheckMoveSpeed();
     }
 
 }

@@ -5,8 +5,7 @@ using UnityEngine;
 public class KillScript : MonoBehaviour
 {
 
-    [SerializeField]
-    private Enemy.Boss.BossContext _myBoss;
+
 
     [SerializeField]
     private List<Transform> _damageLocations;
@@ -20,7 +19,7 @@ public class KillScript : MonoBehaviour
     [SerializeField]
     public UnityEvent playerEnterFinalTrigger;
 
-    public UnityEvent spawnItem;
+
 
 
     [SerializeField]
@@ -29,7 +28,7 @@ public class KillScript : MonoBehaviour
     void Start()
     {
         _bloodEffect.Stop();
-        playerEnterFinalTrigger.AddListener(_myBoss.Death);
+
 
 
     }
@@ -44,7 +43,7 @@ public class KillScript : MonoBehaviour
         if (collision.gameObject.tag == "Boss")
         {
             _bloodEffect.Play();
-            spawnItem.Invoke();
+
         }
     }
 

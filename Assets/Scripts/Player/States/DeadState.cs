@@ -14,12 +14,15 @@ public class DeadState : BaseState
     {
 
         player.myAnimator.Play("Dying");
+        player.mySounds.Death();
         player.deadText.enabled = true;
-        player.myParticleSystem.Play();
+        player.myBloodEffect.Play();
         player.StopAllCoroutines();
+        LevelResultsScreen.mostRecentDeathCount++;
         // I want to invoke a function here to draw text to screen on how to respawn
 
     }
+   
     public override void Shoot(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         return;
@@ -66,6 +69,7 @@ public class DeadState : BaseState
         }
         
     }
+    
     }
 //}
 
