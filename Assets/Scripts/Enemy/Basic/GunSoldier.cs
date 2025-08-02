@@ -21,16 +21,15 @@ public class GunSoldier : MonoBehaviour
         void Start()
         {
             _myCoroutine = Shoot();
-            StartCoroutine(_myCoroutine);
-            
+            StartCoroutine(_myCoroutine); 
         }
-
+        //Time between shots from the emeny
         private IEnumerator Shoot()
         {
             
             yield return new WaitForSecondsRealtime(_timeBetweenShots);
             //spawn bullet
-            Projectile bullet = ObjectPool.SharedInstance.GetPooledObject();
+            Projectile bullet = EnemyObjectPool.SharedInstance.GetPooledObject();
             if (bullet != null)
             {
                 
@@ -44,11 +43,4 @@ public class GunSoldier : MonoBehaviour
                 StartCoroutine(_myCoroutine);
         }
 
-
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
 }

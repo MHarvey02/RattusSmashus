@@ -36,6 +36,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private List<Button> _sewerButtons;
 
+    //Tracks which buttons are to be displayed on the screen
     [SerializeField]
     private List<Button> _currentMenu;
 
@@ -47,12 +48,11 @@ public class MainMenu : MonoBehaviour
         _menuSelection = 0;
         _currentMenu = _mainMenuButtons;
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     { 
         _currentMenu[_menuSelection].Select();
     }
-
+    //Uses the Y value of the input vector to move through the menu
     public void ChangeMenuOption(InputAction.CallbackContext inputContext)
     {
         if (inputContext.started)
@@ -70,19 +70,19 @@ public class MainMenu : MonoBehaviour
             _currentMenu[_menuSelection].Select();     
         } 
     }
-
+    //Make sure a button is selected
     private void CheckMenuLocationIsValid()
     {
         if(_menuSelection >= _currentMenu.Count){ _menuSelection = 0; }
         if(_menuSelection < 0){ _menuSelection = _currentMenu.Count -1; }
     }
-
+    //Moves the menu selection back to the default position
     private void ResetSelect()
     {
         _menuSelection = 0;
         _currentMenu[_menuSelection].Select();
     }
-
+    //Process the choice of the player
     public void Submit(InputAction.CallbackContext inputContext)
     {
         if (inputContext.started)
@@ -97,7 +97,7 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-
+    //Uses the name of the button to work out the level to load in the scenemangager
     public void PlaySelectedLevel()
     {
         int LevelIndex = Int32.Parse(_currentMenu[_menuSelection].gameObject.name);
@@ -108,15 +108,7 @@ public class MainMenu : MonoBehaviour
     {
 
         _currentMenu = _worldSelectButtons;
-
         _myAnimator.Play("LevelSelectEnter");
-        ResetSelect();
-    }
-
-    public void BackToWorldSelect()
-    {
-        _myAnimator.Play("LevelSelectEnter");
-        _currentMenu = _worldSelectButtons;
         ResetSelect();
     }
 
@@ -134,16 +126,12 @@ public class MainMenu : MonoBehaviour
         ResetSelect();
     }
 
-
-
     public void OpenStreetsButtons()
     {
         _myAnimator.Play("StreetsEnter");
         _currentMenu = _streetsButtons;
         ResetSelect();
     }
-
-
 
     public void OpenConstructionButtons()
     {
@@ -152,16 +140,12 @@ public class MainMenu : MonoBehaviour
         ResetSelect();
     }
 
-
-
     public void OpenSubwayButtons()
     {
         _myAnimator.Play("SubwayEnter");
         _currentMenu = _subwayButtons;
         ResetSelect();
     }
-
-
 
     public void OpenSewerButtons()
     {
@@ -170,16 +154,9 @@ public class MainMenu : MonoBehaviour
         ResetSelect();
     }
 
-
-
     public void Quit()
     {
         Application.Quit();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

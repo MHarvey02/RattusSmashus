@@ -144,18 +144,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5742396849858858247}
   currentMoveSpeedCap: 15
-  defaultMoveSpeedCap: 15
-  moveSpeed: 25
+  _defaultMoveSpeedCap: 15
+  _moveSpeed: 50
   Direction: 0
   _moveSpeedAir: 60
   _WallJumpForce: {x: 1200, y: 1400}
-  _fallSpeedIncrease: -25
+  _fallSpeedIncrease: -10
   _wallJumpDirection: 0
-  speedIncrease: 2
+  _speedIncrease: 2
   maxMoveSpeedCap: 25
   jumpHeight: 1200
-  wallJumpSpeed: 800
-  wallSpeedBoost: 1.5
+  _wallSpeedBoost: 1.5
+  _grappleJumpHeight: {x: 0, y: 0}
   canDoubleJump: 1
   hasDoubleJumpAbility: 1
   _wallBoostAmount: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db956792258bb342818fa7d47a2da73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementComp: {fileID: 6002195844426747894}
+  myMovementComp: {fileID: 6002195844426747894}
   myCollision: {fileID: 5809291125583284740}
   myAnimator: {fileID: 4892831681220094603}
   myShotgun: {fileID: 0}
@@ -600,12 +600,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _direction: 0
-  rayCastDistanceFloor: 0.7
-  rayCastDistanceWall: 0.5
-  wallCollisionLM:
+  _rayCastDistanceFloor: 0.7
+  _rayCastDistanceWall: 0.5
+  _wallCollisionLM:
     serializedVersion: 2
     m_Bits: 192
-  groundCollisionLM:
+  _groundCollisionLM:
     serializedVersion: 2
     m_Bits: 64
 --- !u!114 &1263693924012777053
@@ -1019,7 +1019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TrackerSettings:
     BindingMode: 4
-    PositionDamping: {x: 1, y: 1, z: 1}
+    PositionDamping: {x: 0, y: 0, z: 0}
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1

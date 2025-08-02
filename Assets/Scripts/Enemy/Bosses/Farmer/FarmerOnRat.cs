@@ -37,7 +37,7 @@ public class FarmerOnRat : MonoBehaviour
         _shootCoroutine = Shoot();
         StartCoroutine(_shootCoroutine);
     }
-
+    //Death of the rat leads to the farmer flying off of it
     public void FallOffRat()
     {
 
@@ -47,21 +47,22 @@ public class FarmerOnRat : MonoBehaviour
         StopCoroutine(_shootCoroutine);
         StartCoroutine("Despawn");
     }
-
+    //Time between shots from the farmer
+    // //Spawn projectile from pool, give random spread, move in direction of player
     private IEnumerator Shoot()
     {
         _mySounds.ReadyAttack();
         yield return new WaitForSecondsRealtime(_shotTime);
-        //spawn projectile from pool, give random spread, move in direction of player
+        
 
         _shootCoroutine = Shoot();
         StartCoroutine(_shootCoroutine);
-        //spawn bullet
+        //Spawn bullet
         _mySounds.Shoot();
         _playerDirection = _myPlayer.transform.position - transform.position;
         for (int i = 0; i < _bulletsPerShot; i++)
         {
-            Projectile bullet = ObjectPool.SharedInstance.GetPooledObject();
+            Projectile bullet = EnemyObjectPool.SharedInstance.GetPooledObject();
             if (bullet != null)
             {
 
@@ -77,7 +78,7 @@ public class FarmerOnRat : MonoBehaviour
             _mySounds.Shoot();
         }   
     }
-
+    //Despawn the boss after he has flown off of the rat
     IEnumerator Despawn()
     {
         yield return new WaitForSecondsRealtime(5);

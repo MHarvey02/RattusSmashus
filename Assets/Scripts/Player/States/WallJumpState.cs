@@ -9,7 +9,7 @@ public class WallJumpState : BaseState
     public override void EnterState(PlayerContext player)
     {
         player.myAnimator.SetTrigger("isWallJumping");
-        player.movementComp.WallJump();
+        player.myMovementComp.WallJump();
         player.myAnimator.SetTrigger("isWallJumping");
         player.SetState(new InAirState());
     }

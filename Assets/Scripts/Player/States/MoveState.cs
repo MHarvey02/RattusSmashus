@@ -14,7 +14,7 @@ public class MoveState : BaseState
 
     public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        player.movementComp.SetDirection(inputContext.ReadValue<Vector2>().x);
+        player.myMovementComp.SetDirection(inputContext.ReadValue<Vector2>().x);
         if (inputContext.canceled)
         {
             player.SetState(new IdleState());
@@ -69,10 +69,10 @@ public class MoveState : BaseState
 
         if (player.myCollision.IsTouchingWall())
         {
-            player.movementComp.resetMaxMoveSpeed();
+            player.myMovementComp.resetMaxMoveSpeed();
         }
-        player.movementComp.HorizontalMove();
-        //player.movementComp.CheckMoveSpeed();
+        player.myMovementComp.HorizontalMove();
+        //player.myMovementComp.CheckMoveSpeed();
     }
 
 }

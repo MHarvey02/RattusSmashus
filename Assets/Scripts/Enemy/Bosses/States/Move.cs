@@ -15,9 +15,9 @@ namespace Enemy.Boss.States
             playLoc.y += 3;
             playLoc.x -= 5 * boss.myVision.direction;
             
-            
+            //Move the boss towards the player  
             boss.transform.position = Vector2.MoveTowards(boss.transform.position, playLoc, boss.moveSpeed * Time.deltaTime);
-
+            //Check if the player is close enough to chase
             if (boss.myVision.DrawBoxCast() != null)
             {
                 boss.SetState(boss.chase);

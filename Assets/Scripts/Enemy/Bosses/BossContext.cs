@@ -43,16 +43,15 @@ namespace Enemy.Boss
             SetState(move);
         }
 
-
         public void SetState(Base nextState)
         {
             _currentState = nextState;
             _currentState.EnterState(this);
         }
-
+        //Fires a projectile towards the player
         public void Attack()
         {
-            Projectile bullet = ObjectPool.SharedInstance.GetPooledObject();
+            Projectile bullet = EnemyObjectPool.SharedInstance.GetPooledObject();
             MySounds.Shoot();
             if (bullet != null)
             {

@@ -8,15 +8,15 @@ public class IdleState : BaseState
 {
     public override void EnterState(PlayerContext player)
     {
-        player.movementComp.resetMaxMoveSpeed();
-        player.movementComp.rb.linearVelocity = new Vector2(0, 0);
+        player.myMovementComp.resetMaxMoveSpeed();
+        player.myMovementComp.rb.linearVelocity = new Vector2(0, 0);
         player.myAnimator.Play("Idle");
 
     }
 
     public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        player.movementComp.SetDirection(inputContext.ReadValue<Vector2>().x);
+        player.myMovementComp.SetDirection(inputContext.ReadValue<Vector2>().x);
         if (inputContext.started)
         {
             player.SetState(new MoveState());

@@ -10,7 +10,7 @@ public class JumpState : BaseState
     public override void EnterState(PlayerContext player)
     {
         player.myAnimator.Play("Jumping");
-        player.movementComp.Jump();
+        player.myMovementComp.Jump();
     }
 
     public JumpState(bool isMoving = false)
@@ -20,12 +20,12 @@ public class JumpState : BaseState
 
     public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        player.movementComp.SetDirection(inputContext.ReadValue<Vector2>().x);     
+        player.myMovementComp.SetDirection(inputContext.ReadValue<Vector2>().x);     
     }
 
     public override void FixedUpdate(PlayerContext player)
     {
-        player.movementComp.CheckMoveSpeed();
+        player.myMovementComp.CheckMoveSpeed();
         if (!player.myCollision.IsTouchingGround())
         {
             player.SetState(new InAirState(_isMoving));

@@ -23,7 +23,7 @@ namespace Enemy.Boss.States
             coroutine = ExitChase(boss);
             boss.StartCoroutine(coroutine);
         }
-
+        //Move the boss towards the player
         public override void Update(BossContext boss)
         {
             Vector2 location = boss.myPlayer.transform.position + _distanceFromPlayer;
@@ -31,6 +31,7 @@ namespace Enemy.Boss.States
            
         }
     
+        //Time between checking if the player is still in the bosses chase range
         public IEnumerator ExitChase(BossContext boss)
         {
             boss.MySounds.ReadyAttack();
@@ -53,8 +54,6 @@ namespace Enemy.Boss.States
                     _distanceFromPlayer.y = 0;
                     _distanceFromPlayer.x = 0;
                 }
-                 
-                
 
             }
         }

@@ -8,8 +8,8 @@ namespace Enemy.Melee.States
     {
         public override void EnterState(StateContext enemy)
         {
-            //run animation
-            //move back to patrol
+     
+            //Move back to patrol
             enemy.StartCoroutine(waitTIme(enemy));
 
         }

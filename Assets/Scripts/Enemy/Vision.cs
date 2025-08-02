@@ -20,7 +20,7 @@ public class Vision : MonoBehaviour
 
     [SerializeField]
     private float _chaseBoxCastDistance;
-    // draw box 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,6 +28,7 @@ public class Vision : MonoBehaviour
     }
     //This will be used for the bosses
 #nullable enable
+    // Draws a boxcast to act as the bosses vision
     public GameObject? DrawBoxCast()
     {
         RaycastHit2D boxCast = Physics2D.BoxCast(transform.localPosition + new Vector3(_boxCastDistance * direction, 0, 0),
@@ -48,7 +49,6 @@ public class Vision : MonoBehaviour
         _boxCastDistance = _defaultBoxCastDistance;
         return null;
     }
-
 
     //This will be used for the basic melee enemies
     public RaycastHit2D? DrawLineCast()

@@ -13,13 +13,13 @@ public class GrappleState : BaseState
 
     public override void EnterState(PlayerContext player)
     {
-        player.movementComp.canDoubleJump = player.movementComp.hasDoubleJumpAbility;
+        player.myMovementComp.canDoubleJump = player.myMovementComp.hasDoubleJumpAbility;
         player.mySounds.Grapple();
     }
     
     public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        player.movementComp.SetDirection(inputContext.ReadValue<Vector2>().x);
+        player.myMovementComp.SetDirection(inputContext.ReadValue<Vector2>().x);
 
         if (inputContext.canceled)
         {
@@ -51,7 +51,7 @@ public class GrappleState : BaseState
     public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         player.mySounds.Jump();
-        player.movementComp.JumpFromGrapple();
+        player.myMovementComp.JumpFromGrapple();
         player.SetState(new InAirState(_isMovingHorizontal));
     }
 
@@ -64,7 +64,7 @@ public class GrappleState : BaseState
     //Updates
     public override void FixedUpdate(PlayerContext player)
     {
-        player.movementComp.HorizontalMoveInAir();
+        player.myMovementComp.HorizontalMoveInAir();
 
         player.myGrapple.DrawGrappleLine();
         if (player.myCollision.IsTouchingGround())

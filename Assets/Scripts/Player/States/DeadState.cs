@@ -13,7 +13,7 @@ public class DeadState : BaseState
     public override void EnterState(PlayerContext player)
     {
 
-        player.myAnimator.Play("Dying");
+        player.myAnimator.Play("DeathRedo");
         player.mySounds.Death();
         player.deadText.enabled = true;
         player.myBloodEffect.Play();

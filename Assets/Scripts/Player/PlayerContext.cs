@@ -12,8 +12,8 @@ using UnityEngine.InputSystem;
 public class PlayerContext : MonoBehaviour
 {
 
-    public BaseState currentState = new IdleState();
-    public Movement movementComp;
+    private BaseState _currentState = new IdleState();
+    public Movement myMovementComp;
     public PlayerCollision myCollision;
     public Animator myAnimator;
     public Shotgun myShotgun;
@@ -51,26 +51,26 @@ public class PlayerContext : MonoBehaviour
 
         myBloodEffect.Stop();
         myRunEffect.Stop();
+        myAnimator.enabled = true;
         
     }
 
     void Start()
     {
-        currentState.EnterState(this);
+        _currentState.EnterState(this);
     }
 
     public void SetState(BaseState newState)
     {
-        currentState.ExitState(this);
-        currentState = newState;
-        Debug.Log(currentState);
-        currentState.EnterState(this);
+        _currentState.ExitState(this);
+        _currentState = newState;
+        _currentState.EnterState(this);
     }
 
     public void GiveDoubleJump()
     {
-        movementComp.canDoubleJump = true;
-        movementComp.hasDoubleJumpAbility = true;
+        myMovementComp.canDoubleJump = true;
+        myMovementComp.hasDoubleJumpAbility = true;
     }
 
     public void GiveShotgun()
@@ -79,26 +79,25 @@ public class PlayerContext : MonoBehaviour
     }
 
     //Actions
-    public void Move(InputAction.CallbackContext inputContext) => currentState.Move(inputContext, this);
+    public void Move(InputAction.CallbackContext inputContext) => _currentState.Move(inputContext, this);
 
-    public void Jump(InputAction.CallbackContext inputContext) => currentState.Jump(inputContext, this);
+    public void Jump(InputAction.CallbackContext inputContext) => _currentState.Jump(inputContext, this);
 
-    public void Slide(InputAction.CallbackContext inputContext) => currentState.Slide(inputContext, this);
+    public void Slide(InputAction.CallbackContext inputContext) => _currentState.Slide(inputContext, this);
 
-    public void Grapple(InputAction.CallbackContext inputContext) => currentState.Grapple(inputContext, this);
+    public void Grapple(InputAction.CallbackContext inputContext) => _currentState.Grapple(inputContext, this);
 
-    public void GrapplePull(InputAction.CallbackContext inputContext) => currentState.GrapplePull(inputContext, this);
+    public void GrapplePull(InputAction.CallbackContext inputContext) => _currentState.GrapplePull(inputContext, this);
 
+    public void Shoot(InputAction.CallbackContext inputContext) => _currentState.Shoot(inputContext, this);
 
-    public void Shoot(InputAction.CallbackContext inputContext) => currentState.Shoot(inputContext, this);
+    public void SkipLevel(InputAction.CallbackContext inputContext) => _currentState.SkipLevel(inputContext, this);
 
-    public void SkipLevel(InputAction.CallbackContext inputContext) => currentState.SkipLevel(inputContext, this);
+    public void OnCollisionEnter2D(Collision2D collision) => _currentState.OnCollisionEnter2D(collision, this);
 
-    public void OnCollisionEnter2D(Collision2D collision) => currentState.OnCollisionEnter2D(collision, this);
-
-    public void OnTriggerEnter2D(Collider2D collision) => currentState.OnTriggerEnter2D(collision, this);
+    public void OnTriggerEnter2D(Collider2D collision) => _currentState.OnTriggerEnter2D(collision, this);
     //Updates
-    public void FixedUpdate() => currentState.FixedUpdate(this);
+    public void FixedUpdate() => _currentState.FixedUpdate(this);
 }
 
 
