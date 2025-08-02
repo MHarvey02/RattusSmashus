@@ -4,8 +4,6 @@ using UnityEngine;
 public class GrapplePoint : MonoBehaviour
 {
 
-
-
     [SerializeField]
     private DistanceJoint2D _myJoint;
     [SerializeField]
@@ -16,34 +14,26 @@ public class GrapplePoint : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void Awake()
-    {
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
+    //Attatches a rigidbody to the distance joint
     public void Attatch(Rigidbody2D RbToAttatch)
     {
-        _myJoint.connectedBody = RbToAttatch;     
+        _myJoint.connectedBody = RbToAttatch;
     } 
-
+    //Detatches a rigidbody to the distance joint
     public void Detatch()
     {
         _myJoint.connectedBody = null;     
     }
 
+    //Enables the sprite to show the player they can interact with the grapple point
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-           _mySpriteRenderer.enabled = true; 
+            _mySpriteRenderer.enabled = true;
         }
     }
-
+    //Disables the sprite when the player is no longer in interaction range
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -52,10 +42,4 @@ public class GrapplePoint : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    public void FixedUpdateUpdate()
-    {
-        _mySpriteRenderer.gameObject.transform.Rotate(0, 0, 5 * Time.deltaTime);
-    }
-    
 }

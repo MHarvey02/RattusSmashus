@@ -19,16 +19,13 @@ public class FollowPath : MonoBehaviour
     Vector3 NextLoc;
     int nextIndex = 0;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
         GetLocations(); 
-        
-        
         GetNextLocation();
     }
 
+    //Get the transforms of the waypoint the game object will move between
     private void GetLocations()
     {
         foreach (Transform child in Waypoints)
@@ -36,7 +33,7 @@ public class FollowPath : MonoBehaviour
             locations.Add(child);
         }
     }
-
+    // Gets the location the game object needs to move towards
     private void GetNextLocation()
     {
         NextLoc = locations[nextIndex].transform.position;
@@ -52,7 +49,7 @@ public class FollowPath : MonoBehaviour
     public void Move()
     {
         transform.position = Vector2.MoveTowards(transform.position, NextLoc, MoveSpeed * Time.deltaTime);
-
+        //Check if the game object is near the current waypoint to get the next location if needed
         if (Mathf.Approximately(transform.position.x,NextLoc.x) && Mathf.Approximately(transform.position.y, NextLoc.y))
         {
             GetNextLocation();

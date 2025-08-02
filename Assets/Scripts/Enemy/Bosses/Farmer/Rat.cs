@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,17 +20,26 @@ public class Rat : MonoBehaviour
 
     [SerializeField]
     private SpawnItem _shotgunItem;
+    [SerializeField]
+    private ParticleSystem _myParticleSystem;
+
+    [SerializeField]
+    private List<BoxCollider2D> _myColliders;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
         _myRB.linearVelocity = _speed;
         _animator.Play("Idle");
     }
 
     void Death()
     {
+        _myParticleSystem.Stop();
         _animator.Play("RatDeath");
+        foreach (BoxCollider2D collider in _myColliders){
+            collider.enabled= false;
+        }
+
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -44,14 +54,7 @@ public class Rat : MonoBehaviour
             _myRB.linearVelocity = new(0, 0);
             _farmer.FallOffRat();
             _deathNail.SetActive(true);
-
-        }
-        
+        } 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

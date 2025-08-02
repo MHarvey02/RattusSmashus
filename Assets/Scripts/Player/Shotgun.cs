@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using Unity.Mathematics;
 
 public class Shotgun : MonoBehaviour
 {
@@ -69,12 +70,13 @@ public class Shotgun : MonoBehaviour
                 coroutine = Reload();
                 for (int i = 0; i < _shotAmount; i++)
                 {
-                    Projectile bullet = ObjectPool.SharedInstance.GetPooledObject();
+                    Projectile bullet = PlayerObjectPool.SharedInstance.GetPooledObject();
                     if (bullet != null)
                     {
                         bullet.gameObject.SetActive(true);
+                        bullet.gameObject.transform.rotation = new quaternion(aimDirection.x,aimDirection.y,0,0);
                         bullet.SetLocation(aimDirection);
-                        bullet.transform.position = transform.position + new Vector3(aimDirection.x,aimDirection.y,0);
+                        bullet.transform.position = transform.position;
                         
                         //bullet.transform.rotation = transform.rotation;
 

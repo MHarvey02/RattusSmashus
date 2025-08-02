@@ -21,7 +21,7 @@ public abstract class BaseState
             GrapplePoint grapplePoint = player.myGrapple.GetHook();
             if (grapplePoint)
             {
-                player.myGrapple.currentGrapplePoint.Attatch(player.movementComp.rb);
+                player.myGrapple.currentGrapplePoint.Attatch(player.myMovementComp.rb);
                 player.SetState(new GrappleState()); 
             }
                  

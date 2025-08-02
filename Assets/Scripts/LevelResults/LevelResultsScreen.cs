@@ -1,4 +1,3 @@
-using Mono.Cecil.Cil;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,21 +16,13 @@ public class LevelResultsScreen : MonoBehaviour
     [SerializeField]
     private TMP_Text _mostRecentTimeText;
 
-    [SerializeField]
-    private TMP_Text _nextLevelName;
-
     public void Awake()
     {
         _deathCountText.text = mostRecentDeathCount.ToString();
         _mostRecentTimeText.text = mostRecentTime.ToString("0.00");
-        //Debug.Log(SceneManager.GetSceneByBuildIndex(1).name);
-        //_nextLevelName.text = SceneManager.GetSceneByBuildIndex(nextLevel).name;
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
 
     }
+
 
     public void LoadNextLevel()
     { 

@@ -16,7 +16,7 @@ public class SlideState : BaseState
         _nextState = new MoveState();
 
         player.myAnimator.Play("StartSlide");
-        player.movementComp.Slide();
+        player.myMovementComp.Slide();
 
         SlideTimeCoroutine = SlideTime(player);
         player.StartCoroutine(SlideTimeCoroutine);
@@ -37,11 +37,11 @@ public class SlideState : BaseState
             _isMoving = true;
         }
 
-        if (inputContext.ReadValue<Vector2>().x == player.movementComp.Direction * -1)
+        if (inputContext.ReadValue<Vector2>().x == player.myMovementComp.Direction * -1)
         {
             player.StartCoroutine(CancelSlide(player));
         }
-        player.movementComp.SetDirection(inputContext.ReadValue<Vector2>().x);
+        player.myMovementComp.SetDirection(inputContext.ReadValue<Vector2>().x);
     }
 
     public IEnumerator CancelSlide(PlayerContext player)
@@ -67,7 +67,7 @@ public class SlideState : BaseState
 
     public override void FixedUpdate(PlayerContext player)
     {
-        //player.movementComp.CheckMoveSpeed();
-        player.movementComp.HorizontalMoveInAir();
+        //player.myMovementComp.CheckMoveSpeed();
+        player.myMovementComp.HorizontalMoveInAir();
     }
 }

@@ -15,12 +15,12 @@ public class OnWallState : BaseState
     public override void EnterState(PlayerContext player)
     {
         player.myAnimator.Play("WallSlide");
-        player.movementComp.HitWall();
+        player.myMovementComp.HitWall();
     }
 
     public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        player.movementComp.SetDirection(inputContext.ReadValue<Vector2>().x);
+        player.myMovementComp.SetDirection(inputContext.ReadValue<Vector2>().x);
         if (inputContext.started)
         {
             _isMoving = true;
@@ -55,7 +55,7 @@ public class OnWallState : BaseState
     {
 
         //Change to variable
-        player.movementComp.currentMoveSpeedCap += 0.5f * Time.deltaTime;
+        player.myMovementComp.currentMoveSpeedCap += 0.5f * Time.deltaTime;
 
         
         if (player.myCollision.IsTouchingGround())
@@ -67,6 +67,6 @@ public class OnWallState : BaseState
         {
             player.SetState(new InAirState(_isMoving));
         }
-        player.movementComp.HorizontalMoveInAir();
+        player.myMovementComp.HorizontalMoveInAir();
     }
 }

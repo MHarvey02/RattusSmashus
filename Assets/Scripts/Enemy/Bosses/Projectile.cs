@@ -15,48 +15,50 @@ using UnityEngine;
 
         private IEnumerator _myCoroutine;
 
+        [SerializeField]
+        private TrailRenderer _myTrail;
 
-        void OnEnable(){
-            _myCoroutine = TimeAlive();
-            StartCoroutine(_myCoroutine);}
+    public void Awake()
+    {
+        _myTrail = GetComponent<TrailRenderer>();
+    }
+    void OnEnable()
+    {
+        _myCoroutine = TimeAlive();
+        StartCoroutine(_myCoroutine);
+        _myTrail.Clear();
+    }
+            
+    //Set initial location of the projectile        
+    public void SetLocation(Vector3 endTransform)
+    {
+        _direction = endTransform - transform.position;
+        //Adding random spread to the shot
+        _direction += new Vector2(0, Random.Range(-3, 3));
+        _myRB.linearVelocity = _direction * speed;
+    }
 
+    public void SetVelocity(Vector2 speed)
+    {
+    _myRB.linearVelocity = speed;
+    }
 
-        public void SetLocation(Vector3 endTransform)
-        {
-            _direction = endTransform - transform.position;
-            //Adding random spread to the shot
-            _direction += new Vector2(0, Random.Range(-3, 3));
-            _myRB.linearVelocity = _direction * speed;
-        }
-
-        public void SetVelocity(Vector2 speed)
-        {
-        _myRB.linearVelocity = speed;
-
-        }
-
-
-        private IEnumerator TimeAlive()
-        {
+    //How long the projectile should be active for
+    private IEnumerator TimeAlive()
+    {
         yield return new WaitForSecondsRealtime(3);
         _myCoroutine = TimeAlive();
         gameObject.SetActive(false);
-        }
+    }
 
-        public void OnCollisionEnter2D(Collision2D collision)
-        {
-            if(collision.gameObject.tag == "trap")
-            { return; }
-            gameObject.SetActive(false);
-            StopCoroutine(_myCoroutine);
-        }
-        
-        // Update is called once per frame
-        void FixedUpdate()
-        {
-            
-
-        }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "trap")
+        { return; }
+        gameObject.SetActive(false);
+        StopCoroutine(_myCoroutine);
+    }
+    
 }
 
 

@@ -5,16 +5,17 @@ using System.Collections.Generic;
 //Code adapted from https://learn.unity.com/tutorial/introduction-to-object-pooling#
 public class ObjectPool : MonoBehaviour
 {
-    public static ObjectPool SharedInstance;
+   // public static ObjectPool SharedInstance;
     public List<Projectile> pooledObjects;
     public Projectile objectToPool;
+    [SerializeField]
     public int amountToPool;
-
+/*
     void Awake()
     {
         SharedInstance = this;
     }
-
+*/
     void Start()
     {
         pooledObjects = new List<Projectile>();

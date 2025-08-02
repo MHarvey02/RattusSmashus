@@ -35,18 +35,18 @@ public class InAirState : BaseState
                 _nextState = new IdleState();
                 _isMoving = false;
             }
-        player.movementComp.SetDirection(inputContext.ReadValue<Vector2>().x);      
+        player.myMovementComp.SetDirection(inputContext.ReadValue<Vector2>().x);      
     }
     
     public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         if (inputContext.started)
         {
-            if (player.movementComp.canDoubleJump)
+            if (player.myMovementComp.canDoubleJump)
             {
                 player.mySounds.DoubleJump();
-                player.movementComp.Jump();
-                player.movementComp.canDoubleJump = false;
+                player.myMovementComp.Jump();
+                player.myMovementComp.canDoubleJump = false;
             } 
         }
     }
@@ -63,14 +63,14 @@ public class InAirState : BaseState
     //Updates
     public override void FixedUpdate(PlayerContext player)
     {
-        player.movementComp.HorizontalMoveInAir();
-        player.movementComp.AddtionalGravity();
-        //player.movementComp.CheckMoveSpeed();
+        player.myMovementComp.HorizontalMoveInAir();
+        player.myMovementComp.AddtionalGravity();
+        //player.myMovementComp.CheckMoveSpeed();
 
 
         if (player.myCollision.IsTouchingGround())
         {
-            player.movementComp.canDoubleJump = player.movementComp.hasDoubleJumpAbility;
+            player.myMovementComp.canDoubleJump = player.myMovementComp.hasDoubleJumpAbility;
 
 
             player.SetState(_nextState);
@@ -78,7 +78,7 @@ public class InAirState : BaseState
 
         if (player.myCollision.IsTouchingWall())
         {
-            player.movementComp.canDoubleJump = player.movementComp.hasDoubleJumpAbility;
+            player.myMovementComp.canDoubleJump = player.myMovementComp.hasDoubleJumpAbility;
 
             player.SetState(new OnWallState(_isMoving));
         }

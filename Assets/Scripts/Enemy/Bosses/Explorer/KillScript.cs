@@ -5,8 +5,6 @@ using UnityEngine;
 public class KillScript : MonoBehaviour
 {
 
-
-
     [SerializeField]
     private List<Transform> _damageLocations;
 
@@ -19,18 +17,13 @@ public class KillScript : MonoBehaviour
     [SerializeField]
     public UnityEvent playerEnterFinalTrigger;
 
-
-
-
     [SerializeField]
     private ParticleSystem _bloodEffect;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _bloodEffect.Stop();
-
-
-
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -46,7 +39,7 @@ public class KillScript : MonoBehaviour
 
         }
     }
-
+    //Triggers a trap to move in the level
     private void MoveTrap()
     {
 
@@ -58,9 +51,5 @@ public class KillScript : MonoBehaviour
             _currentTrap = 0;
         }
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
