@@ -8,6 +8,22 @@ public class PlayerSounds : MonoBehaviour
     private List<AudioClip> _playerSound;
     [SerializeField]
     private AudioSource _myAudioSource;
+
+    public void StepOne()
+    {
+        _myAudioSource.PlayOneShot(_playerSound[4]);
+    }
+
+    public void StepTwo()
+    {
+        _myAudioSource.PlayOneShot(_playerSound[5]);
+    }
+
+    public void Slide()
+    {
+        _myAudioSource.PlayOneShot(_playerSound[6]);
+    }
+
     //Plays the sound for the players jump
     public void Jump()
     {
@@ -31,5 +47,6 @@ public class PlayerSounds : MonoBehaviour
     {
         _myAudioSource.PlayOneShot(_playerSound[2]);
     }
+
     
 }

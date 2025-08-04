@@ -55,6 +55,16 @@ public class KnockbackState : BaseState
 
     }
 
+    public override void Grapple(InputAction.CallbackContext inputContext, PlayerContext player)
+    {
+        return;
+    }
+
+    public override void GrapplePull(InputAction.CallbackContext inputContext, PlayerContext player)
+    {
+        return;
+    }
+
     public override void Shoot(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         return;

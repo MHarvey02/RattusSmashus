@@ -16,6 +16,7 @@ public class SlideState : BaseState
         _nextState = new MoveState();
 
         player.myAnimator.Play("StartSlide");
+        //player.mySounds.Slide();
         player.myMovementComp.Slide();
 
         SlideTimeCoroutine = SlideTime(player);
@@ -55,6 +56,7 @@ public class SlideState : BaseState
     public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         player.StopCoroutine(SlideTimeCoroutine);
+        player.mySounds.Jump();
         player.SetState(new JumpState(_isMoving));
     }
     

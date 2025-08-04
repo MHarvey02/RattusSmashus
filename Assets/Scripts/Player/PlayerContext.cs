@@ -18,6 +18,7 @@ public class PlayerContext : MonoBehaviour
     public Animator myAnimator;
     public Shotgun myShotgun;
     public Grapple myGrapple;
+
     [SerializeField]
     public PlayerSounds mySounds;
     #region Events
@@ -27,15 +28,19 @@ public class PlayerContext : MonoBehaviour
     public UnityEvent completeLevelEvent;
     #endregion
 
+    #region Particle Systems
     [SerializeField]
     public ParticleSystem myBloodEffect;
 
     [SerializeField]
     public ParticleSystem myRunEffect;
 
-    //This needs to be changed and is only here for testing
+    [SerializeField]
+    public ParticleSystem myDoubleJumpEffect;
+    #endregion
     [SerializeField]
     public TMP_Text deadText;
+    
 
 
     // Start is called before the first frame update
@@ -51,6 +56,7 @@ public class PlayerContext : MonoBehaviour
 
         myBloodEffect.Stop();
         myRunEffect.Stop();
+        myDoubleJumpEffect.Stop();
         myAnimator.enabled = true;
         
     }

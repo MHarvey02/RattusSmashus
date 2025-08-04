@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 5809291125583284740}
   - component: {fileID: 1263693924012777053}
   - component: {fileID: 504508378695133791}
-  - component: {fileID: 6293717919499522203}
   m_Layer: 8
   m_Name: Player1Upgrade
   m_TagString: Player
@@ -46,6 +45,7 @@ Transform:
   - {fileID: 204953553772111915}
   - {fileID: 424787740337650012}
   - {fileID: 8305522213649342796}
+  - {fileID: 2266472547964265980}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3031335858483533568
@@ -150,10 +150,11 @@ MonoBehaviour:
   _moveSpeedAir: 60
   _WallJumpForce: {x: 1200, y: 1400}
   _fallSpeedIncrease: -10
-  _wallJumpDirection: 0
+  wallJumpDirection: 0
   _speedIncrease: 2
-  maxMoveSpeedCap: 25
+  _maxMoveSpeedCap: 25
   jumpHeight: 1200
+  _doublejumpHeight: 1400
   _wallSpeedBoost: 1.5
   _grappleJumpHeight: {x: 0, y: 0}
   canDoubleJump: 1
@@ -201,6 +202,7 @@ MonoBehaviour:
         m_CallState: 2
   myBloodEffect: {fileID: 2193771294629113770}
   myRunEffect: {fileID: 1275336451143043180}
+  myDoubleJumpEffect: {fileID: 8172891734613539486}
   deadText: {fileID: 614161362495813140}
 --- !u!114 &5932102265048949847
 MonoBehaviour:
@@ -489,6 +491,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5ca2baecd9e11cb43a2420b860f385b4, type: 3}
   - {fileID: 8300000, guid: 4d7e062c4a3feb444b3a61d19284bba6, type: 3}
   - {fileID: 8300000, guid: 6cf46bdd08bd36348b02e0c24f98a97d, type: 3}
+  - {fileID: 8300000, guid: 31aa1135c62e527458e83dca231d4d19, type: 3}
+  - {fileID: 8300000, guid: 484543ece4585334ba71bc101841266b, type: 3}
+  - {fileID: 8300000, guid: eeae075e1e794984eb43e480b293a609, type: 3}
   _myAudioSource: {fileID: 259693555843572243}
 --- !u!82 &259693555843572243
 AudioSource:
@@ -503,7 +508,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.475
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -602,6 +607,7 @@ MonoBehaviour:
   _direction: 0
   _rayCastDistanceFloor: 0.7
   _rayCastDistanceWall: 0.5
+  _rayCastDistanceWhileOnWall: 1
   _wallCollisionLM:
     serializedVersion: 2
     m_Bits: 192
@@ -736,23 +742,6 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &6293717919499522203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3031335858483533583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e578f68795a6df24eb799f2f42374086, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerSound:
-  - {fileID: 8300000, guid: d8dd8f69627ed7b43b2e79bb9f6ed771, type: 3}
-  - {fileID: 8300000, guid: a62e9b88a138c2543a404d8b239835b5, type: 3}
-  - {fileID: 8300000, guid: bb02a57cd4d073f4c82f5d57aa28bd86, type: 3}
-  _myAudioSource: {fileID: 259693555843572243}
 --- !u!1 &7555927123334696756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1013,73 @@ MonoBehaviour:
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   FollowOffset: {x: 0, y: 0, z: -10}
+--- !u!1001 &3963803095058878889
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3031335858483533569}
+    m_Modifications:
+    - target: {fileID: 2915624666917876821, guid: 3b20f462d1d14fe4883c945fee08ae49, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915624666917876821, guid: 3b20f462d1d14fe4883c945fee08ae49, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915624666917876821, guid: 3b20f462d1d14fe4883c945fee08ae49, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915624666917876821, guid: 3b20f462d1d14fe4883c945fee08ae49, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.93828195
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915624666917876821, guid: 3b20f462d1d14fe4883c945fee08ae49, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.34587145
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915624666917876821, guid: 3b20f462d1d14fe4883c945fee08ae49, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915624666917876821, guid: 3b20f462d1d14fe4883c945fee08ae49, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915624666917876821, guid: 3b20f462d1d14fe4883c945fee08ae49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 40.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915624666917876821, guid: 3b20f462d1d14fe4883c945fee08ae49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915624666917876821, guid: 3b20f462d1d14fe4883c945fee08ae49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028837815657348246, guid: 3b20f462d1d14fe4883c945fee08ae49, type: 3}
+      propertyPath: m_Name
+      value: BoostEffect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3b20f462d1d14fe4883c945fee08ae49, type: 3}
+--- !u!4 &2266472547964265980 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2915624666917876821, guid: 3b20f462d1d14fe4883c945fee08ae49, type: 3}
+  m_PrefabInstance: {fileID: 3963803095058878889}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8172891734613539486 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5073780325298580279, guid: 3b20f462d1d14fe4883c945fee08ae49, type: 3}
+  m_PrefabInstance: {fileID: 3963803095058878889}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6386258137586521736
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6628,10 +6628,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player3Upgrades
       objectReference: {fileID: 0}
-    - target: {fileID: 5941395793031345043, guid: 5033dc8ada55a5d449d9a1b4208dcef6, type: 3}
-      propertyPath: Lens.OrthographicSize
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

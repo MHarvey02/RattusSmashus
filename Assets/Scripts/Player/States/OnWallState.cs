@@ -7,13 +7,19 @@ using UnityEngine.InputSystem;
 public class OnWallState : BaseState
 {
     private bool _isMoving = false;
-
+    private float _jumpDirection;
     public OnWallState(bool isMoving = false)
     {
         _isMoving = isMoving;
     }
     public override void EnterState(PlayerContext player)
     {
+        _jumpDirection = player.myMovementComp.wallJumpDirection;
+        if (player.myMovementComp.wallJumpDirection == player.myMovementComp.Direction)
+        {
+            _jumpDirection *= -1;
+        }
+        
         player.myAnimator.Play("WallSlide");
         player.myMovementComp.HitWall();
     }
@@ -40,8 +46,9 @@ public class OnWallState : BaseState
         if (inputContext.started)
         {
             player.mySounds.Jump();
-            player.myCollision.ChangeDirection();
-            player.SetState(new WallJumpState());
+            player.myMovementComp.WallJump(_jumpDirection);
+            player.myCollision.ChangeDirection(_jumpDirection); 
+            player.SetState(new WallJumpState(_isMoving));
         }
 
     }
@@ -62,8 +69,8 @@ public class OnWallState : BaseState
         {
             player.SetState(new IdleState());
         }
-        //there is currently an issue where the play will move in their last direction when exiting the state this way
-        if (!player.myCollision.IsTouchingWall())
+        //There are two checks to give the player some leniency on being able to wall jump while moving away from the wall
+        if (!player.myCollision.IsTouchingWall() && !player.myCollision.IsOnStillWall())
         {
             player.SetState(new InAirState(_isMoving));
         }

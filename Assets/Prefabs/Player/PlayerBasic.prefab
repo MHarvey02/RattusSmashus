@@ -326,10 +326,11 @@ MonoBehaviour:
   _moveSpeedAir: 60
   _WallJumpForce: {x: 1200, y: 1400}
   _fallSpeedIncrease: -10
-  _wallJumpDirection: 0
+  wallJumpDirection: 0
   _speedIncrease: 2
-  maxMoveSpeedCap: 25
+  _maxMoveSpeedCap: 25
   jumpHeight: 1200
+  _doublejumpHeight: 1400
   _wallSpeedBoost: 1.5
   _grappleJumpHeight: {x: 0, y: 0}
   canDoubleJump: 0
@@ -401,6 +402,7 @@ MonoBehaviour:
         m_CallState: 2
   myBloodEffect: {fileID: 5437786935875656281}
   myRunEffect: {fileID: 5194407323628359688}
+  myDoubleJumpEffect: {fileID: 5073780325298580279, guid: 3b20f462d1d14fe4883c945fee08ae49, type: 3}
   deadText: {fileID: 7481794912986712006}
 --- !u!114 &5932102265048949847
 MonoBehaviour:
@@ -652,6 +654,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 01f13522ce2341a498f7e2ff97de74ef, type: 3}
   - {fileID: 8300000, guid: 5ca2baecd9e11cb43a2420b860f385b4, type: 3}
   - {fileID: 8300000, guid: 4d7e062c4a3feb444b3a61d19284bba6, type: 3}
+  - {fileID: 8300000, guid: 3007089060dcf9d4d86384b0c82a6ca1, type: 3}
+  - {fileID: 8300000, guid: 31aa1135c62e527458e83dca231d4d19, type: 3}
+  - {fileID: 8300000, guid: 484543ece4585334ba71bc101841266b, type: 3}
+  - {fileID: 8300000, guid: eeae075e1e794984eb43e480b293a609, type: 3}
   _myAudioSource: {fileID: -6165406197918342828}
 --- !u!82 &-6165406197918342828
 AudioSource:
@@ -765,6 +771,7 @@ MonoBehaviour:
   _direction: 0
   _rayCastDistanceFloor: 0.7
   _rayCastDistanceWall: 0.5
+  _rayCastDistanceWhileOnWall: 1
   _wallCollisionLM:
     serializedVersion: 2
     m_Bits: 192

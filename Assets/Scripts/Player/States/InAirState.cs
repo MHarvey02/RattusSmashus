@@ -44,8 +44,9 @@ public class InAirState : BaseState
         {
             if (player.myMovementComp.canDoubleJump)
             {
+                player.myDoubleJumpEffect.Play();
                 player.mySounds.DoubleJump();
-                player.myMovementComp.Jump();
+                player.myMovementComp.DoubleJump();
                 player.myMovementComp.canDoubleJump = false;
             } 
         }

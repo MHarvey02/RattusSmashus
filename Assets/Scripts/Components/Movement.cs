@@ -28,18 +28,21 @@ public class Movement : MonoBehaviour
 
 
     [SerializeField]
-    private float _wallJumpDirection;
+    public float wallJumpDirection;
 
     [SerializeField]
     //The amount the current speed cap will increase by when sliding
     private float _speedIncrease = 2;
     [SerializeField]
-    public float maxMoveSpeedCap = 20;
+    private float _maxMoveSpeedCap = 25;
     #endregion
 
     #region Jump
     [SerializeField]
-    public float jumpHeight = 400;
+    private float jumpHeight = 1200;
+
+    [SerializeField]
+    private float _doublejumpHeight = 600;
 
     [SerializeField]
     private float _wallSpeedBoost = 100;
@@ -84,7 +87,7 @@ public class Movement : MonoBehaviour
              return;
         }
         // When the player jumps off the wall it needs to be in the opposite direction to the wall
-        _wallJumpDirection = direction * -1;
+        wallJumpDirection = direction * -1;
 
 
     }
@@ -98,18 +101,19 @@ public class Movement : MonoBehaviour
         }
 
     }
+    
     // Moves the game object along the X axis based on the Direction variable when on the ground
     public void HorizontalMove()
     {
-        rb.AddForce( new(_moveSpeed * Direction,0));
-        _wallBoostAmount += 0.2f;
+        rb.AddForce(new(_moveSpeed * Direction, 0));
+        _wallBoostAmount += 0.1f;
     }
 
     // Moves the game object along the X axis based on the Direction variable, has a different multiplier for the change of speed as the object is in the air 
     public void HorizontalMoveInAir()
     {
         rb.AddForce(new Vector2(Direction * _moveSpeedAir, 0));
-        _wallBoostAmount += 0.2f;
+        _wallBoostAmount += 0.1f;
     }
     // Applies force to the game object to make it jump
     public void Jump()
@@ -118,11 +122,17 @@ public class Movement : MonoBehaviour
         rb.AddForce(new Vector2(0, jumpHeight));
     }
 
+    // Applies force to the game object to make it jump
+    public void DoubleJump()
+    {
+        rb.linearVelocityY = 0;
+        rb.AddForce(new Vector2(0, _doublejumpHeight));
+    }
+
     // For when the player jumps off of the grapple this helps move them horizontally as well as vertically
     public void JumpFromGrapple()
     {
         rb.linearVelocityY = 0;
-        //_grappleJumpHeight.x*Direction
         rb.AddForce(new Vector2(rb.linearVelocityX * _grappleJumpHeight.x, _grappleJumpHeight.y));
     }
     //Makes the game object fall faster if they remain in the air 
@@ -130,20 +140,26 @@ public class Movement : MonoBehaviour
     {
         rb.AddForceY(_fallSpeedIncrease);
     }
+
     // Applies force to move the player away from the wall and up
-    public void WallJump()
+    public void WallJump(float jumpDirection)
     {
         rb.linearVelocityY = 0;
         rb.linearVelocityX = 0;
-        _spriteRenderer.flipX = !_spriteRenderer.flipX;
-        rb.AddForce(new Vector2(_wallJumpDirection * _WallJumpForce.x, _WallJumpForce.y));
-        _wallJumpDirection *= -1;
+        if (jumpDirection != Direction)
+        {
+           _spriteRenderer.flipX = !_spriteRenderer.flipX; 
+        }
+        
+        rb.AddForce(new Vector2(jumpDirection * _WallJumpForce.x, _WallJumpForce.y));
+        wallJumpDirection *= -1;
         _wallBoostAmount = 10;
     }
+    
     //Incerease the current move speed cap while the player is sliding
     public void Slide()
     {
-        currentMoveSpeedCap += _speedIncrease;  
+        currentMoveSpeedCap += _speedIncrease;
     }
     //When the player stops moving or turns on the ground reset thier move speed cap to its default amount
     public void resetMaxMoveSpeed()
@@ -155,32 +171,16 @@ public class Movement : MonoBehaviour
     public void HitWall()
     {
 
-        if (rb.linearVelocity.y > -3.5)
+        if (rb.linearVelocity.y > -0)
         {
             if (_wallBoostAmount > 10)
             {
                 _wallBoostAmount = 10;
             }
-            rb.linearVelocity = new(0, _wallBoostAmount  * _wallSpeedBoost);
+            rb.linearVelocity = new(0, _wallBoostAmount * _wallSpeedBoost);
         }
     }
 
-    /*
-    causes too much of a slow down when in air
-        public void Brake(InputAction.CallbackContext inputContext)
-        {
-            if (inputContext.started)
-            {
-                currentMoveSpeedCap /= 2;
-                _defaultMoveSpeedCap /= 2;
-            }
-            if (inputContext.canceled)
-            {
-                currentMoveSpeedCap *= 2;
-                _defaultMoveSpeedCap *= 2;
-            }
-        }
-    */
     //Limits the speed the game object can move
     public void CheckMoveSpeed()
     {
@@ -194,9 +194,9 @@ public class Movement : MonoBehaviour
     {
         CheckMoveSpeed();
 
-        if (currentMoveSpeedCap > maxMoveSpeedCap)
+        if (currentMoveSpeedCap > _maxMoveSpeedCap)
         {
-            currentMoveSpeedCap = maxMoveSpeedCap;
+            currentMoveSpeedCap = _maxMoveSpeedCap;
         }
     }
 
