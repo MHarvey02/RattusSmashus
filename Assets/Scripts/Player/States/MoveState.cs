@@ -9,6 +9,11 @@ public class MoveState : BaseState
     {
         player.myAnimator.Play("Running");
         player.myRunEffect.Play();
+        player.myCollision.ChangeDirection(player.myMovementComp.Direction);
+        if (player.myMovementComp.Direction == 0)
+        {
+            player.SetState(new IdleState());
+        }
     }
 
 

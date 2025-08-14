@@ -38,9 +38,18 @@ using UnityEngine;
         _myRB.linearVelocity = _direction * speed;
     }
 
+    public void PlayerShoot(Vector3 endTransform)
+    {
+        _direction = endTransform - transform.position;
+        Debug.Log(_direction);
+        //Adding random spread to the shot
+
+        _myRB.linearVelocity = _direction * speed;
+    }
+
     public void SetVelocity(Vector2 speed)
     {
-    _myRB.linearVelocity = speed;
+        _myRB.linearVelocity = speed;
     }
 
     //How long the projectile should be active for

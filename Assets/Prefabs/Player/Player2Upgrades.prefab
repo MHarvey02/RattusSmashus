@@ -225,6 +225,7 @@ Transform:
   - {fileID: 1419283221256641856}
   - {fileID: 5830244351229004019}
   - {fileID: 7025802528285474018}
+  - {fileID: 1420868124705645725}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3031335858483533568
@@ -369,7 +370,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: HUD, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: LevelEnd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -662,6 +663,7 @@ MonoBehaviour:
   _grappleLM:
     serializedVersion: 2
     m_Bits: 512
+  _mySprite: {fileID: 2688160144395878137}
 --- !u!114 &2528631069156780136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,11 +679,12 @@ MonoBehaviour:
   _playerSound:
   - {fileID: 8300000, guid: 01f13522ce2341a498f7e2ff97de74ef, type: 3}
   - {fileID: 8300000, guid: 5ca2baecd9e11cb43a2420b860f385b4, type: 3}
-  - {fileID: 8300000, guid: 4d7e062c4a3feb444b3a61d19284bba6, type: 3}
-  - {fileID: 8300000, guid: 6cf46bdd08bd36348b02e0c24f98a97d, type: 3}
+  - {fileID: 8300000, guid: 84b5750821d39394da9bea18218c673e, type: 3}
+  - {fileID: 8300000, guid: 15a8b837512a013498a65e90dd31f19f, type: 3}
   - {fileID: 8300000, guid: 31aa1135c62e527458e83dca231d4d19, type: 3}
   - {fileID: 8300000, guid: 484543ece4585334ba71bc101841266b, type: 3}
-  - {fileID: 8300000, guid: eeae075e1e794984eb43e480b293a609, type: 3}
+  - {fileID: 8300000, guid: 43d174ba71b0db945ba4c89b4a73eb50, type: 3}
+  - {fileID: 8300000, guid: 045082e0c6995a14987799bff77a79fc, type: 3}
   _myAudioSource: {fileID: 2172532949474842771}
 --- !u!82 &2172532949474842771
 AudioSource:
@@ -696,7 +699,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -793,7 +796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _direction: 0
-  _rayCastDistanceFloor: 0.7
+  _rayCastDistanceFloor: 0.3
   _rayCastDistanceWall: 0.5
   _rayCastDistanceWhileOnWall: 1
   _wallCollisionLM:
@@ -846,10 +849,10 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -857,8 +860,17 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
+        time: 0.0052337646
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.24093933
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -870,8 +882,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.50728756, b: 0, a: 1}
-      key1: {r: 1, g: 0.50728756, b: 0, a: 1}
+      key0: {r: 0.3443396, g: 1, b: 0.898264, a: 1}
+      key1: {r: 0.3443396, g: 1, b: 0.898264, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -887,7 +899,7 @@ LineRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 37779
+      atime1: 64764
       atime2: 0
       atime3: 0
       atime4: 0
@@ -909,6 +921,93 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!1 &5272906222259215364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1420868124705645725}
+  - component: {fileID: 2688160144395878137}
+  m_Layer: 8
+  m_Name: Grapple
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1420868124705645725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5272906222259215364}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3031335858483533569}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2688160144395878137
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5272906222259215364}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 11
+  m_Sprite: {fileID: -3535184528703506323, guid: 7ab607623c51b1446a16a896dfa14e04, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.48, y: 0.7}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &8326212575461699500
 GameObject:
   m_ObjectHideFlags: 0

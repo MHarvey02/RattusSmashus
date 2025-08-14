@@ -10,11 +10,6 @@ public class Trap : MonoBehaviour
     [SerializeField]
     public FollowPath Path;
     
-    [SerializeField]
-    private bool _bossLevelMove = false;
-
-    [SerializeField]
-    private Transform _nextBossLoc;
 
     [SerializeField]
     private TrapSounds _mySounds;    
@@ -23,12 +18,6 @@ public class Trap : MonoBehaviour
     {
 
     }
-
-  public void BossMove(Transform nextLoc)
-  {
-    _nextBossLoc.position = nextLoc.position;
-    _bossLevelMove = true;
-  }
 
 
   public void OnCollisionEnter2D(Collision2D collision)
@@ -47,14 +36,7 @@ public class Trap : MonoBehaviour
     if (Path)
     {
       Path.Move();
-    }
-
-    if (_bossLevelMove)
-    {
-      transform.position = Vector2.MoveTowards(transform.position, _nextBossLoc.position, 5 * Time.deltaTime);    
-    }
-        
-        
+    }        
 
     }
 }

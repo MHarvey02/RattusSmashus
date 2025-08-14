@@ -15,32 +15,36 @@ public class GunSoldier : MonoBehaviour
 
         [SerializeField]
         public Projectile projectile;
+        
+        [SerializeField]
+        private BossSounds _mySounds;
 
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+    void Start()
+    {
+        _myCoroutine = Shoot();
+        StartCoroutine(_myCoroutine); 
+    }
+    
+    //Time between shots from the emeny
+    private IEnumerator Shoot()
+    {
+        yield return new WaitForSecondsRealtime(_timeBetweenShots);
+        //spawn bullet
+        Projectile bullet = EnemyObjectPool.SharedInstance.GetPooledObject();
+        if (bullet != null)
         {
-            _myCoroutine = Shoot();
-            StartCoroutine(_myCoroutine); 
+
+            bullet.transform.position = transform.position;
+            _mySounds.Shoot();
+            bullet.gameObject.SetActive(true);
+            bullet.SetVelocity(_direction);
+
         }
-        //Time between shots from the emeny
-        private IEnumerator Shoot()
-        {
-            
-            yield return new WaitForSecondsRealtime(_timeBetweenShots);
-            //spawn bullet
-            Projectile bullet = EnemyObjectPool.SharedInstance.GetPooledObject();
-            if (bullet != null)
-            {
-                
-                bullet.transform.position = transform.position;
-                bullet.gameObject.SetActive(true);
-                bullet.SetVelocity(_direction);
-                
-            }
-            
-                _myCoroutine = Shoot();
-                StartCoroutine(_myCoroutine);
-        }
+
+        _myCoroutine = Shoot();
+        StartCoroutine(_myCoroutine);
+    }
 
 }

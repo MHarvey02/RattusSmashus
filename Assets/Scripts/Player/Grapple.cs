@@ -32,39 +32,26 @@ public class Grapple : MonoBehaviour
     [SerializeField]
     private LayerMask _grappleLM;
 
+    [SerializeField]
+    private SpriteRenderer _mySprite;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
         _canPull = true;
-
-        // Set the material
-        //lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-
-        // Set the color
-        grappleLine.startColor = Color.blue;
-        grappleLine.endColor = Color.blue;
-
-        // Set the width
-        grappleLine.startWidth = 0.2f;
-        grappleLine.endWidth = 0.2f;
-
-        // Set the number of vertices
-        grappleLine.positionCount = 2;
-
         _myCoroutine = ResetCanPull();
-
     }
 
     IEnumerator ResetCanPull()
     {
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSecondsRealtime(1f);
         _canPull = true;
+        _mySprite.enabled = false;
         _myCoroutine = ResetCanPull();
     }
 
 
-    //Detect if near grapple point and return ref
+    //Detect if near grapple point and return reference
     #nullable enable
     public GrapplePoint? GetHook()
     {
@@ -72,7 +59,14 @@ public class Grapple : MonoBehaviour
         if (hit)
         {
             currentGrapplePoint = hit.collider.gameObject.GetComponent<GrapplePoint>();
-            return currentGrapplePoint;
+            //Only allow the player to attatch if they are below the hook
+            if (currentGrapplePoint.transform.position.y > gameObject.transform.position.y)
+            {
+                _mySprite.enabled = true;
+                return currentGrapplePoint;
+            }
+            return null;
+            
         }
         return null;
     }
@@ -80,18 +74,17 @@ public class Grapple : MonoBehaviour
     
     public void Pull()
     {
-        //calculate direction of grapple point
-        //apply force in that direction to player RB
+        //Calculate direction of grapple point
+        //Apply force in that direction to player RB
         if (_canPull)
         {
-            DrawGrappleLine();
+            _mySprite.enabled = true;
             Vector2 grapplePointLoc = currentGrapplePoint.gameObject.transform.position;
             Vector2 playerLoc = myRigidBody.transform.position;
             Vector2 directionToMove = grapplePointLoc - playerLoc;
             _canPull = false;
             StartCoroutine(_myCoroutine);
             myRigidBody.AddForce(directionToMove.normalized * pullBoostAmount, ForceMode2D.Impulse);
-            RemoveGrappleLine();
         }
 
     }
@@ -105,10 +98,8 @@ public class Grapple : MonoBehaviour
     public void RemoveGrappleLine()
     {
         currentGrapplePoint.Detatch();
+        _mySprite.enabled = false;
         grappleLine.SetPosition(0, lineStartLoc);
         grappleLine.SetPosition(1, lineStartLoc);
     }
-
-
-
 }

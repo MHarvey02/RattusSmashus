@@ -69,6 +69,22 @@ public class Movement : MonoBehaviour
     public void SetDirection(float direction)
     {
         Direction = direction;
+
+        if (direction == 0)
+        {
+            if (gameObject.activeInHierarchy)
+            {
+                StartCoroutine(ResetWallBoostAmount());
+            }
+            return;
+        }
+        // When the player jumps off the wall it needs to be in the opposite direction to the wall
+        wallJumpDirection = direction * -1;
+        SetSpriteDirection();
+    }
+
+    private void SetSpriteDirection()
+    {
         if (Direction == 1)
         {
             _spriteRenderer.flipX = false;
@@ -77,18 +93,6 @@ public class Movement : MonoBehaviour
         {
             _spriteRenderer.flipX = true;
         }
-
-        if (direction == 0)
-        {
-            if (gameObject.activeInHierarchy)
-            {
-                StartCoroutine(ResetWallBoostAmount());
-            }
-             return;
-        }
-        // When the player jumps off the wall it needs to be in the opposite direction to the wall
-        wallJumpDirection = direction * -1;
-
 
     }
     // Resets the amount of _wallBoostAmount if the player hasn't been moving for 2 seconds
@@ -101,12 +105,13 @@ public class Movement : MonoBehaviour
         }
 
     }
-    
+
     // Moves the game object along the X axis based on the Direction variable when on the ground
     public void HorizontalMove()
     {
         rb.AddForce(new(_moveSpeed * Direction, 0));
         _wallBoostAmount += 0.1f;
+        SetSpriteDirection();
     }
 
     // Moves the game object along the X axis based on the Direction variable, has a different multiplier for the change of speed as the object is in the air 
@@ -171,7 +176,7 @@ public class Movement : MonoBehaviour
     public void HitWall()
     {
 
-        if (rb.linearVelocity.y > -0)
+        if (rb.linearVelocity.y > -2)
         {
             if (_wallBoostAmount > 10)
             {

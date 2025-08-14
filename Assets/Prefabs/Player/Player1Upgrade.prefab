@@ -91,7 +91,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 534512439, guid: dba2e263f5b1a44498c573c0d8f693d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
   jumpHeight: 1200
   _doublejumpHeight: 1400
   _wallSpeedBoost: 1.5
-  _grappleJumpHeight: {x: 0, y: 0}
+  _grappleJumpHeight: {x: 10, y: 1500}
   canDoubleJump: 1
   hasDoubleJumpAbility: 1
   _wallBoostAmount: 0
@@ -489,11 +489,12 @@ MonoBehaviour:
   _playerSound:
   - {fileID: 8300000, guid: 01f13522ce2341a498f7e2ff97de74ef, type: 3}
   - {fileID: 8300000, guid: 5ca2baecd9e11cb43a2420b860f385b4, type: 3}
-  - {fileID: 8300000, guid: 4d7e062c4a3feb444b3a61d19284bba6, type: 3}
-  - {fileID: 8300000, guid: 6cf46bdd08bd36348b02e0c24f98a97d, type: 3}
+  - {fileID: 8300000, guid: 84b5750821d39394da9bea18218c673e, type: 3}
+  - {fileID: 8300000, guid: 15a8b837512a013498a65e90dd31f19f, type: 3}
   - {fileID: 8300000, guid: 31aa1135c62e527458e83dca231d4d19, type: 3}
   - {fileID: 8300000, guid: 484543ece4585334ba71bc101841266b, type: 3}
-  - {fileID: 8300000, guid: eeae075e1e794984eb43e480b293a609, type: 3}
+  - {fileID: 8300000, guid: 43d174ba71b0db945ba4c89b4a73eb50, type: 3}
+  - {fileID: 8300000, guid: 045082e0c6995a14987799bff77a79fc, type: 3}
   _myAudioSource: {fileID: 259693555843572243}
 --- !u!82 &259693555843572243
 AudioSource:
@@ -508,7 +509,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.475
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -605,7 +606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _direction: 0
-  _rayCastDistanceFloor: 0.7
+  _rayCastDistanceFloor: 0.3
   _rayCastDistanceWall: 0.5
   _rayCastDistanceWhileOnWall: 1
   _wallCollisionLM:
@@ -629,12 +630,13 @@ MonoBehaviour:
   currentGrapplePoint: {fileID: 0}
   myRigidBody: {fileID: 5742396849858858247}
   hasGrapple: 1
-  pullBoostAmount: 75
+  pullBoostAmount: 50
   grappleLine: {fileID: 504508378695133791}
   _circleCastRadius: 1
   _grappleLM:
     serializedVersion: 2
     m_Bits: 512
+  _mySprite: {fileID: 0}
 --- !u!120 &504508378695133791
 LineRenderer:
   serializedVersion: 2
@@ -659,7 +661,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -703,8 +705,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 0.50728756, b: 0, a: 1}
+      key1: {r: 1, g: 0.50728756, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -720,7 +722,7 @@ LineRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65535
+      atime1: 37779
       atime2: 0
       atime3: 0
       atime4: 0
@@ -728,13 +730,13 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0

@@ -19,7 +19,7 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField]
     private LayerMask _groundCollisionLM;
     #endregion
-    
+
     //Sets direction to draw the horizontal raycast
     public void SetDirection(InputAction.CallbackContext inputContext)
     {
@@ -45,10 +45,7 @@ public class PlayerCollision : MonoBehaviour
         RaycastHit2D hitBottom = Physics2D.Raycast(transform.position + new Vector3(0, -0.5f, 0), Vector2.right * _direction, _rayCastDistanceWall, _wallCollisionLM);
         Debug.DrawRay(transform.position + new Vector3(0, -0.5f, 0), Vector2.right * _direction * _rayCastDistanceWall, Color.red);
 
-        RaycastHit2D hitOpposite = Physics2D.Raycast(transform.position, Vector2.right * -_direction, _rayCastDistanceWall, _wallCollisionLM);
-        Debug.DrawRay(transform.position + new Vector3(0, -0.5f, 0), Vector2.right * -_direction * _rayCastDistanceWall, Color.red);
-
-        if (hitTop && hitMid || hitBottom && hitMid || hitOpposite)
+        if (hitTop && hitMid && hitBottom)
         {
             return true;
         }
@@ -73,18 +70,21 @@ public class PlayerCollision : MonoBehaviour
     {
 
         // Three raycasts are being drawn here so it can identify the front, back and middle of the player to tell if they are on the ground
-        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position - new Vector3(0.8f, 0, 0),
-         Vector2.down, _rayCastDistanceFloor, _groundCollisionLM);
-        Debug.DrawRay(transform.position - new Vector3(0.8f, 0, 0), Vector2.down * _rayCastDistanceFloor, Color.green);
-        RaycastHit2D hitRight = Physics2D.Raycast(transform.position + new Vector3(0.8f, 0, 0), Vector2.down, _rayCastDistanceFloor, _groundCollisionLM);
-        Debug.DrawRay(transform.position + new Vector3(0.8f, 0, 0), Vector2.down * _rayCastDistanceFloor, Color.green);
-        RaycastHit2D hitMid = Physics2D.Raycast(transform.position, Vector2.down, _rayCastDistanceFloor, _groundCollisionLM);
-        Debug.DrawRay(transform.position + new Vector3(0.8f, 0, 0), Vector2.down * _rayCastDistanceFloor, Color.green);
+        // * _direction to make the ray cast behind the player the furthest from them 
+        RaycastHit2D hitBehind = Physics2D.Raycast(transform.position - new Vector3(0.8f * _direction, 0.5f, 0),Vector2.down, _rayCastDistanceFloor, _groundCollisionLM);
+        Debug.DrawRay(transform.position - new Vector3(0.8f * _direction, 0.5f, 0), Vector2.down * _rayCastDistanceFloor, Color.green);
 
-        if (hitLeft || hitRight || hitMid)
+        RaycastHit2D hitFront = Physics2D.Raycast(transform.position + new Vector3(0.5f * _direction, -0.5f, 0),Vector2.down, _rayCastDistanceFloor, _groundCollisionLM);
+        Debug.DrawRay(transform.position + new Vector3(0.4f* _direction, -0.5f, 0), Vector2.down * _rayCastDistanceFloor, Color.green);
+        //For when the player is stood of a thin platform
+        RaycastHit2D hitMid = Physics2D.Raycast(transform.position + new Vector3(0, -0.5f, 0), Vector2.down, _rayCastDistanceFloor, _groundCollisionLM);
+        Debug.DrawRay(transform.position + new Vector3(0, -0.5f, 0), Vector2.down * _rayCastDistanceFloor, Color.green);
+
+        if (hitFront || hitBehind || hitMid)
         {
             return true;
         }
+
         return false;
     }
 }

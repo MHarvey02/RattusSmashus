@@ -43,7 +43,6 @@ public class KillScript : MonoBehaviour
     private void MoveTrap()
     {
 
-        _traps[_currentTrap].BossMove(_damageLocations[_currentTrap]);
         _currentTrap++;
         if (_currentTrap == _traps.Count)
         {

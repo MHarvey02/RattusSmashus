@@ -11,6 +11,10 @@ public class IdleState : BaseState
         player.myMovementComp.resetMaxMoveSpeed();
         player.myMovementComp.rb.linearVelocity = new Vector2(0, 0);
         player.myAnimator.Play("Idle");
+        if (player.myMovementComp.Direction != 0)
+        {
+            player.SetState(new MoveState());
+        }
 
     }
 
@@ -28,14 +32,30 @@ public class IdleState : BaseState
         if (inputContext.started)
         {
             player.mySounds.Jump();
-            player.SetState(new JumpState()); 
+            player.SetState(new JumpState());
         }
-        
+
     }
-    
+
     public override void Grapple(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         return;
+    }
+
+
+    //Update
+    public override void FixedUpdate(PlayerContext player)
+    {
+
+        if (!player.myCollision.IsTouchingGround())
+        {
+            player.SetState(new InAirState(false));
+        }
+
+        if (player.myCollision.IsTouchingWall())
+        {
+            player.myMovementComp.resetMaxMoveSpeed();
+        }
     }
     
 }

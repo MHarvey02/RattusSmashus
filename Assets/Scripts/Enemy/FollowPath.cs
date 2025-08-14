@@ -21,7 +21,7 @@ public class FollowPath : MonoBehaviour
 
     void Start()
     {
-        GetLocations(); 
+        GetLocations();
         GetNextLocation();
     }
 
@@ -45,14 +45,26 @@ public class FollowPath : MonoBehaviour
         }
 
     }
-    // Update is called once per frame
+
     public void Move()
     {
         transform.position = Vector2.MoveTowards(transform.position, NextLoc, MoveSpeed * Time.deltaTime);
         //Check if the game object is near the current waypoint to get the next location if needed
-        if (Mathf.Approximately(transform.position.x,NextLoc.x) && Mathf.Approximately(transform.position.y, NextLoc.y))
+        if (Mathf.Approximately(transform.position.x, NextLoc.x) && Mathf.Approximately(transform.position.y, NextLoc.y))
         {
             GetNextLocation();
         }
+    }
+
+    public bool BossMove()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, NextLoc, MoveSpeed * Time.deltaTime);
+        //Check if the game object is near the current waypoint to get the next location if needed
+        if (Mathf.Approximately(transform.position.x, NextLoc.x) && Mathf.Approximately(transform.position.y, NextLoc.y))
+        {
+            GetNextLocation();
+            return true;
+        }
+        return false;
     }
 }

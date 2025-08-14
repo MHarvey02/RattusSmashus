@@ -22,8 +22,6 @@ public class InAirState : BaseState
 
     public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-
-
         if (inputContext.started)
         {
             _nextState = new MoveState();

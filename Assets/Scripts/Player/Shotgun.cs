@@ -75,11 +75,10 @@ public class Shotgun : MonoBehaviour
                     {
                         bullet.gameObject.SetActive(true);
                         bullet.gameObject.transform.rotation = new quaternion(aimDirection.x,aimDirection.y,0,0);
-                        bullet.SetLocation(aimDirection);
+                        bullet.PlayerShoot(aimDirection);
                         bullet.transform.position = transform.position;
                         
                         //bullet.transform.rotation = transform.rotation;
-
                     }
                 }
                 canShoot = false;

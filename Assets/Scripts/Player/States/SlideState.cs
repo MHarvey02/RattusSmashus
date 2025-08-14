@@ -16,7 +16,7 @@ public class SlideState : BaseState
         _nextState = new MoveState();
 
         player.myAnimator.Play("StartSlide");
-        //player.mySounds.Slide();
+        player.mySounds.Slide();
         player.myMovementComp.Slide();
 
         SlideTimeCoroutine = SlideTime(player);

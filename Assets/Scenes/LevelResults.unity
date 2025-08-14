@@ -166,7 +166,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deathCountText: {fileID: 1748370222}
   _mostRecentTimeText: {fileID: 1738209622}
-  _nextLevelName: {fileID: 453966437}
 --- !u!114 &409680447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1563,8 +1562,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.15, y: 0.41}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 4.1, y: 0.41}
+  m_SizeDelta: {x: 233.9, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1748370222
 MonoBehaviour:

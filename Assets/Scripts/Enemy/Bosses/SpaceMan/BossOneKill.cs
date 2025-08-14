@@ -14,6 +14,12 @@ public class BossOneKill : MonoBehaviour
     private Transform _dropLocation;
 
     [SerializeField]
+    private AudioSource _myAudioSource;
+
+    [SerializeField]
+    private AudioClip _mySound;
+
+    [SerializeField]
     private SpawnItem _myItem;
 
     public UnityEvent playerEnter;
@@ -51,6 +57,7 @@ public class BossOneKill : MonoBehaviour
     {
 
         yield return new WaitForSeconds(1);
+        _myAudioSource.PlayOneShot(_mySound);
         spawnItem.Invoke();
     }
 

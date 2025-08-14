@@ -19,7 +19,7 @@ public class OnWallState : BaseState
         {
             _jumpDirection *= -1;
         }
-        
+        player.mySounds.WallSlideStart();
         player.myAnimator.Play("WallSlide");
         player.myMovementComp.HitWall();
     }
@@ -58,13 +58,18 @@ public class OnWallState : BaseState
         return;
     }
 
+    public override void ExitState(PlayerContext player)
+    {
+        player.mySounds.WallSlideStop();
+    }
+
     public override void FixedUpdate(PlayerContext player)
     {
 
         //Change to variable
         player.myMovementComp.currentMoveSpeedCap += 0.5f * Time.deltaTime;
 
-        
+
         if (player.myCollision.IsTouchingGround())
         {
             player.SetState(new IdleState());

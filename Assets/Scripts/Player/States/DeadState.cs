@@ -19,7 +19,6 @@ public class DeadState : BaseState
         player.myBloodEffect.Play();
         player.StopAllCoroutines();
         LevelResultsScreen.mostRecentDeathCount++;
-        // I want to invoke a function here to draw text to screen on how to respawn
 
     }
    

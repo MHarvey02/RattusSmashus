@@ -50,9 +50,13 @@ public class GrappleState : BaseState
 
     public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        player.mySounds.Jump();
-        player.myMovementComp.JumpFromGrapple();
-        player.SetState(new InAirState(_isMovingHorizontal));
+        if (inputContext.started)
+        {
+            player.mySounds.Jump();
+            player.myMovementComp.JumpFromGrapple();
+            player.SetState(new InAirState(_isMovingHorizontal)); 
+        }
+        
     }
 
     public override void ExitState(PlayerContext player)

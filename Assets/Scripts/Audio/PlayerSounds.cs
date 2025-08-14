@@ -42,6 +42,15 @@ public class PlayerSounds : MonoBehaviour
         _myAudioSource.PlayOneShot(_playerSound[3]);
     }
 
+    public void WallSlideStart()
+    {
+        _myAudioSource.PlayOneShot(_playerSound[7]);
+    }
+    public void WallSlideStop()
+    {
+        _myAudioSource.Stop();
+    }
+    //
     //Plays the sound for the players death
     public void Death()
     {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WallJumpState : BaseState
 {
@@ -10,12 +11,32 @@ public class WallJumpState : BaseState
         _isMoving = isMoving;
     }
 
+        public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
+    {
+        if (inputContext.started)
+        {
+            _isMoving = true;
+        }
+
+        if (inputContext.canceled)
+            {
+                _isMoving = false;
+            }
+        player.myMovementComp.SetDirection(inputContext.ReadValue<Vector2>().x);      
+    }
+    
+
     public override void EnterState(PlayerContext player)
     {
         player.myAnimator.SetTrigger("isWallJumping");
         player.myAnimator.SetTrigger("isWallJumping");
-        Debug.Log("wall jmuped");
-        player.SetState(new InAirState(_isMoving));
     }
 
+    public override void FixedUpdate(PlayerContext player)
+    {
+        if (!player.myCollision.IsOnStillWall() && !player.myCollision.IsTouchingWall())
+        {
+            player.SetState(new InAirState(_isMoving));
+        } 
+    }
 }

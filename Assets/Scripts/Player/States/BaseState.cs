@@ -23,10 +23,8 @@ public abstract class BaseState
             {
                 player.myGrapple.currentGrapplePoint.Attatch(player.myMovementComp.rb);
                 player.SetState(new GrappleState()); 
-            }
-                 
+            }      
         }
-        
     }
 
     public virtual void GrapplePull(InputAction.CallbackContext inputContext, PlayerContext player)
@@ -83,6 +81,7 @@ public abstract class BaseState
     // This is here for testing purposes
     public virtual void SkipLevel(InputAction.CallbackContext inputContext, PlayerContext player)
     {
+        player.completeLevelEvent.Invoke();
         return;
     }
 

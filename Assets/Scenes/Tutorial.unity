@@ -4185,6 +4185,10 @@ PrefabInstance:
       propertyPath: completeLevelEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1833751338}
+    - target: {fileID: 877036579791992936, guid: 7d07d543adeeef5419ef3a8ad36481f3, type: 3}
+      propertyPath: completeLevelEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 8147372525784033868}
     - target: {fileID: 3031335858483533569, guid: 7d07d543adeeef5419ef3a8ad36481f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.45
@@ -4655,6 +4659,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: faa9d8534193828469a08d8907ea7eaa, type: 3}
+--- !u!114 &8147372525784033868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8940676737168176523, guid: faa9d8534193828469a08d8907ea7eaa, type: 3}
+  m_PrefabInstance: {fileID: 8147372525784033867}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d1c3e57a3710b4486c8537726bfb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

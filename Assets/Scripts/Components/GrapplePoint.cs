@@ -17,12 +17,15 @@ public class GrapplePoint : MonoBehaviour
     //Attatches a rigidbody to the distance joint
     public void Attatch(Rigidbody2D RbToAttatch)
     {
+        
         _myJoint.connectedBody = RbToAttatch;
+        
     } 
+    
     //Detatches a rigidbody to the distance joint
     public void Detatch()
     {
-        _myJoint.connectedBody = null;     
+        _myJoint.connectedBody = null;
     }
 
     //Enables the sprite to show the player they can interact with the grapple point

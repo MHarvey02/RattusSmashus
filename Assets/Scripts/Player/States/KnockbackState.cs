@@ -51,8 +51,6 @@ public class KnockbackState : BaseState
         {
             player.SetState(_nextState);
         }
-
-
     }
 
     public override void Grapple(InputAction.CallbackContext inputContext, PlayerContext player)
