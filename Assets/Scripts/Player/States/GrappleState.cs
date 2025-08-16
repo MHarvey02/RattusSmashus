@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class GrappleState : BaseState
 {
-
-
     private BaseState _nextState = new MoveState();
 
     private bool _isMovingHorizontal = true;
@@ -33,14 +31,13 @@ public class GrappleState : BaseState
         }
         
     }
-
+    //Let go of the grapple without jumping
     public override void Grapple(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         if (inputContext.started)
         {
            player.SetState(new InAirState(_isMovingHorizontal)); 
         }
-        
     }
 
     public override void GrapplePull(InputAction.CallbackContext inputContext, PlayerContext player)
@@ -56,14 +53,12 @@ public class GrappleState : BaseState
             player.myMovementComp.JumpFromGrapple();
             player.SetState(new InAirState(_isMovingHorizontal)); 
         }
-        
     }
 
     public override void ExitState(PlayerContext player)
     {
         player.mySounds.Grapple();
         player.myGrapple.RemoveGrappleLine();
-
     }
     //Updates
     public override void FixedUpdate(PlayerContext player)
@@ -83,10 +78,4 @@ public class GrappleState : BaseState
 
         }
     }
-    
-    
-
-
-
-
 }

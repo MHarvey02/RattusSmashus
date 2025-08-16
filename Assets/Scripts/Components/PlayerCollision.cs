@@ -69,13 +69,13 @@ public class PlayerCollision : MonoBehaviour
     public bool IsTouchingGround()
     {
 
-        // Three raycasts are being drawn here so it can identify the front, back and middle of the player to tell if they are on the ground
-        // * _direction to make the ray cast behind the player the furthest from them 
+        //Three raycasts are being drawn here so it can identify the front, back and middle of the player to tell if they are on the ground
+        //* _direction to make the ray cast behind the player the furthest from them 
         RaycastHit2D hitBehind = Physics2D.Raycast(transform.position - new Vector3(0.8f * _direction, 0.5f, 0),Vector2.down, _rayCastDistanceFloor, _groundCollisionLM);
         Debug.DrawRay(transform.position - new Vector3(0.8f * _direction, 0.5f, 0), Vector2.down * _rayCastDistanceFloor, Color.green);
 
-        RaycastHit2D hitFront = Physics2D.Raycast(transform.position + new Vector3(0.5f * _direction, -0.5f, 0),Vector2.down, _rayCastDistanceFloor, _groundCollisionLM);
-        Debug.DrawRay(transform.position + new Vector3(0.4f* _direction, -0.5f, 0), Vector2.down * _rayCastDistanceFloor, Color.green);
+        RaycastHit2D hitFront = Physics2D.Raycast(transform.position + new Vector3(0.3f * _direction, -0.5f, 0),Vector2.down, _rayCastDistanceFloor, _groundCollisionLM);
+        Debug.DrawRay(transform.position + new Vector3(0.4f* _direction, -0.3f, 0), Vector2.down * _rayCastDistanceFloor, Color.green);
         //For when the player is stood of a thin platform
         RaycastHit2D hitMid = Physics2D.Raycast(transform.position + new Vector3(0, -0.5f, 0), Vector2.down, _rayCastDistanceFloor, _groundCollisionLM);
         Debug.DrawRay(transform.position + new Vector3(0, -0.5f, 0), Vector2.down * _rayCastDistanceFloor, Color.green);

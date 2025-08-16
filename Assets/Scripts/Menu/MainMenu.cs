@@ -97,16 +97,18 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+    
     //Uses the name of the button to work out the level to load in the scenemangager
     public void PlaySelectedLevel()
     {
+        //Use the name of the button to work out which one to load
         int LevelIndex = Int32.Parse(_currentMenu[_menuSelection].gameObject.name);
         SceneManager.LoadScene(LevelIndex);
     }
 
+    //The below functions handle opening the other sections of the menu
     public void OpenLevelSelector()
     {
-
         _currentMenu = _worldSelectButtons;
         _myAnimator.Play("LevelSelectEnter");
         ResetSelect();

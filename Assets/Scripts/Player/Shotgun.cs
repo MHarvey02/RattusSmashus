@@ -63,6 +63,7 @@ public class Shotgun : MonoBehaviour
 
         if (inputContext.started)
         {
+            //Check if the player has the shotgun, can shoot and is aiming
             if (canShoot && hasShotgun && aimDirection != new Vector2(0, 0))
             {
                 myRenderer.enabled = true;
@@ -74,11 +75,9 @@ public class Shotgun : MonoBehaviour
                     if (bullet != null)
                     {
                         bullet.gameObject.SetActive(true);
-                        bullet.gameObject.transform.rotation = new quaternion(aimDirection.x,aimDirection.y,0,0);
+                        bullet.gameObject.transform.rotation = new quaternion(aimDirection.x, aimDirection.y, 0, 0);
                         bullet.PlayerShoot(aimDirection);
                         bullet.transform.position = transform.position;
-                        
-                        //bullet.transform.rotation = transform.rotation;
                     }
                 }
                 canShoot = false;
@@ -91,7 +90,7 @@ public class Shotgun : MonoBehaviour
         
     }
         
-
+    //Apply backwards force to the player as they shoot to simulate kickback
     private void KickBack()
     {
         myRigidBody.linearVelocity = new Vector2(0, 0);
@@ -99,7 +98,7 @@ public class Shotgun : MonoBehaviour
         Debug.Log(kickbackDirection);
         myRigidBody.AddForce(kickbackDirection);
     }
-
+    //Delay between shots
     private IEnumerator Reload()
     {
         yield return new WaitForSecondsRealtime(ReloadTime);
@@ -109,5 +108,5 @@ public class Shotgun : MonoBehaviour
 
     }
 
-    }
+}
     

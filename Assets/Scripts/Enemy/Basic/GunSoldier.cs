@@ -4,23 +4,23 @@ using UnityEngine;
 public class GunSoldier : MonoBehaviour
 {
 
-        [SerializeField]
-        private float _timeBetweenShots = 1.0f;
+    [SerializeField]
+    private float _timeBetweenShots = 1.0f;
 
-        [SerializeField]
-        private IEnumerator _myCoroutine;
+    [SerializeField]
+    private IEnumerator _myCoroutine;
 
-        [SerializeField]
-        private Vector2 _direction = new(1,0);
+    [SerializeField]
+    private Vector2 _direction = new(1,0);
 
-        [SerializeField]
-        public Projectile projectile;
-        
-        [SerializeField]
-        private BossSounds _mySounds;
+    [SerializeField]
+    public Projectile projectile;
+    
+    [SerializeField]
+    private BossSounds _mySounds;
 
 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _myCoroutine = Shoot();
@@ -31,7 +31,7 @@ public class GunSoldier : MonoBehaviour
     private IEnumerator Shoot()
     {
         yield return new WaitForSecondsRealtime(_timeBetweenShots);
-        //spawn bullet
+        //Spawn a bullet
         Projectile bullet = EnemyObjectPool.SharedInstance.GetPooledObject();
         if (bullet != null)
         {

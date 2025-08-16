@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
 
+
+//This is unused as it was for the orignal version of the second boss
 public class KillScript : MonoBehaviour
 {
 

@@ -11,7 +11,6 @@ public class InAirState : BaseState
     public override void EnterState(PlayerContext player)
     {
         player.myAnimator.Play("Falling");
-
     }
 
     public InAirState(bool isMoving = false)
@@ -66,12 +65,9 @@ public class InAirState : BaseState
         player.myMovementComp.AddtionalGravity();
         //player.myMovementComp.CheckMoveSpeed();
 
-
         if (player.myCollision.IsTouchingGround())
         {
             player.myMovementComp.canDoubleJump = player.myMovementComp.hasDoubleJumpAbility;
-
-
             player.SetState(_nextState);
         }
 

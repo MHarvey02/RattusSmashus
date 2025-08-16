@@ -20,15 +20,14 @@ public class LevelResultsScreen : MonoBehaviour
     {
         _deathCountText.text = mostRecentDeathCount.ToString();
         _mostRecentTimeText.text = mostRecentTime.ToString("0.00");
-
     }
 
 
     public void LoadNextLevel()
     { 
         //Making sure a next level exists
-        if (nextLevel > SceneManager.sceneCountInBuildSettings)
-        {
+        if (nextLevel >= SceneManager.sceneCountInBuildSettings - 1)
+        {  
             nextLevel = 0;
         }
         mostRecentDeathCount = 0;

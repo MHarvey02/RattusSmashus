@@ -39,8 +39,6 @@ public class Vision : MonoBehaviour
          _playerLayer);
 
 
-        DebugBoxCast.SimpleDrawBoxCast(transform.localPosition + new Vector3(_boxCastDistance, 0, 0), new Vector2(5, 10), new Quaternion(0, 0, 0, 0), new Vector2(direction, 0), _boxCastDistance, Color.red);
-
         if (boxCast)
         {
             _boxCastDistance = _chaseBoxCastDistance;

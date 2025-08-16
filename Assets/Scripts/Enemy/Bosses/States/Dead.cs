@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 namespace Enemy.Boss.States
 {
     public class Dead : Base

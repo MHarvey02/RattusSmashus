@@ -69,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Brake",
+                    "name": "Quit",
                     "type": "Button",
                     "id": "0171d18f-6ce0-4d8d-ad7b-9de42754812e",
                     "expectedControlType": "",
@@ -388,11 +388,11 @@
                 {
                     "name": "",
                     "id": "bc0f8994-8bb6-4c9e-b1a1-520797663192",
-                    "path": "<Keyboard>/shift",
+                    "path": "<Keyboard>/backspace",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Brake",
+                    "action": "Quit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

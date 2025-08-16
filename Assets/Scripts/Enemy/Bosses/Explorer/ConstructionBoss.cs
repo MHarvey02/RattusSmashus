@@ -57,7 +57,7 @@ public class ConstructionBoss : MonoBehaviour
         StartCoroutine(_myCoroutine);
 
     }
-
+    //When a button is pressed by the player take damage
     public void TakeDamage()
     {
         _health--;
@@ -67,6 +67,7 @@ public class ConstructionBoss : MonoBehaviour
         }
     }
 
+    //Despawn the traps, open the arena exit and spawn the item
     private void Death()
     {
         StopCoroutine(_myCoroutine);
@@ -77,7 +78,7 @@ public class ConstructionBoss : MonoBehaviour
         _exitBlocker.SetActive(false);
         _myItem.Spawn();
         _myRB.simulated = true;
-        
+
     }
 
 }

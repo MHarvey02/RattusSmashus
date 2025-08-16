@@ -3,6 +3,9 @@ using Enemy.Boss;
 using UnityEngine;
 using UnityEngine.Events;
 
+
+//Gives the player the ability to grapple
+// It is only used at the end of the second boss
 public class GiveGrapple : MonoBehaviour
 {
     public UnityEvent spawnGrapplePoints;
@@ -35,7 +38,6 @@ public class GiveGrapple : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             spawnGrapplePoints.Invoke();
-            
         }
     }
 }

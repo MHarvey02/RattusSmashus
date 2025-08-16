@@ -50,7 +50,6 @@ public class OnWallState : BaseState
             player.myCollision.ChangeDirection(_jumpDirection); 
             player.SetState(new WallJumpState(_isMoving));
         }
-
     }
 
     public override void Grapple(InputAction.CallbackContext inputContext, PlayerContext player)

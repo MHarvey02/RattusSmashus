@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+//This is currently unused
 namespace Enemy.Melee.States
 {
     public abstract class Base

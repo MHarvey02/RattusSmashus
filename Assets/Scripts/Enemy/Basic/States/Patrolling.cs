@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-
+//This is currently unused
 namespace Enemy.Melee.States
 {
     public class Patrolling : Base

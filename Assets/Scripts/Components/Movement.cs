@@ -65,7 +65,7 @@ public class Movement : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     #endregion
 
-    //Sets the direction the game object using the component is moving on the X axis and ensures the sprite is facing the correct way
+    //Sets the direction the game object using the component is moving on the X axis
     public void SetDirection(float direction)
     {
         Direction = direction;
@@ -83,6 +83,7 @@ public class Movement : MonoBehaviour
         SetSpriteDirection();
     }
 
+    //Makes sure the sprite is facing the correct direction
     private void SetSpriteDirection()
     {
         if (Direction == 1)
@@ -93,9 +94,9 @@ public class Movement : MonoBehaviour
         {
             _spriteRenderer.flipX = true;
         }
-
     }
-    // Resets the amount of _wallBoostAmount if the player hasn't been moving for 2 seconds
+
+    //Resets the amount of _wallBoostAmount if the player hasn't been moving for 2 seconds
     public IEnumerator ResetWallBoostAmount()
     {
         yield return new WaitForSecondsRealtime(2);
@@ -103,10 +104,9 @@ public class Movement : MonoBehaviour
         {
             _wallBoostAmount = 0;
         }
-
     }
 
-    // Moves the game object along the X axis based on the Direction variable when on the ground
+    //Moves the game object along the X axis based on the Direction variable when on the ground
     public void HorizontalMove()
     {
         rb.AddForce(new(_moveSpeed * Direction, 0));
@@ -120,33 +120,35 @@ public class Movement : MonoBehaviour
         rb.AddForce(new Vector2(Direction * _moveSpeedAir, 0));
         _wallBoostAmount += 0.1f;
     }
-    // Applies force to the game object to make it jump
+
+    //Applies force to the game object to make it jump
     public void Jump()
     {
         rb.linearVelocityY = 0;
         rb.AddForce(new Vector2(0, jumpHeight));
     }
 
-    // Applies force to the game object to make it jump
+    //Applies force to the game object to make it jump
     public void DoubleJump()
     {
         rb.linearVelocityY = 0;
         rb.AddForce(new Vector2(0, _doublejumpHeight));
     }
 
-    // For when the player jumps off of the grapple this helps move them horizontally as well as vertically
+    //For when the player jumps off of the grapple this helps move them horizontally as well as vertically
     public void JumpFromGrapple()
     {
         rb.linearVelocityY = 0;
         rb.AddForce(new Vector2(rb.linearVelocityX * _grappleJumpHeight.x, _grappleJumpHeight.y));
     }
+
     //Makes the game object fall faster if they remain in the air 
     public void AddtionalGravity()
     {
         rb.AddForceY(_fallSpeedIncrease);
     }
 
-    // Applies force to move the player away from the wall and up
+    //Applies force to move the player away from the wall and up
     public void WallJump(float jumpDirection)
     {
         rb.linearVelocityY = 0;
@@ -172,10 +174,9 @@ public class Movement : MonoBehaviour
         currentMoveSpeedCap = _defaultMoveSpeedCap;
     }
 
-    // When a hit work out if an upwards force should be applied to allow the player to slide them up the wall
+    //When a hit work out if an upwards force should be applied to allow the player to slide up the wall
     public void HitWall()
     {
-
         if (rb.linearVelocity.y > -2)
         {
             if (_wallBoostAmount > 10)
@@ -198,7 +199,7 @@ public class Movement : MonoBehaviour
     public void FixedUpdate()
     {
         CheckMoveSpeed();
-
+        //Reset the make sure the player is moving no faster than the max speed
         if (currentMoveSpeedCap > _maxMoveSpeedCap)
         {
             currentMoveSpeedCap = _maxMoveSpeedCap;

@@ -10,13 +10,13 @@ namespace Enemy.Boss.States
         {
 
         }
+        
         public virtual void OnTriggerExit2D(Collider2D collision, BossContext boss)
         {
             if (collision.gameObject.tag == "Player")
             {
                 CalculateDirection(boss, collision.gameObject);
             }
-        
         }
         
         private void CalculateDirection(BossContext boss, GameObject player)

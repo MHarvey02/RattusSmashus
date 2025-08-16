@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class FarmerOnRat : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
     [SerializeField]
     private PlayerContext _myPlayer;
 
@@ -40,26 +38,26 @@ public class FarmerOnRat : MonoBehaviour
     //Death of the rat leads to the farmer flying off of it
     public void FallOffRat()
     {
-
         _myRB.bodyType = RigidbodyType2D.Dynamic;
         _myRB.AddForce(new(1000, 50));
         isSpinning = true;
         StopCoroutine(_shootCoroutine);
         StartCoroutine("Despawn");
     }
+    
     //Time between shots from the farmer
-    // //Spawn projectile from pool, give random spread, move in direction of player
+    //Spawn projectile from pool, give random spread, move in direction of player
     private IEnumerator Shoot()
     {
         _mySounds.ReadyAttack();
         yield return new WaitForSecondsRealtime(_shotTime);
-        
 
         _shootCoroutine = Shoot();
         StartCoroutine(_shootCoroutine);
         //Spawn bullet
         _mySounds.Shoot();
         _playerDirection = _myPlayer.transform.position - transform.position;
+        //Farmer shoots 3 bullets per attack
         for (int i = 0; i < _bulletsPerShot; i++)
         {
             Projectile bullet = EnemyObjectPool.SharedInstance.GetPooledObject();
@@ -76,7 +74,7 @@ public class FarmerOnRat : MonoBehaviour
 
             }
             _mySounds.Shoot();
-        }   
+        }
     }
     //Despawn the boss after he has flown off of the rat
     IEnumerator Despawn()

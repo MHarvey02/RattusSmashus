@@ -41,8 +41,7 @@ public class IdleState : BaseState
     {
         return;
     }
-
-
+    
     //Update
     public override void FixedUpdate(PlayerContext player)
     {

@@ -5,14 +5,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-
-//namespace Player.States
-//{
 public class DeadState : BaseState
 {
     public override void EnterState(PlayerContext player)
     {
-
         player.myAnimator.Play("DeathRedo");
         player.mySounds.Death();
         player.deadText.enabled = true;
@@ -21,7 +17,7 @@ public class DeadState : BaseState
         LevelResultsScreen.mostRecentDeathCount++;
 
     }
-   
+   //Remove the ability to do anything
     public override void Shoot(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         return;
@@ -40,6 +36,7 @@ public class DeadState : BaseState
     {
         return;
     }
+    //Respawn the player
     public override void Jump(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         if (inputContext.started)
@@ -58,7 +55,7 @@ public class DeadState : BaseState
     {
         return;
     }
-
+    //Skip the level
     public override void SkipLevel(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         if (inputContext.started)
@@ -68,9 +65,8 @@ public class DeadState : BaseState
         }
         
     }
-    
-    }
-//}
+
+}
 
 
 

@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Grapple : MonoBehaviour
 {
-
-
     [SerializeField]
     public GrapplePoint currentGrapplePoint;
 
@@ -99,6 +97,7 @@ public class Grapple : MonoBehaviour
     {
         currentGrapplePoint.Detatch();
         _mySprite.enabled = false;
+        //Both set to the same position so it isn't visible on the screen
         grappleLine.SetPosition(0, lineStartLoc);
         grappleLine.SetPosition(1, lineStartLoc);
     }

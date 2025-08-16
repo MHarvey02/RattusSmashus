@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
 using UnityEngine.Rendering;
 
-
+//This is currently unused
 namespace Enemy.Melee
 {
     public class StateContext : MonoBehaviour

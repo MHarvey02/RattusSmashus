@@ -1831,7 +1831,7 @@ PrefabInstance:
       objectReference: {fileID: 1787117288}
     - target: {fileID: 2600292220894515197, guid: 08b9725a2f79c6844ae29154f0c39ac9, type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: HUD
       objectReference: {fileID: 0}
     - target: {fileID: 2710948626177038978, guid: 08b9725a2f79c6844ae29154f0c39ac9, type: 3}
       propertyPath: m_Pivot.x
@@ -1911,6 +1911,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2710948626177038978, guid: 08b9725a2f79c6844ae29154f0c39ac9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643375224978074055, guid: 08b9725a2f79c6844ae29154f0c39ac9, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7040895020574857025, guid: 08b9725a2f79c6844ae29154f0c39ac9, type: 3}
@@ -9156,23 +9160,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 504508378695133791, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
       propertyPath: m_Positions.Array.data[0].x
-      value: 21.65
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 504508378695133791, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
       propertyPath: m_Positions.Array.data[0].y
-      value: 5.23
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 504508378695133791, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
       propertyPath: m_Positions.Array.data[0].z
-      value: -0.11839112
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 504508378695133791, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
       propertyPath: m_Positions.Array.data[1].x
-      value: 21.688778
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 504508378695133791, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
       propertyPath: m_Positions.Array.data[1].y
-      value: 0.51060635
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 504508378695133791, guid: b6f35e4df6e97d142a724c9ef3dc5744, type: 3}
       propertyPath: m_Positions.Array.data[1].z

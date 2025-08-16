@@ -1682,7 +1682,7 @@ PrefabInstance:
       objectReference: {fileID: 1787117288}
     - target: {fileID: 2600292220894515197, guid: 08b9725a2f79c6844ae29154f0c39ac9, type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: HUD
       objectReference: {fileID: 0}
     - target: {fileID: 2710948626177038978, guid: 08b9725a2f79c6844ae29154f0c39ac9, type: 3}
       propertyPath: m_Pivot.x
@@ -2106,6 +2106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myBoss: {fileID: 1882966854}
   _dropLocation: {fileID: 2080157215}
+  _myAudioSource: {fileID: 0}
+  _mySound: {fileID: 0}
   _myItem: {fileID: 1926426657}
   playerEnter:
     m_PersistentCalls:

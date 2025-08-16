@@ -17,9 +17,7 @@ public class GrapplePoint : MonoBehaviour
     //Attatches a rigidbody to the distance joint
     public void Attatch(Rigidbody2D RbToAttatch)
     {
-        
         _myJoint.connectedBody = RbToAttatch;
-        
     } 
     
     //Detatches a rigidbody to the distance joint
@@ -36,12 +34,13 @@ public class GrapplePoint : MonoBehaviour
             _mySpriteRenderer.enabled = true;
         }
     }
+    
     //Disables the sprite when the player is no longer in interaction range
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-           _mySpriteRenderer.enabled = false; 
+            _mySpriteRenderer.enabled = false;
         }
     }
 

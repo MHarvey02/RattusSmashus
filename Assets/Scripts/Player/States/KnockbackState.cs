@@ -36,8 +36,6 @@ public class KnockbackState : BaseState
             _nextState = new MoveState();
             _isMoving = true;
         }
-
-
     }
 
     private IEnumerator TimeBeforeStateChange(PlayerContext player)
@@ -75,7 +73,6 @@ public class KnockbackState : BaseState
         player.myMovementComp.HorizontalMoveInAir();
         player.myMovementComp.AddtionalGravity();
         //player.myMovementComp.CheckMoveSpeed();
-
 
         if (player.myCollision.IsTouchingGround())
         {

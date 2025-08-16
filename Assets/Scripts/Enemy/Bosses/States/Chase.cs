@@ -36,19 +36,23 @@ namespace Enemy.Boss.States
         {
             boss.MySounds.ReadyAttack();
             yield return new WaitForSecondsRealtime(_exitChaseTime);
+            //If the player is no longer in vision stop chasing the player 
             if (boss.myVision.DrawBoxCast() == null)
             {
                 boss.SetState(boss.move);
             }
             else
             {
+                //Attack the player
                 boss.Attack();
+                //Increase move spped
                 _moveSpeed += 1;
                 coroutine = ExitChase(boss);
                 boss.StartCoroutine(coroutine);
+                //Set target location to be closer to the player
                 _distanceFromPlayer.y -= 1.5f;
                 _distanceFromPlayer.x += 1.5f * boss.myVision.direction;
-
+                //Make sure the boss is homing towards the player and doesn't end up trying to move past them
                 if (_distanceFromPlayer.y < 0)
                 {
                     _distanceFromPlayer.y = 0;

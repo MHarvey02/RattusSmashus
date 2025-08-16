@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 
+//Scripted death of the first boss
 public class BossOneKill : MonoBehaviour
 {
 
@@ -50,12 +51,12 @@ public class BossOneKill : MonoBehaviour
             Fall();
             StartCoroutine("SpawnBoots");
         }
-        
+
     }
 
+    //Drop the toilet on the boss
     private IEnumerator SpawnBoots()
     {
-
         yield return new WaitForSeconds(1);
         _myAudioSource.PlayOneShot(_mySound);
         spawnItem.Invoke();
@@ -69,6 +70,6 @@ public class BossOneKill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_isFalling){transform.position = Vector2.MoveTowards(transform.position, _dropLocation.position , 20* Time.deltaTime);}    
+        if (_isFalling) { transform.position = Vector2.MoveTowards(transform.position, _dropLocation.position, 20 * Time.deltaTime); }
     }
 }

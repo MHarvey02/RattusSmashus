@@ -1,6 +1,7 @@
 using UnityEngine.Events;
 using UnityEngine;
 
+//Spawns the item to be given at the end of the boss level
 public class SpawnItem : MonoBehaviour
 {
 

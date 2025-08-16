@@ -57,9 +57,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Sewers/Sewers 3.unity
     guid: da0f5d1ea2fc3204a8a630551b70a137
   - enabled: 1
-    path: Assets/Scenes/ResultsScreen.unity
-    guid: 63f739b403280374585e7c81e22c5d57
-  - enabled: 1
     path: Assets/Scenes/LevelResults.unity
     guid: 7853a37b91ecd6d40984f7e22f136ac9
   m_configObjects:

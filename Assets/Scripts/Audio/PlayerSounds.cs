@@ -9,16 +9,19 @@ public class PlayerSounds : MonoBehaviour
     [SerializeField]
     private AudioSource _myAudioSource;
 
+    //Plays the sound for the first part of the players step
     public void StepOne()
     {
         _myAudioSource.PlayOneShot(_playerSound[4]);
     }
 
+    //Plays the sound for the second part of the players step
     public void StepTwo()
     {
         _myAudioSource.PlayOneShot(_playerSound[5]);
     }
 
+    //Plays the sound for the players slide
     public void Slide()
     {
         _myAudioSource.PlayOneShot(_playerSound[6]);
@@ -42,20 +45,21 @@ public class PlayerSounds : MonoBehaviour
         _myAudioSource.PlayOneShot(_playerSound[3]);
     }
 
+    //Plays the sound for the players wall slide
     public void WallSlideStart()
     {
         _myAudioSource.PlayOneShot(_playerSound[7]);
     }
+
+    //Stops the sound for the players wall slide
     public void WallSlideStop()
     {
         _myAudioSource.Stop();
     }
-    //
+
     //Plays the sound for the players death
     public void Death()
     {
         _myAudioSource.PlayOneShot(_playerSound[2]);
-    }
-
-    
+    }   
 }

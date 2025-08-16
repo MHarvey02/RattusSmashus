@@ -2177,6 +2177,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Death Wall Vertical
       objectReference: {fileID: 0}
+    - target: {fileID: 3938899666014263477, guid: 87b1351b3aed7234f85df35dc598f0f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7909600009387431395, guid: 87b1351b3aed7234f85df35dc598f0f8, type: 3}
       propertyPath: _speed.x
       value: 0
@@ -2571,6 +2575,10 @@ PrefabInstance:
     - target: {fileID: 3938899666014263477, guid: 87b1351b3aed7234f85df35dc598f0f8, type: 3}
       propertyPath: m_Name
       value: Death Wall (Horizontal)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3938899666014263477, guid: 87b1351b3aed7234f85df35dc598f0f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7909600009387431395, guid: 87b1351b3aed7234f85df35dc598f0f8, type: 3}
       propertyPath: _speed.x

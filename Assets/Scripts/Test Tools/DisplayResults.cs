@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+//This display the results of the players playthrough in one place
+//It is only important in testing
 public class DisplayResults : MonoBehaviour
 {
 
@@ -11,19 +13,13 @@ public class DisplayResults : MonoBehaviour
 
     [SerializeField]
     List<TMP_Text> timeTexts;
-    
+
     [SerializeField]
     List<TMP_Text> levelNames;
 
-
-    public void Awake()
-    {
-
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-     DrawText();   
+        DrawText();
     }
 
     void DrawText()
@@ -45,6 +41,6 @@ public class DisplayResults : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

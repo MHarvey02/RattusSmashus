@@ -10,7 +10,7 @@ namespace Enemy.Boss.States
         // Update is called once per frame
         public override void Update(BossContext boss)
         {
-
+            //Try to get infront of the player
             Vector2 playLoc = boss.myPlayer.transform.position;
             playLoc.y += 3;
             playLoc.x -= 5 * boss.myVision.direction;

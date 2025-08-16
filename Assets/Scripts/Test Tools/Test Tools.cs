@@ -4,14 +4,10 @@ using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//This class tracks the players time and deaths across the whole game.
+//It is purely for testing purposes
 public class TestTools : MonoBehaviour
 {
-    //Need to be persistent across whole game.
-    //needs to count deaths per level
-    //needs to count time per level
-    //Display results on final Scene
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
 
     public static TestTools Instance;
 
@@ -46,7 +42,7 @@ public class TestTools : MonoBehaviour
         TestToolStatic.deathList.Add(TestToolStatic.death);
         TestToolStatic.death = 0;
         _time = 0;
-        TestToolStatic.LevelList.Add(SceneManager.GetActiveScene().name);   
+        TestToolStatic.LevelList.Add(SceneManager.GetActiveScene().name);
     }
 
     // Update is called once per frame

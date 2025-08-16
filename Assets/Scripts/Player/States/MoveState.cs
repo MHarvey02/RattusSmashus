@@ -16,7 +16,6 @@ public class MoveState : BaseState
         }
     }
 
-
     public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         player.myMovementComp.SetDirection(inputContext.ReadValue<Vector2>().x);
@@ -41,7 +40,6 @@ public class MoveState : BaseState
         {
            player.SetState(new SlideState()); 
         }
-        
     }
 
     public override void Grapple(InputAction.CallbackContext inputContext, PlayerContext player)
@@ -61,7 +59,6 @@ public class MoveState : BaseState
     {
         player.myRunEffect.Stop();
     }
-
 
     //Update
     public override void FixedUpdate(PlayerContext player)

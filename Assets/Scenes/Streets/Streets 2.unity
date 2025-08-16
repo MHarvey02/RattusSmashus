@@ -2060,7 +2060,7 @@ PrefabInstance:
       objectReference: {fileID: 1787117288}
     - target: {fileID: 2600292220894515197, guid: 08b9725a2f79c6844ae29154f0c39ac9, type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: HUD
       objectReference: {fileID: 0}
     - target: {fileID: 2710948626177038978, guid: 08b9725a2f79c6844ae29154f0c39ac9, type: 3}
       propertyPath: m_Pivot.x
@@ -2140,6 +2140,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2710948626177038978, guid: 08b9725a2f79c6844ae29154f0c39ac9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643375224978074055, guid: 08b9725a2f79c6844ae29154f0c39ac9, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -41,8 +41,6 @@ public class PlayerContext : MonoBehaviour
     [SerializeField]
     public TMP_Text deadText;
     
-
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -53,12 +51,10 @@ public class PlayerContext : MonoBehaviour
         completeLevelEvent.AddListener(TestTools.OnLevelEnd);
         completeLevelEvent.AddListener(GameManager.LoadNextLevel);        
         
-
         myBloodEffect.Stop();
         myRunEffect.Stop();
         myDoubleJumpEffect.Stop();
         myAnimator.enabled = true;
-        
     }
 
     void Start()
@@ -98,6 +94,8 @@ public class PlayerContext : MonoBehaviour
     public void Shoot(InputAction.CallbackContext inputContext) => _currentState.Shoot(inputContext, this);
 
     public void SkipLevel(InputAction.CallbackContext inputContext) => _currentState.SkipLevel(inputContext, this);
+
+    public void ReturnToMenu(InputAction.CallbackContext inputContext) => _currentState.ReturnToMenu(inputContext);
 
     public void OnCollisionEnter2D(Collision2D collision) => _currentState.OnCollisionEnter2D(collision, this);
 

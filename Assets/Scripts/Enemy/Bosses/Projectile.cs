@@ -41,9 +41,7 @@ using UnityEngine;
     public void PlayerShoot(Vector3 endTransform)
     {
         _direction = endTransform - transform.position;
-        Debug.Log(_direction);
         //Adding random spread to the shot
-
         _myRB.linearVelocity = _direction * speed;
     }
 
@@ -62,8 +60,10 @@ using UnityEngine;
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "trap")
+        //If two projectile collide, don't destroy them 
+        if (collision.gameObject.tag == "trap")
         { return; }
+        // If it hits anything else despawn bullet
         gameObject.SetActive(false);
         StopCoroutine(_myCoroutine);
     }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+//Buttons used in the second boss
 public class BossButton : MonoBehaviour
 {
 

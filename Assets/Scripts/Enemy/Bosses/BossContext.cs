@@ -12,8 +12,6 @@ namespace Enemy.Boss
         public Chase chase = new();
         public Dead dead = new();
         #endregion
-
-
         [SerializeField]
         public Vision myVision;
 
@@ -55,7 +53,6 @@ namespace Enemy.Boss
             MySounds.Shoot();
             if (bullet != null)
             {
-
                 bullet.transform.position = transform.position;
                 bullet.transform.rotation = transform.rotation;
                 bullet.gameObject.SetActive(true);

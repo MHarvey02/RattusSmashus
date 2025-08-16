@@ -43,7 +43,6 @@ public class FollowPath : MonoBehaviour
         {
             nextIndex = 0;
         }
-
     }
 
     public void Move()

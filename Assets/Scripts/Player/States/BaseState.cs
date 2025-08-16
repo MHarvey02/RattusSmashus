@@ -2,9 +2,11 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public abstract class BaseState
 {
+    //This will be used to start any sounds, animations, etc when entering the state
     public virtual void EnterState(PlayerContext player)
     {
     }
@@ -14,24 +16,29 @@ public abstract class BaseState
     public virtual void Jump(InputAction.CallbackContext inputContext, PlayerContext player){}
     public virtual void Slide(InputAction.CallbackContext inputContext, PlayerContext player){}
 
+    //Attatch to a grapple point
     public virtual void Grapple(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        if (inputContext.started &&  player.myGrapple.hasGrapple)
+        //Check that the player has the grapple
+        if (inputContext.started && player.myGrapple.hasGrapple)
         {
+            //Check there is a hook
             GrapplePoint grapplePoint = player.myGrapple.GetHook();
             if (grapplePoint)
             {
                 player.myGrapple.currentGrapplePoint.Attatch(player.myMovementComp.rb);
-                player.SetState(new GrappleState()); 
-            }      
+                player.SetState(new GrappleState());
+            }
         }
     }
-
+    //Move the player quickly towards and past the grapple point
     public virtual void GrapplePull(InputAction.CallbackContext inputContext, PlayerContext player)
     {
-        if (inputContext.started  && player.myGrapple.hasGrapple)
+        //Check that the player has the grapple
+        if (inputContext.started && player.myGrapple.hasGrapple)
         {
             GrapplePoint grapplePoint = player.myGrapple.GetHook();
+            //Check there is a hook
             if (grapplePoint)
             {
                 player.myGrapple.Pull();
@@ -40,7 +47,8 @@ public abstract class BaseState
     }
 
     public virtual void Shoot(InputAction.CallbackContext inputContext, PlayerContext player) { }
-
+    //Do anything needed before leaving the state
+    //Stop animations, play sound etc
     public virtual void ExitState(PlayerContext player) { return; }
 
     public virtual void OnTriggerEnter2D(Collider2D collision, PlayerContext player)
@@ -55,6 +63,7 @@ public abstract class BaseState
         {
             player.GiveDoubleJump();
         }
+        
         if (collision.gameObject.tag == "Shotgun")
         {
             player.GiveShotgun();
@@ -77,12 +86,18 @@ public abstract class BaseState
         }
     }
 
-
     // This is here for testing purposes
     public virtual void SkipLevel(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         player.completeLevelEvent.Invoke();
         return;
+    }
+
+    //Gives a way to return to the menu
+    public virtual void ReturnToMenu(InputAction.CallbackContext inputContext)
+    {
+        LevelResultsScreen.nextLevel = 0;
+        SceneManager.LoadScene(0);
     }
 
     //Updates
