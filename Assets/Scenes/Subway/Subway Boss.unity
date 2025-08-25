@@ -9933,6 +9933,10 @@ PrefabInstance:
       propertyPath: _myHud
       value: 
       objectReference: {fileID: 251578113}
+    - target: {fileID: 1366845479581512381, guid: 5033dc8ada55a5d449d9a1b4208dcef6, type: 3}
+      propertyPath: hasShotgun
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3031335858483533569, guid: 5033dc8ada55a5d449d9a1b4208dcef6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.362706
@@ -14226,7 +14230,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.4
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

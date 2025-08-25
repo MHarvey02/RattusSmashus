@@ -11,7 +11,7 @@ public class WallJumpState : BaseState
         _isMoving = isMoving;
     }
 
-        public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
+    public override void Move(InputAction.CallbackContext inputContext, PlayerContext player)
     {
         if (inputContext.started)
         {
